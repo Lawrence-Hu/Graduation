@@ -16,8 +16,8 @@ public class User {
     @TableId
     private int id;
     @TableField
-    private  String name;
-    private  int phone;
-    private  String address;
+    private String name;
+    private int phone;
+    private String address;
 
 }

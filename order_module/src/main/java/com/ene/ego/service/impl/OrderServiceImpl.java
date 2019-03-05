@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrderServiceImpl  implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderMapper orderMapper;
@@ -21,7 +21,7 @@ public class OrderServiceImpl  implements OrderService{
         return order;
     }
 
-    public Order UpdateOrSta(int id,int status) {
+    public Order UpdateOrSta(int id, int status) {
 
         Order order = orderMapper.selectById(id);
         order.setStatusId(status);
@@ -31,8 +31,8 @@ public class OrderServiceImpl  implements OrderService{
     @Override
     public int AddOrders(Order order) {
 
-        int id=orderMapper.insert(order);
-       // Order order1=orderMapper.selectById(id);
+        int id = orderMapper.insert(order);
+        // Order order1=orderMapper.selectById(id);
         return id;
     }
 

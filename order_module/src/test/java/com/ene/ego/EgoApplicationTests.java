@@ -23,11 +23,11 @@ public class EgoApplicationTests {
 //	private StatusMapper status;
 
 
-	@Autowired
-	private UserMapper user;
+    @Autowired
+    private UserMapper user;
 
-	@Autowired
-	private OrderMapper order;
+    @Autowired
+    private OrderMapper order;
 
 //	@Test
 //	public void testSelect() {
@@ -38,39 +38,40 @@ public class EgoApplicationTests {
 //	}
 
 
-	@Test
-	public void testSelect() {
-		System.out.println(("----selectAll method test---"));
-		List<User> userList = user.selectList(null);
-		//Assert.assertEquals(5, statussList.size());
-		userList.forEach(System.out::println);
+    @Test
+    public void testSelect() {
+        System.out.println(("----selectAll method test---"));
+        List<User> userList = user.selectList(null);
+        //Assert.assertEquals(5, statussList.size());
+        userList.forEach(System.out::println);
 
-	}
+    }
 
-	@Test
-	public void testSelect1() {
-		System.out.println(("----selectAll method test---"));
-		List<Order> orderList = order.selectList(null);
-		//Assert.assertEquals(5, statussList.size());
-		orderList.forEach(System.out::println);
-	}
+    @Test
+    public void testSelect1() {
+        System.out.println(("----selectAll method test---"));
+        List<Order> orderList = order.selectList(null);
+        //Assert.assertEquals(5, statussList.size());
+        orderList.forEach(System.out::println);
+    }
 
-	@Test
-	public  void testAdd(){
+    @Test
+    public void testAdd() {
 
-		Order order1=new Order();
-		order1.setUserId(3);
-		order1.setStatusId(3);
-		order1.setPrice(1202);
-		order1.setTime(new Date());
-		order.insert(order1);
+        Order order1 = new Order();
+        order1.setUserId(3);
+        order1.setStatusId(3);
+        order1.setPrice(1202);
+        order1.setTime(new Date());
+        order.insert(order1);
 
-	}
-	@Test
-	public void testselect(){
+    }
 
-		Order order1=order.selectById(16);
-		System.out.println(order1);
+    @Test
+    public void testselect() {
 
-	}
+        Order order1 = order.selectById(16);
+        System.out.println(order1);
+
+    }
 }

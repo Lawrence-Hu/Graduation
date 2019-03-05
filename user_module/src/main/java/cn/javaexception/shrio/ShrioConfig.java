@@ -22,6 +22,9 @@ public class ShrioConfig {
         Map<String,String> map = new LinkedHashMap<>();
         map.put("/cart/*","authc");
         map.put("local/toLogin","anon");
+        map.put("/deliverAddress","authc");
+        map.put("/favourite","authc");
+        map.put("/order","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         shiroFilterFactoryBean.setLoginUrl("/local/toLogin");
         return shiroFilterFactoryBean;

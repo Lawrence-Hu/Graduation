@@ -59,7 +59,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.1.5.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.6.2" level="project" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.4" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.15" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-boot-starter:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-extension:3.1.0" level="project" />
@@ -94,5 +94,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.1.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:druid:1.1.13" level="project" />
   </component>
 </module>

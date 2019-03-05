@@ -1,5 +1,4 @@
 package com.ene.ego.beens;
-import java.util.Date;//时间包
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -10,12 +9,14 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Date;
+
 @Data
 @Getter
 @Setter
 
 
-@TableName(value = "orders")
+@TableName(value = "Orders")
 public class Order {
     @TableId
     private int number;
@@ -25,13 +26,13 @@ public class Order {
     private int statusId;
     @TableField
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(
             pattern = "yyyy-MM-dd HH:mm:ss"
     )
-   private Date time;//创建时间
+    private Date time;//创建时间
     @TableField
-    private  float price;
+    private float price;
 
 
 }

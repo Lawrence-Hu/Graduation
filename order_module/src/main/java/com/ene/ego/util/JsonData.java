@@ -3,7 +3,6 @@ package com.ene.ego.util;
 import java.io.Serializable;
 
 /**
- * 
  * @author Laerence
  * @date 2018年12月8日
  * @Desciprtion
@@ -13,16 +12,15 @@ public class JsonData implements Serializable {
     private static final long serialVersionUID = 1L;
     /**
      * 状态码：
-     *  0 表示成功；
-     *  1 表示处理中；
-     *  -1 表示失败；
+     * 0 表示成功；
+     * 1 表示处理中；
+     * -1 表示失败；
      */
     private Integer code;
     // 数据
     private Object data;
     // 描述
     private String msg;
-
 
 
     // 成功，传入数据：空数据

@@ -1,7 +1,7 @@
 package cn.javaexception.service.impl;
 
-import cn.javaexception.model.Product;
 import cn.javaexception.mapper.ProductMapper;
+import cn.javaexception.model.Product;
 import cn.javaexception.service.ProductService;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -25,6 +25,6 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     public boolean addProduct(Integer id) {
         User user = userInterface.findUserById(id);
         System.out.println(user);
-        return false;
+        return true;
     }
 }
