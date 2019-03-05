@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.javaexception.mapper.MsgMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.javaexception.model.Msg">
+        <id column="id" property="id" />
+        <result column="content" property="content" />
+        <result column="creat_time" property="creatTime" />
+        <result column="is_read" property="isRead" />
+        <result column="to_user_id" property="toUserId" />
+        <result column="from_user_id" property="fromUserId" />
+        <result column="read_time" property="readTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, content, creat_time, is_read, to_user_id, from_user_id, read_time
+    </sql>
+
+</mapper>
