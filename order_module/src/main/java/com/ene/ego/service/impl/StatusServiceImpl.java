@@ -11,12 +11,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class StatusServiceImpl extends ServiceImpl<StatusMapper, Status> implements StatusService{
 
-    private OrderMapper orderMapper;
 
-    public Order UpdateOrSta(int id, int status) {
-
-        Order order = orderMapper.selectById(id);
-        order.setStatusId(status);
-        return order;
-    }
 }

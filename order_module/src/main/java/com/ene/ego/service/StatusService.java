@@ -6,5 +6,5 @@ import com.ene.ego.beens.Status;
 
 public interface StatusService extends IService<Status> {
 
-    Order UpdateOrSta(int id, int status);//修改订单状态
+
 }

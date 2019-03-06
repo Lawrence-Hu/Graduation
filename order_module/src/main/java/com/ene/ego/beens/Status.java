@@ -1,5 +1,6 @@
 package com.ene.ego.beens;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -11,7 +12,7 @@ import lombok.Setter;
 
 @TableName("status")
 public class Status {
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private int id;
     @TableField
     private String status;
