@@ -1,5 +1,6 @@
 package com.ene.ego.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ene.ego.beens.Order;
 import com.ene.ego.mapper.OrderMapper;
 import com.ene.ego.service.OrderService;
@@ -7,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrderServiceImpl implements OrderService {
+public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
 
     @Autowired
-    private OrderMapper orderMapper;
+    private OrderMapper orderMapper;//订单的mapper对象
 
 
     @Override
@@ -21,12 +22,6 @@ public class OrderServiceImpl implements OrderService {
         return order;
     }
 
-    public Order UpdateOrSta(int id, int status) {
-
-        Order order = orderMapper.selectById(id);
-        order.setStatusId(status);
-        return order;
-    }
 
     @Override
     public int AddOrders(Order order) {

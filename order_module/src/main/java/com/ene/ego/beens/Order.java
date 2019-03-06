@@ -12,9 +12,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Data
-@Getter
-@Setter
-
 
 @TableName(value = "Orders")
 public class Order {
