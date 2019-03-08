@@ -33,7 +33,7 @@ public class User extends Model<User> {
      * '主键id'
      */
     @TableId(value = "id", type = IdType.AUTO)
-    @NotNull(message = "用户id不能为空")
+    //@NotNull(message = "用户id不能为空")
     private Integer id;
 
     /**

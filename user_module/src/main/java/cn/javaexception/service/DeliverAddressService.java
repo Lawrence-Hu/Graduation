@@ -1,6 +1,7 @@
 package cn.javaexception.service;
 
 import cn.javaexception.model.DeliverAddress;
+import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -13,7 +14,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface DeliverAddressService extends IService<DeliverAddress> {
 
-    boolean addAddress(DeliverAddress address);
+    JsonData addAddress(DeliverAddress address);
 
-    boolean deleteAddress(DeliverAddress[] addresses);
+    JsonData deleteAddress(Integer[] addressIds);
+
+    JsonData updateAddress(DeliverAddress address);
 }

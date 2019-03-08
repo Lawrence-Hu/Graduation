@@ -5,13 +5,13 @@ import cn.javaexception.model.DeliverAddress;
 import cn.javaexception.service.DeliverAddressService;
 import cn.javaexception.util.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * <p>
@@ -34,19 +34,42 @@ public class DeliverAddressController {
      * @description 添加新地址
      */
     @PostMapping("/add")
-    public JsonData addAddress(@RequestBody @Valid DeliverAddress address) {
-        return deliverAddressService.addAddress(address) ? JsonData.buildSuccess() : JsonData.buildError("添加失败");
+    public JsonData addAddress(@RequestBody @Valid DeliverAddress address, Errors errors) {
+        if (errors.hasErrors()) {
+           return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
+        }
+        return deliverAddressService.addAddress(address);
+    }
+    /**
+     * @author huchao
+     * @description 更新用户收货地址
+     * @param  address
+     * @return JsonData
+     */
+
+    @PostMapping("/updateAddress")
+    public JsonData updateAddress(@RequestBody DeliverAddress address, Errors errors) {
+        if (errors.hasErrors()) {
+            return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
+        }
+
+        return deliverAddressService.updateAddress(address);
     }
 
     /**
-     * @param addresses
+     * @param addressIds
      * @return JsonData
      * @author huchao
      * @description 删除收货地址
      */
     @PostMapping("/delete")
-    public JsonData deleteAddress(@RequestBody @Valid DeliverAddress[] addresses) {
-        return deliverAddressService.deleteAddress(addresses) ? JsonData.buildSuccess() : JsonData.buildError("删除失败，请刷新后重试！");
+    //考虑一下json格式
+    public JsonData deleteAddress(@RequestBody Integer[] addressIds) {
+        if (addressIds.length==0){
+            return JsonData.buildError("地址id不能为空！！");
+        }
+        System.out.println(Arrays.asList(addressIds));
+        return deliverAddressService.deleteAddress(addressIds);
     }
 }
 

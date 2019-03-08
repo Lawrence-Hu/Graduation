@@ -52,7 +52,6 @@ public class LocalLoginController {
         //shrio登录验证
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(localLogin.getAccount(), localLogin.getPassword());
-        token.setRememberMe(true);
         try {
             subject.login(token);
             //更新用户登录信息
@@ -68,23 +67,8 @@ public class LocalLoginController {
         } catch (IncorrectCredentialsException e) {
             return JsonData.buildError("用户密码错误");
         } catch (LockedAccountException e) {
-            return JsonData.buildSuccess("用户未激活");
+            return JsonData.buildSuccess("用户已被冻结");
         }
-    }
-
-    /**
-     * @param account
-     * @return JsonData
-     * @author huchao
-     * @description 邮箱激活
-     */
-    @GetMapping("/activateByEmail")
-    public String activatingByEamil(@NotEmpty(message = "激活失败！请重新激活") String account, Errors errors) {
-        if (errors.hasErrors()){
-            return  Objects.requireNonNull(errors.getFieldError()).getDefaultMessage();
-        }
-        User user = localLoginService.activateByEmail(account);
-        return user == null ? "用户已被激活或用户不存在" : "激活成功！";
     }
 
     /**

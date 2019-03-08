@@ -20,8 +20,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public JsonData defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
-        System.err.println(e);
+    public JsonData defaultErrorHandler(HttpServletRequest req, Exception e){
+        e.printStackTrace();
         if (e instanceof org.springframework.web.servlet.NoHandlerFoundException) {
             return JsonData.buildError(404, e.getMessage());
         } else {

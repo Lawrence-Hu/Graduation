@@ -32,43 +32,42 @@ public class DeliverAddress extends Model<DeliverAddress> {
     /**
      * 用户id
      */
-    @NotNull
     private Integer userId;
 
     /**
      * 省id
      */
-    @NotNull
+    @NotNull(message = "省id不能为空")
     private Integer provinceId;
 
     /**
      * 城市id
      */
-    @NotNull
+    @NotNull(message = "城市id不能为空")
     private Integer cityId;
 
     /**
      * 收货姓名
      */
-    @NotNull
+    @NotNull(message = "收货姓名不能为空")
     private String name;
 
     /**
      * 家，公司，学校
      */
-    @NotNull
+    @NotNull(message = "tag不能为空")
     private String tag;
 
     /**
      * 手机号
      */
-    @NotNull
+    @NotNull(message = "手机号不能为空")
     private String mobile;
 
     /**
      * 详细地址
      */
-    @NotNull
+    @NotNull(message = "详情地址不能为空")
     private String remark;
 
     /**

@@ -5,13 +5,14 @@ import cn.javaexception.model.Cart;
 import cn.javaexception.service.CartService;
 import cn.javaexception.util.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.Objects;
 
 /**
  * <p>
@@ -26,34 +27,44 @@ import javax.validation.Valid;
 public class CartController {
     @Autowired
     private CartService cartService;
+
     /**
-     * @author huchao 
-     * @description 添加到购物车
-     * @param  cart
+     * @param cart
      * @return JsonData
+     * @author huchao
+     * @description 添加到购物车
      */
     @PostMapping("/add")
-    public JsonData addProductToCart(@Valid @RequestBody  Cart cart) {
-        return cartService.addProduct(cart) ? JsonData.buildSuccess("加入购物车成功！") : JsonData.buildError("加入购物车失败");
+    public JsonData addProductToCart(@Valid @RequestBody Cart cart, Errors errors) {
+        if (errors.hasErrors()) {
+            return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
+        }
+        return cartService.addProduct(cart);
     }
+
     /**
-     * @author huchao 
-     * @description 删除购物车商品
-     * @param carts 
+     * @param cartIds
      * @return JsonData
+     * @author huchao
+     * @description 删除购物车商品
      */
-    @PostMapping("/deleteProducts")
-    public JsonData deleteProductsFromCart(@RequestBody Cart[] carts){
-        return cartService.deleteProduct(carts)?JsonData.buildSuccess("移除商品成功"):JsonData.buildError("移除商品失败");
+    @PostMapping("/delete")
+    //考虑一下json格式
+    public JsonData deleteProductsFromCart(@RequestBody Integer[] cartIds) {
+        if (cartIds.length==0){
+            JsonData.buildError("购物车id不能为空！");
+        }
+        return cartService.deleteProduct(cartIds);
     }
+
     /**
-     * @author huchao 
-     * @description 购物车详情
      * @param userId
      * @return JsonData
+     * @author huchao
+     * @description 购物车详情
      */
     @PostMapping("/detail")
-    public JsonData getCartDetail(@RequestBody String userId){
+    public JsonData getCartDetail(@RequestBody String userId) {
         return null;
     }
 }

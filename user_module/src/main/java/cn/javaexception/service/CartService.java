@@ -1,6 +1,7 @@
 package cn.javaexception.service;
 
 import cn.javaexception.model.Cart;
+import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -13,7 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface CartService extends IService<Cart> {
 
-    boolean addProduct(Cart cart);
+    JsonData addProduct(Cart cart);
 
-    boolean deleteProduct(Cart[] carts);
+    JsonData deleteProduct(Integer[] cartIds);
 }

@@ -33,31 +33,28 @@ public class Cart extends Model<Cart> {
     /**
      * 产品id
      */
-    @NotNull
+    @NotNull(message = "产品号不能为null")
     private Integer productId;
 
     /**
      * 供应用户id
      */
-    @NotNull
+    @NotNull(message = "供应用户id不能为空")
     private Integer supplierId;
 
     /**
      * 数量
      */
-    @NotNull
+    @NotNull(message = "数量不能为空")
     private Integer quantity;
 
-    @NotNull
-    private String userId;
+    @NotNull(message = "用户id不能为空")
+    private Integer userId;
     /**
      * 加入购物车时间
      */
     private LocalDateTime addTime;
-    /**
-     * 购物车状态
-     */
-    private String cartStatus;
+
 
     @Override
     protected Serializable pkVal() {

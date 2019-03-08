@@ -38,12 +38,11 @@ public class LocalLoginServiceImpl extends ServiceImpl<LocalLoginMapper, LocalLo
     public User activateByEmail(String account) {
         //查询用户
         User user = userMapper.selectOne(new QueryWrapper<User>().eq("account", account));
-        System.out.println(user);
         if (user == null) {
             return null;
         }
         //用户已被激活
-        if (user.getStatus().equals("1")) {
+        if (user.getStatus().equals("0")) {
             return null;
         }
         //激活用户

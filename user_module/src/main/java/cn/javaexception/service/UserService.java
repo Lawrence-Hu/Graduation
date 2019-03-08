@@ -2,6 +2,7 @@ package cn.javaexception.service;
 
 import cn.javaexception.model.LocalLogin;
 import cn.javaexception.model.User;
+import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -14,13 +15,14 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UserService extends IService<User> {
 
-    boolean register(LocalLogin localLogin);
-
-    boolean setDefaultDeliverAddress(User user);
+    JsonData setDefaultDeliverAddress(User user);
 
     boolean setPhoneNumber(User user);
+    
 
-    boolean setEmail(User user);
+    JsonData sendEmailCode(User user);
 
-    boolean sendEmailCode(User user);
+    JsonData register(LocalLogin localLogin);
+
+    JsonData setEmail(User user);
 }
