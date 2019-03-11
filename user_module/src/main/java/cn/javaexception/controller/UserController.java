@@ -1,8 +1,8 @@
 package cn.javaexception.controller;
 
 
-import cn.javaexception.model.LocalLogin;
-import cn.javaexception.model.User;
+import product_module.LocalLogin;
+import product_module.User;
 import cn.javaexception.service.UserService;
 import cn.javaexception.util.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Map;
 import java.util.Objects;
 
 /**

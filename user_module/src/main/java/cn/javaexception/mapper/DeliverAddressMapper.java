@@ -1,6 +1,6 @@
 package cn.javaexception.mapper;
 
-import cn.javaexception.model.DeliverAddress;
+import product_module.DeliverAddress;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

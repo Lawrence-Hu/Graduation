@@ -1,12 +1,11 @@
 package cn.javaexception.service.impl;
 
 import cn.javaexception.mapper.ProductMapper;
-import cn.javaexception.model.Product;
+import cn.javaexception.entity.Product;
 import cn.javaexception.service.ProductService;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-import user_module.entity.User;
 import user_module.service.UserInterface;
 
 /**
@@ -21,10 +20,10 @@ import user_module.service.UserInterface;
 public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> implements ProductService {
     @Reference
     UserInterface userInterface;
-    @Override
-    public boolean addProduct(Integer id) {
-        User user = userInterface.findUserById(id);
-        System.out.println(user);
-        return true;
-    }
+//    @Override
+//    public boolean addProduct(Integer id) {
+//        User user = userInterface.findUserById(id);
+//        System.out.println(user);
+//        return true;
+//    }
 }

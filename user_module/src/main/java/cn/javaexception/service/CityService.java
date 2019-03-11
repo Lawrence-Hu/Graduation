@@ -1,6 +1,6 @@
 package cn.javaexception.service;
 
-import cn.javaexception.model.City;
+import product_module.City;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

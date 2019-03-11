@@ -1,4 +1,4 @@
-package cn.javaexception.model;
+package product_module;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -10,10 +10,8 @@ import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 
 /**
  * <p>

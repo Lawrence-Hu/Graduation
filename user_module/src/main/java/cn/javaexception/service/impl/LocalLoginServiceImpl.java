@@ -2,19 +2,13 @@ package cn.javaexception.service.impl;
 
 import cn.javaexception.mapper.LocalLoginMapper;
 import cn.javaexception.mapper.UserMapper;
-import cn.javaexception.model.LocalLogin;
-import cn.javaexception.model.User;
+import product_module.LocalLogin;
+import product_module.User;
 import cn.javaexception.service.LocalLoginService;
-import cn.javaexception.util.FormatValidator;
-import cn.javaexception.util.SendJMail;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 /**
  * <p>

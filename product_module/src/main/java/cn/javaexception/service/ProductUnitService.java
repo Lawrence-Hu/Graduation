@@ -1,6 +1,6 @@
 package cn.javaexception.service;
 
-import cn.javaexception.model.ProductUnit;
+import cn.javaexception.entity.ProductUnit;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

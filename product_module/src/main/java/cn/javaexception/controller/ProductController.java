@@ -23,11 +23,11 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @PostMapping("/add")
-    public JsonData add(String id){
-        System.out.println(id);
-        boolean b = productService.addProduct(Integer.parseInt(id));
-        return b? JsonData.buildSuccess():JsonData.buildError("error");
-    }
+//    @PostMapping("/add")
+//    public JsonData add(String id){
+//        System.out.println(id);
+//        boolean b = productService.addProduct(Integer.parseInt(id));
+//        return b? JsonData.buildSuccess():JsonData.buildError("error");
+//    }
 }
 

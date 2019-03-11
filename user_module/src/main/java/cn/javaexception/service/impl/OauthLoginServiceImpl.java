@@ -1,6 +1,6 @@
 package cn.javaexception.service.impl;
 
-import cn.javaexception.model.OauthLogin;
+import product_module.OauthLogin;
 import cn.javaexception.mapper.OauthLoginMapper;
 import cn.javaexception.service.OauthLoginService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

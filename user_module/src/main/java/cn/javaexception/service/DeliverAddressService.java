@@ -1,6 +1,6 @@
 package cn.javaexception.service;
 
-import cn.javaexception.model.DeliverAddress;
+import product_module.DeliverAddress;
 import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.extension.service.IService;
 

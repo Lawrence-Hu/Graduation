@@ -2,8 +2,8 @@ package cn.javaexception.controller;
 
 
 import cn.javaexception.mapper.UserMapper;
-import cn.javaexception.model.LocalLogin;
-import cn.javaexception.model.User;
+import product_module.LocalLogin;
+import product_module.User;
 import cn.javaexception.service.LocalLoginService;
 import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
@@ -15,8 +15,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Objects;
 

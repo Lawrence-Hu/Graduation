@@ -1,7 +1,7 @@
 package com.ene.ego.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ene.ego.beens.Status;
+import com.ene.ego.beans.Status;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

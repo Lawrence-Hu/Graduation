@@ -95,5 +95,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:druid:1.1.13" level="project" />
+    <orderEntry type="module" module-name="dubbo_api" />
   </component>
 </module>

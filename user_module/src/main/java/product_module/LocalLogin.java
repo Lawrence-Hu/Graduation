@@ -1,4 +1,4 @@
-package cn.javaexception.model;
+package product_module;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

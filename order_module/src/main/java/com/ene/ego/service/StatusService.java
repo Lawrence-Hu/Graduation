@@ -1,8 +1,7 @@
 package com.ene.ego.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ene.ego.beens.Order;
-import com.ene.ego.beens.Status;
+import com.ene.ego.beans.Status;
 
 public interface StatusService extends IService<Status> {
 

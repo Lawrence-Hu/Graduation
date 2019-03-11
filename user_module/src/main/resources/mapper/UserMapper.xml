@@ -3,7 +3,7 @@
 <mapper namespace="cn.javaexception.mapper.UserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.javaexception.model.User">
+    <resultMap id="BaseResultMap" type="product_module.User">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="account" property="account" />

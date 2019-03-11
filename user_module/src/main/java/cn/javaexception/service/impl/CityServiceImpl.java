@@ -1,6 +1,6 @@
 package cn.javaexception.service.impl;
 
-import cn.javaexception.model.City;
+import product_module.City;
 import cn.javaexception.mapper.CityMapper;
 import cn.javaexception.service.CityService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

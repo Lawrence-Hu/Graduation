@@ -2,8 +2,8 @@ package cn.javaexception.service.impl;
 
 import cn.javaexception.mapper.DeliverAddressMapper;
 import cn.javaexception.mapper.UserMapper;
-import cn.javaexception.model.LocalLogin;
-import cn.javaexception.model.User;
+import product_module.LocalLogin;
+import product_module.User;
 import cn.javaexception.service.UserService;
 import cn.javaexception.util.JsonData;
 import cn.javaexception.util.SendJMail;

@@ -1,4 +1,4 @@
-package cn.javaexception.model;
+package cn.javaexception.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;

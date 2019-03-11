@@ -1,9 +1,9 @@
 package cn.javaexception.service.impl;
 
 import cn.javaexception.mapper.UserMapper;
-import cn.javaexception.model.Cart;
+import product_module.Cart;
 import cn.javaexception.mapper.CartMapper;
-import cn.javaexception.model.User;
+import product_module.User;
 import cn.javaexception.service.CartService;
 import cn.javaexception.util.JsonData;
 import com.alibaba.dubbo.config.annotation.Reference;
@@ -17,9 +17,6 @@ import product_module.entity.Product;
 import product_module.service.ProductInterfce;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * <p>

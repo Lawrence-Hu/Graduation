@@ -1,8 +1,8 @@
 package cn.javaexception.service.impl;
 
 import cn.javaexception.mapper.DeliverAddressMapper;
-import cn.javaexception.model.DeliverAddress;
-import cn.javaexception.model.User;
+import product_module.DeliverAddress;
+import product_module.User;
 import cn.javaexception.service.DeliverAddressService;
 import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;

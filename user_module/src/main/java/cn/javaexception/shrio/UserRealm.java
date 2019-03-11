@@ -1,8 +1,8 @@
 package cn.javaexception.shrio;
 
 import cn.javaexception.mapper.UserMapper;
-import cn.javaexception.model.LocalLogin;
-import cn.javaexception.model.User;
+import product_module.LocalLogin;
+import product_module.User;
 import cn.javaexception.service.LocalLoginService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.shiro.SecurityUtils;

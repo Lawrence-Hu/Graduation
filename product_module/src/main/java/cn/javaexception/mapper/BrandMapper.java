@@ -1,8 +1,8 @@
 package cn.javaexception.mapper;
 
-import cn.javaexception.model.Brand;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import cn.javaexception.entity.Brand;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2019-03-05
  */
 @Mapper
-public interface BrandMapper extends BaseMapper<Brand> {
+public interface BrandMapper extends BaseMapper<Brand>{
 
 }

@@ -3,7 +3,7 @@
 <mapper namespace="cn.javaexception.mapper.CityMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.javaexception.model.City">
+    <resultMap id="BaseResultMap" type="product_module.City">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="province_id" property="provinceId" />
