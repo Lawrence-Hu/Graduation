@@ -2,8 +2,8 @@ package cn.javaexception.service.impl;
 
 import cn.javaexception.mapper.LocalLoginMapper;
 import cn.javaexception.mapper.UserMapper;
-import product_module.LocalLogin;
-import product_module.User;
+import java.exception.entity.LocalLogin;
+import java.exception.entity.User;
 import cn.javaexception.service.LocalLoginService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -1,7 +1,7 @@
 package cn.javaexception.controller;
 
 
-import product_module.Cart;
+import java.exception.entity.Cart;
 import cn.javaexception.service.CartService;
 import cn.javaexception.util.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;

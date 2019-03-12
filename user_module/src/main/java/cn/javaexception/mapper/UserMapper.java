@@ -1,6 +1,6 @@
 package cn.javaexception.mapper;
 
-import product_module.User;
+import java.exception.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

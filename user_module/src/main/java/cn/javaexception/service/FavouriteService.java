@@ -1,6 +1,6 @@
 package cn.javaexception.service;
 
-import product_module.Favourite;
+import java.exception.entity.Favourite;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

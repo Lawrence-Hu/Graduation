@@ -1,6 +1,6 @@
 package cn.javaexception.mapper;
 
-import product_module.Favourite;
+import java.exception.entity.Favourite;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

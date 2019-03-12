@@ -1,6 +1,6 @@
 package cn.javaexception.service;
 
-import product_module.Cart;
+import java.exception.entity.Cart;
 import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.extension.service.IService;
 

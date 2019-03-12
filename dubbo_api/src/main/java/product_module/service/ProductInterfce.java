@@ -1,10 +1,9 @@
 package product_module.service;
 
-        import Util.JsonData;
-        import product_module.entity.Brand;
-        import product_module.entity.Catagory;
-        import product_module.entity.Img;
-        import product_module.entity.Product;
+import product_module.entity.Brand;
+import product_module.entity.Catagory;
+import product_module.entity.Img;
+import product_module.entity.Product;
 
 /**
  * @author hcuhao

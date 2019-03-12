@@ -2,8 +2,8 @@ package cn.javaexception.controller;
 
 
 import cn.javaexception.mapper.UserMapper;
-import product_module.LocalLogin;
-import product_module.User;
+import java.exception.entity.LocalLogin;
+import java.exception.entity.User;
 import cn.javaexception.service.LocalLoginService;
 import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;

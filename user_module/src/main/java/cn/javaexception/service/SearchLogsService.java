@@ -1,6 +1,6 @@
 package cn.javaexception.service;
 
-import product_module.SearchLogs;
+import java.exception.entity.SearchLogs;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

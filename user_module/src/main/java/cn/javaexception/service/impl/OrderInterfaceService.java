@@ -1,0 +1,65 @@
+package cn.javaexception.service.impl;
+
+import cn.javaexception.util.JsonData;
+import com.alibaba.dubbo.config.annotation.Reference;
+import order_module.entity.Order;
+import order_module.service.OrderInterface;
+import order_module.t_entity.TOrderItem;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+import org.springframework.stereotype.Service;
+import product_module.entity.Product;
+import product_module.service.ProductInterfce;
+
+import java.exception.entity.User;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * @author hcuhao
+ * @date 2019-03-12-10:08
+ */
+@Service
+public class OrderInterfaceService {
+    @Reference
+    private OrderInterface orderInterface;
+    @Reference
+    private ProductInterfce productInterfce;
+    /**
+     * @author huchao 
+     * @description 添加订单详情
+     * @param  order 有可能order汇编等前端数据在进行操作
+     * @return JsonData
+     */
+    public JsonData addToOrder(Order order) {
+        //拿到当前用户
+        Subject subject = SecurityUtils.getSubject();
+        User principal = (User) subject.getPrincipal();
+        if (principal==null){
+            JsonData.buildError("用户未登录！");
+        }
+        //获取商品详情
+        List<TOrderItem> items = order.getOrderItems();
+        //计算价格
+        float price = 0;
+        for (TOrderItem item : items) {
+            //得到产品信息
+            Product product = productInterfce.findProductById(item.getProductId());
+            Integer num = item.getProductNum();
+            if (product != null && num != null) {
+                price += product.getShopPrice() * num;
+            }else{
+                items.remove(item);
+            }
+        }
+        //数据封装
+        order.getTOrder().setUserId(Objects.requireNonNull(principal).getId());
+        order.getTOrder().setPrice(price);
+        boolean b = orderInterface.addToOrder(order);
+        if (!b) {
+            JsonData.buildError("增加订单失败！");
+        }
+        return JsonData.buildSuccess("添加成功！");
+    }
+
+}

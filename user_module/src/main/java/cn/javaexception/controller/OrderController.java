@@ -1,7 +1,10 @@
 package cn.javaexception.controller;
 
+import cn.javaexception.util.JsonData;
+import order_module.entity.Order;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author hcuhao
@@ -9,5 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @RequestMapping("/order")
 public class OrderController {
+    @PostMapping("/add")
+    public JsonData addToOrder(@RequestBody Order order){
+        //order 信息验证
+        return null;
+    }
+
 
 }

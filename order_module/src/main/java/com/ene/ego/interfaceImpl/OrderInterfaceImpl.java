@@ -1,46 +1,41 @@
-package com.ene.ego;
-
+package com.ene.ego.interfaceImpl;
 
 import com.ene.ego.mapper.OrderInterfaceMapper;
 import com.ene.ego.mapper.OrderItemInterfaceMapper;
 import order_module.entity.Order;
-import order_module.t_entity.TOrder;
+import order_module.service.OrderInterface;
 import order_module.t_entity.TOrderItem;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-//@MapperScan("com.baomidou.mybatisplus.samples.quickstart.mapper")
-public class EgoApplicationTests {
-
+/**
+ * @author hcuhao
+ * @date 2019-03-12-11:56
+ */
+public class OrderInterfaceImpl implements OrderInterface {
     @Autowired
     OrderItemInterfaceMapper orderItemInterfaceMapper;
     @Autowired
     OrderInterfaceMapper orderInterfaceMapper;
-
-    @Test
-    public void addToOrder() {
-
-        Order order = new Order();
-        order.setTOrder(new TOrder().setPrice(15).setUserId(1).setTime(LocalDateTime.now()));
-        List<TOrderItem> tOrderItems = new ArrayList<>();
-        tOrderItems.add(new TOrderItem().setProductId(1).setProductNum(5));
-        tOrderItems.add(new TOrderItem().setProductId(2).setProductNum(15));
-        order.setOrderItems(tOrderItems);
+    /**
+     * @author huchao 
+     * @description 增加订单
+     * @param  order
+     * @return boolean
+     */
+    @Override
+    public boolean addToOrder(Order order) {
         //数据验证
         List<TOrderItem> orderItems = order.getOrderItems();
         if (order.getTOrder() == null || order.getTOrder().getUserId() == null || orderItems == null) {
-            return;
+            return false;
         }
+        //判断用户是否存在
+        //判断商品价格是否合理
+        //.......
         //生成订单号
         String uuid = UUID.randomUUID().toString();
         //插入订单号
@@ -55,8 +50,8 @@ public class EgoApplicationTests {
         }
         //判断是否插入成功
         if (i == 1 && add == orderItems.size()) {
-            System.out.println("success");
+            return true;
         }
+        return false;
     }
-
 }

@@ -1,7 +1,7 @@
 package cn.javaexception.service;
 
-import product_module.LocalLogin;
-import product_module.User;
+import java.exception.entity.LocalLogin;
+import java.exception.entity.User;
 import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.extension.service.IService;
 
