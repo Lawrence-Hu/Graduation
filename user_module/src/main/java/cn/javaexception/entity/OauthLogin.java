@@ -1,9 +1,8 @@
-package java.exception.entity;
+package cn.javaexception.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,7 +19,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class SearchLogs extends Model<SearchLogs> {
+public class OauthLogin extends Model<OauthLogin> {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,9 +28,13 @@ public class SearchLogs extends Model<SearchLogs> {
 
     private Integer userId;
 
-    private String keyword;
+    private String oauthName;
 
-    private LocalDateTime time;
+    private String oauthId;
+
+    private String oauthAccessToken;
+
+    private String oauthExpires;
 
 
     @Override

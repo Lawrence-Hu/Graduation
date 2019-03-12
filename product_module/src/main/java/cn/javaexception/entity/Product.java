@@ -113,8 +113,10 @@ public class Product extends Model<Product> {
      * 商品种类表
      */
     private Integer userId;
-
-
+    /**
+     *商品热度值
+     */
+    private Integer hotIndex;
     @Override
     protected Serializable pkVal() {
         return this.id;

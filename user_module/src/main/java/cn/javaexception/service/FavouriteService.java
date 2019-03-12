@@ -1,6 +1,8 @@
 package cn.javaexception.service;
 
-import java.exception.entity.Favourite;
+import cn.javaexception.entity.Favourite;
+
+import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -12,5 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-03-02
  */
 public interface FavouriteService extends IService<Favourite> {
+    JsonData addTofavourite(Favourite favourite);
 
+    JsonData deleteFavouriteItems(Integer[] ids);
 }

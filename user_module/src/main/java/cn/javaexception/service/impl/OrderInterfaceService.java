@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import product_module.entity.Product;
 import product_module.service.ProductInterfce;
 
-import java.exception.entity.User;
+import cn.javaexception.entity.User;
 import java.util.List;
 import java.util.Objects;
 
@@ -36,7 +36,7 @@ public class OrderInterfaceService {
         Subject subject = SecurityUtils.getSubject();
         User principal = (User) subject.getPrincipal();
         if (principal==null){
-            JsonData.buildError("用户未登录！");
+           return JsonData.buildError("用户未登录！");
         }
         //获取商品详情
         List<TOrderItem> items = order.getOrderItems();
@@ -55,11 +55,11 @@ public class OrderInterfaceService {
         //数据封装
         order.getTOrder().setUserId(Objects.requireNonNull(principal).getId());
         order.getTOrder().setPrice(price);
+        //调用接口
         boolean b = orderInterface.addToOrder(order);
         if (!b) {
-            JsonData.buildError("增加订单失败！");
+           return JsonData.buildError("增加订单失败！");
         }
         return JsonData.buildSuccess("添加成功！");
     }
-
 }

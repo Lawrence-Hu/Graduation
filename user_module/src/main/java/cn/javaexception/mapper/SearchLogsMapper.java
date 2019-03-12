@@ -1,6 +1,6 @@
 package cn.javaexception.mapper;
 
-import java.exception.entity.SearchLogs;
+import cn.javaexception.entity.SearchLogs;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

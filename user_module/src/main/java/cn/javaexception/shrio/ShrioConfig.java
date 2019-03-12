@@ -27,6 +27,7 @@ public class ShrioConfig {
         map.put("/user/*","authc");
         map.put("/order/*","authc");
         map.put("/local/toLogin","anon");
+        map.put("/home/*","anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         shiroFilterFactoryBean.setLoginUrl("/local/toLogin");
         shiroFilterFactoryBean.setUnauthorizedUrl("/user/unAuth");

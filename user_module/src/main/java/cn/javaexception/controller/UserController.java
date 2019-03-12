@@ -1,8 +1,8 @@
 package cn.javaexception.controller;
 
 
-import java.exception.entity.LocalLogin;
-import java.exception.entity.User;
+import cn.javaexception.entity.LocalLogin;
+import cn.javaexception.entity.User;
 import cn.javaexception.service.UserService;
 import cn.javaexception.util.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;

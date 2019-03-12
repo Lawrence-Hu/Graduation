@@ -1,6 +1,6 @@
 package cn.javaexception.mapper;
 
-import java.exception.entity.OauthLogin;
+import cn.javaexception.entity.OauthLogin;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

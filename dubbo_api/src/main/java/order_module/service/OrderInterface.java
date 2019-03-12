@@ -3,8 +3,7 @@ package order_module.service;
 import order_module.entity.Order;
 
 public interface OrderInterface {
-
-    //    boolean addOrders(Order order);//添加订单
+//    boolean addOrders(Order order);//添加订单
 //
 //    boolean SelectbyNum(Integer id);//查询订单
 //

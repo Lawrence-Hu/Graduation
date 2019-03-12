@@ -1,6 +1,6 @@
 package cn.javaexception.service.impl;
 
-import java.exception.entity.SearchLogs;
+import cn.javaexception.entity.SearchLogs;
 import cn.javaexception.mapper.SearchLogsMapper;
 import cn.javaexception.service.SearchLogsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -1,6 +1,6 @@
 package cn.javaexception.service;
 
-import java.exception.entity.OauthLogin;
+import cn.javaexception.entity.OauthLogin;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

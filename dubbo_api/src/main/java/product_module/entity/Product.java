@@ -108,4 +108,8 @@ public class Product implements Serializable {
      * 商品种类表
      */
     private Integer userId;
+    /**
+     *商品热度值
+     */
+    private Integer hotIndex;
 }

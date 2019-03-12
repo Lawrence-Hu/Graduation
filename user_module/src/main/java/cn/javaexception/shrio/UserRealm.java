@@ -12,8 +12,8 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.exception.entity.LocalLogin;
-import java.exception.entity.User;
+import cn.javaexception.entity.LocalLogin;
+import cn.javaexception.entity.User;
 import java.util.Arrays;
 
 /**

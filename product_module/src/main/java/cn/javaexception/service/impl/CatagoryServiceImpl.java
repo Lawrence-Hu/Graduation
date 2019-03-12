@@ -18,20 +18,4 @@ import org.springframework.stereotype.Service;
 @Service
 public class CatagoryServiceImpl extends ServiceImpl<CatagoryMapper, Catagory> implements CatagoryService {
 
-    @Autowired
-    private CatagoryMapper catagoryMapper;
-    @Override
-    public boolean addCatagoy(Catagory catagory) {
-
-        int i= catagoryMapper.insert(catagory);
-        return i>0;
-    }
-
-    @Override
-    public boolean deleCatagoy(int id) {
-
-        int i = catagoryMapper.deleteById(id);
-
-        return i>0;
-    }
 }

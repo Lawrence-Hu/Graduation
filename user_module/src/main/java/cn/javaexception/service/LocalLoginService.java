@@ -1,7 +1,7 @@
 package cn.javaexception.service;
 
-import java.exception.entity.LocalLogin;
-import java.exception.entity.User;
+import cn.javaexception.entity.LocalLogin;
+import cn.javaexception.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

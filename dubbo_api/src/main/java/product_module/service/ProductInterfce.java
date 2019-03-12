@@ -10,20 +10,7 @@ import product_module.entity.Product;
  * @date 2019-03-08-13:55
  */
 public interface ProductInterfce {
-
-    public boolean addBrand(Brand brand);//添加商品牌子
-    public boolean delBrand(Integer id);//删除某商品牌子
-
-    public  boolean  addCatagoy(Catagory catagory);//添加商品类型
-    public  boolean  delCatagoy(Integer id);//删除商品类型
-
-    public boolean addImg(Img img);//添加图片
-    public boolean deleImg(Integer id);//删除图片
-
-    public boolean addproduct(Product product);//添加商品
-    public boolean delproduct(Integer id);//删除商品byid
-    public boolean updateproduct(Product product);//修改商品byid;
-    Product findProductById(Integer id);//查找商品byid
-
-
+    Product findProductById(Integer id);//查找商品
+    Boolean addProduct(Product product);//添加商品
+    boolean updateHotIndexById(Integer id,Boolean type);//增加商品热度 true 为增加 false 为减少
 }

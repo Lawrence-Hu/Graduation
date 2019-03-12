@@ -1,7 +1,7 @@
 package cn.javaexception.controller;
 
 
-import java.exception.entity.DeliverAddress;
+import cn.javaexception.entity.DeliverAddress;
 import cn.javaexception.service.DeliverAddressService;
 import cn.javaexception.util.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;

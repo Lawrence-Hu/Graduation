@@ -1,6 +1,6 @@
 package cn.javaexception.service.impl;
 
-import java.exception.entity.Province;
+import cn.javaexception.entity.Province;
 import cn.javaexception.mapper.ProvinceMapper;
 import cn.javaexception.service.ProvinceService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
