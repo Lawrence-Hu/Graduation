@@ -25,7 +25,7 @@ public class Img implements Serializable {
 
     private String imgUrl;
 
-    private String productId;
+    private Integer productId;
 
 
 

@@ -1,9 +1,11 @@
 package com.ene.ego.interfaceImpl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ene.ego.mapper.OrderInterfaceMapper;
 import com.ene.ego.mapper.OrderItemInterfaceMapper;
 import order_module.entity.Order;
 import order_module.service.OrderInterface;
+import order_module.t_entity.TOrder;
 import order_module.t_entity.TOrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,6 +22,77 @@ public class OrderInterfaceImpl implements OrderInterface {
     OrderItemInterfaceMapper orderItemInterfaceMapper;
     @Autowired
     OrderInterfaceMapper orderInterfaceMapper;
+
+    /**
+     * @author JDR
+     * @description 查询订单与订单详情
+     * @param  orderId
+     * @return Order
+     */
+    @Override
+    public Order selectById(Integer orderId) {
+        if(orderId==null)
+        {
+            return null;
+        }
+        TOrder tOrder = orderInterfaceMapper.selectById(orderId);
+        List<TOrderItem> tOrderItems = orderItemInterfaceMapper.selectList(new QueryWrapper<TOrderItem>().eq("order_id", orderId));
+        return new Order().setOrderItems(tOrderItems).setTOrder(tOrder);
+    }
+
+    /**
+     * @author JDR
+     * @description 修改订单价格
+     * @param  orderId,orderProce
+     * @return Order
+     */
+    @Override
+    public boolean updatePriceById(Integer orderId, Integer orderPrice) {
+        if(orderId==null||orderPrice==null) {
+            return false;
+        }
+
+        TOrder tOrder = orderInterfaceMapper.selectById(orderId);
+        orderInterfaceMapper.updateById(tOrder.setPrice(orderPrice));
+
+        return true;
+    }
+
+    /**
+     * @author JDR
+     * @description 删除订单
+     * @param  orderId
+     * @return Order
+     */
+    @Override
+    public boolean delOrder(Integer orderId) {
+        if(orderId==null) {
+            return false;
+        }
+        orderInterfaceMapper.deleteById(orderId);
+        orderItemInterfaceMapper.delete(new QueryWrapper<TOrderItem>().eq("order_id", orderId));
+
+            return true;
+
+    }
+
+    /**
+     * @author JDR
+     * @description 修改订单状态
+     * @param  orderId,statusId
+     * @return Order
+     */
+    @Override
+    public boolean updateOrderSta(Integer orderId, Integer statusId) {
+        if (orderId==null||statusId==null)
+        {
+            return false;
+        }
+        TOrder tOrder = orderInterfaceMapper.selectById(orderId);
+        orderInterfaceMapper.updateById(tOrder.setStatusId(statusId));
+        return true;
+    }
+
     /**
      * @author huchao 
      * @description 增加订单
