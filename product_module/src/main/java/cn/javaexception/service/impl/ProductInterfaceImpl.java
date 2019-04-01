@@ -13,7 +13,6 @@ import product_module.service.ProductInterface;
 public class ProductInterfaceImpl implements ProductInterface {
     @Override
     public Product findProductById(Integer id) {
-        System.out.println("123");
         return null;
     }
 

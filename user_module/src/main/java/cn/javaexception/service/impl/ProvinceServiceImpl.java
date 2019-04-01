@@ -19,11 +19,4 @@ import product_module.service.ProductInterface;
 @Service
 public class ProvinceServiceImpl extends ServiceImpl<ProvinceMapper, Province> implements ProvinceService {
 
-    @Reference
-    ProductInterface productInterface;
-    @Override
-    public void test(){
-        System.out.println("service: "+productInterface);
-        productInterface.findProductById(1);
-    }
 }

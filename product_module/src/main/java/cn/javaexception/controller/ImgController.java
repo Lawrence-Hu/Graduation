@@ -21,14 +21,6 @@ import user_module.service.UserInterface;
 @RestController
 @RequestMapping("/img")
 public class ImgController {
-    @Reference
-    UserInterface userInterface;
-    @Autowired
-    ImgService imgServices;
-    @GetMapping("/test")
-    public void test(){
-        System.out.println("controller"+userInterface);
-        imgServices.test();
-    }
+
 }
 
