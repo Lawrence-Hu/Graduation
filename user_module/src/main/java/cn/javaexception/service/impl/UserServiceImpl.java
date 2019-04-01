@@ -5,7 +5,6 @@ import cn.javaexception.mapper.UserMapper;
 import cn.javaexception.entity.LocalLogin;
 import cn.javaexception.entity.User;
 import cn.javaexception.service.UserService;
-import cn.javaexception.util.JsonData;
 import cn.javaexception.util.SendJMail;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -13,6 +12,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import utils.JsonData;
 
 import java.util.UUID;
 

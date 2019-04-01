@@ -1,6 +1,6 @@
 package cn.javaexception.service;
 
-import cn.javaexception.entity.ProductUnit;
+import cn.javaexception.model.ProductUnit;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author huchao
- * @since 2019-03-05
+ * @since 2019-03-27
  */
 public interface ProductUnitService extends IService<ProductUnit> {
 

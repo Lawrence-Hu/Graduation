@@ -1,5 +1,7 @@
 package user_module.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -8,23 +10,20 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- *
- * </p>
- *
- * @author huchao
- * @since 2019-03-02
+ * 2 * @Author: HuChao
+ * 3 * @Date: 19-3-27 下午10:48
+ * 4
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class User implements  Serializable{
-
+public class User implements Serializable{
     private static final long serialVersionUID = 1L;
     /**
      * '主键id'
      */
-
+    @TableId(value = "id", type = IdType.AUTO)
+    //@NotNull(message = "用户id不能为空")
     private Integer id;
 
     /**
@@ -55,7 +54,6 @@ public class User implements  Serializable{
     /**
      * '邮箱'
      */
-
     private String email;
 
     /**

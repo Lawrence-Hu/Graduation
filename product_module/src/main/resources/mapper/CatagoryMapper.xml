@@ -3,7 +3,7 @@
 <mapper namespace="cn.javaexception.mapper.CatagoryMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.javaexception.entity.Catagory">
+    <resultMap id="BaseResultMap" type="cn.javaexception.model.Catagory">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="creat_time" property="creatTime" />

@@ -3,10 +3,10 @@ package user_module.service;
 import user_module.entity.User;
 
 /**
- * @author hcuhao
- * @date 2019-03-05-13:39
+ * 2 * @Author: HuChao
+ * 3 * @Date: 19-3-27 下午10:49
+ * 4
  */
 public interface UserInterface {
-    User findUserById(Integer id);
-
+    public User findUserById(Integer id);
 }

@@ -4,7 +4,6 @@ import cn.javaexception.entity.Favourite;
 import cn.javaexception.entity.User;
 import cn.javaexception.mapper.FavouriteMapper;
 import cn.javaexception.service.FavouriteService;
-import cn.javaexception.util.JsonData;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -13,10 +12,10 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import product_module.entity.Product;
-import product_module.service.ProductInterfce;
+import product_module.service.ProductInterface;
+import utils.JsonData;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 
 /**
  * <p>
@@ -31,7 +30,7 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
     @Autowired
     private FavouriteMapper favouriteMapper;
     @Reference
-    private ProductInterfce productInterfce;
+    private ProductInterface productInterface;
 
     @Override
     public JsonData addTofavourite(Favourite favourite) {
@@ -42,7 +41,7 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
             return JsonData.buildError("用户未登录！非法操作！");
         }
         //判断商品信息
-        Product product = productInterfce.findProductById(favourite.getProductId());
+        Product product = productInterface.findProductById(favourite.getProductId());
         if (null == product) {
             return JsonData.buildError("没有该商品！");
         }
@@ -57,7 +56,7 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
             return JsonData.buildError("你已经收藏了该商品呢！");
         }
         //增加商品热度
-        boolean b = productInterfce.updateHotIndexById(favourite.getProductId(), Boolean.TRUE);
+        boolean b = productInterface.updateHotIndexById(favourite.getProductId(), Boolean.TRUE);
         //添加数据
         System.out.println(favourite);
         int i = favouriteMapper.insert(favourite.setTime(LocalDateTime.now()).setUserId(principal.getId()));
@@ -86,7 +85,7 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
                     .eq("user_id", principal.getId())
                     .eq("id", id));
             //减少热度
-            boolean b = productInterfce.updateHotIndexById(favourite.getProductId(), Boolean.FALSE);
+            boolean b = productInterface.updateHotIndexById(favourite.getProductId(), Boolean.FALSE);
             if (i == 1 && b)
                 delete++;
         }

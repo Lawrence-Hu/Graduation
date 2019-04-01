@@ -1,9 +1,13 @@
 package cn.javaexception.controller;
 
 
+import cn.javaexception.service.impl.ProvinceServiceImpl;
+import com.alibaba.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
+import product_module.service.ProductInterface;
 
 /**
  * <p>
@@ -16,6 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/province")
 public class ProvinceController {
-
+   @Autowired
+    ProvinceServiceImpl provinceService;
+   @Reference
+   ProductInterface productInterface;
+    @GetMapping("/123")
+    public void test(){
+        System.out.println("controller : "+productInterface);
+       // productInterface.findProductById(1);
+       provinceService.test();
+    }
 }
 

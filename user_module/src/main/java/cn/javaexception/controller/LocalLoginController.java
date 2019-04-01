@@ -5,7 +5,6 @@ import cn.javaexception.mapper.UserMapper;
 import cn.javaexception.entity.LocalLogin;
 import cn.javaexception.entity.User;
 import cn.javaexception.service.LocalLoginService;
-import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -13,6 +12,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import utils.JsonData;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;

@@ -1,10 +1,10 @@
 package cn.javaexception.controller;
 
-import cn.javaexception.util.JsonData;
 import order_module.entity.Order;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import utils.JsonData;
 
 /**
  * @author hcuhao

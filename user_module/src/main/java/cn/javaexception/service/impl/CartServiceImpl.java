@@ -5,7 +5,6 @@ import cn.javaexception.entity.Cart;
 import cn.javaexception.mapper.CartMapper;
 import cn.javaexception.entity.User;
 import cn.javaexception.service.CartService;
-import cn.javaexception.util.JsonData;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -14,7 +13,8 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import product_module.entity.Product;
-import product_module.service.ProductInterfce;
+import product_module.service.ProductInterface;
+import utils.JsonData;
 
 import java.time.LocalDateTime;
 
@@ -32,7 +32,7 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
     @Autowired
     private CartMapper cartMapper;
     @Reference
-    private ProductInterfce productInterfce;
+    private ProductInterface productInterface;
     @Autowired
     private UserMapper userMapper;
 
@@ -48,7 +48,7 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         Subject subject = SecurityUtils.getSubject();
         User principal = (User) subject.getPrincipal();
         //查询该商品
-        Product product = productInterfce.findProductById(cart.getProductId());
+        Product product = productInterface.findProductById(cart.getProductId());
         //查询供应商
         User supplier = userMapper.selectById(cart.getSupplierId());
         //查询购物车

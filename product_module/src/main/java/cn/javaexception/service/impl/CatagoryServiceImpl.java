@@ -1,10 +1,9 @@
 package cn.javaexception.service.impl;
 
-import cn.javaexception.entity.Catagory;
+import cn.javaexception.model.Catagory;
 import cn.javaexception.mapper.CatagoryMapper;
 import cn.javaexception.service.CatagoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author huchao
- * @since 2019-03-05
+ * @since 2019-03-27
  */
 @Service
 public class CatagoryServiceImpl extends ServiceImpl<CatagoryMapper, Catagory> implements CatagoryService {

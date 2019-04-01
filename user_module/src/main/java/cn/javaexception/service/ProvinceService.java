@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-03-02
  */
 public interface ProvinceService extends IService<Province> {
-
+    void test();
 }

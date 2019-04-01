@@ -3,7 +3,7 @@
 <mapper namespace="cn.javaexception.mapper.ProductMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.javaexception.entity.Product">
+    <resultMap id="BaseResultMap" type="cn.javaexception.model.Product">
         <id column="id" property="id" />
         <result column="product_name" property="productName" />
         <result column="market_price" property="marketPrice" />
@@ -22,11 +22,13 @@
         <result column="sale_time" property="saleTime" />
         <result column="create_time" property="createTime" />
         <result column="product_cata_id" property="productCataId" />
+        <result column="user_id" property="userId" />
+        <result column="hot_index" property="hotIndex" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, product_name, market_price, shop_price, products_stock, product_unit_id, is_sale, is_best, is_hot, is_new, is_recom, brand_id, product_desc, product_status, sale_num, sale_time, create_time, product_cata_id
+        id, product_name, market_price, shop_price, products_stock, product_unit_id, is_sale, is_best, is_hot, is_new, is_recom, brand_id, product_desc, product_status, sale_num, sale_time, create_time, product_cata_id, user_id, hot_index
     </sql>
 
 </mapper>

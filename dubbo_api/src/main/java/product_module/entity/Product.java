@@ -1,5 +1,7 @@
 package product_module.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -8,8 +10,9 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * @author hcuhao
- * @date 2019-03-08-13:55
+ * 2 * @Author: HuChao
+ * 3 * @Date: 19-3-27 下午10:34
+ * 4
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -17,7 +20,11 @@ import java.time.LocalDateTime;
 public class Product implements Serializable {
 
 
+
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * 产品名
@@ -112,4 +119,5 @@ public class Product implements Serializable {
      *商品热度值
      */
     private Integer hotIndex;
+
 }

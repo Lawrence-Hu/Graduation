@@ -3,9 +3,8 @@ package order_module.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import order_module.t_entity.TOrder;
-import order_module.t_entity.TOrderItem;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -16,8 +15,21 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class Order {
-    private TOrder tOrder = new TOrder();
-    private List<TOrderItem> orderItems;//订单属性
+    private String id;//订单号
+    private Integer userId;//用户id
+    private Integer statusId;//订单状态id
+    private LocalDateTime time;//创建时间
+    private float price;//总价格
+    private List<OrderItem> orderItems;//订单属性
 
+    @Data
+    @EqualsAndHashCode(callSuper = false)
+    @Accessors(chain = true)
+    public static class OrderItem {
+        private Integer productId;//物品id
+        private Integer productNum;//物品数量
+        private String orderId;//订单号
+
+    }
 }
 

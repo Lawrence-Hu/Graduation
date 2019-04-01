@@ -1,17 +1,16 @@
 package cn.javaexception.service.impl;
 
-import cn.javaexception.util.JsonData;
+import cn.javaexception.entity.User;
 import com.alibaba.dubbo.config.annotation.Reference;
 import order_module.entity.Order;
 import order_module.service.OrderInterface;
-import order_module.t_entity.TOrderItem;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 import product_module.entity.Product;
-import product_module.service.ProductInterfce;
+import product_module.service.ProductInterface;
+import utils.JsonData;
 
-import cn.javaexception.entity.User;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,7 +23,7 @@ public class OrderInterfaceService {
     @Reference
     private OrderInterface orderInterface;
     @Reference
-    private ProductInterfce productInterfce;
+    private ProductInterface productInterface;
     /**
      * @author huchao 
      * @description 添加订单详情
@@ -39,12 +38,12 @@ public class OrderInterfaceService {
            return JsonData.buildError("用户未登录！");
         }
         //获取商品详情
-        List<TOrderItem> items = order.getOrderItems();
+        List<Order.OrderItem> items = order.getOrderItems();
         //计算价格
         float price = 0;
-        for (TOrderItem item : items) {
+        for (Order.OrderItem item : items) {
             //得到产品信息
-            Product product = productInterfce.findProductById(item.getProductId());
+            Product product = productInterface.findProductById(item.getProductId());
             Integer num = item.getProductNum();
             if (product != null && num != null) {
                 price += product.getShopPrice() * num;
@@ -53,8 +52,8 @@ public class OrderInterfaceService {
             }
         }
         //数据封装
-        order.getTOrder().setUserId(Objects.requireNonNull(principal).getId());
-        order.getTOrder().setPrice(price);
+        order.setUserId(Objects.requireNonNull(principal).getId());
+        order.setPrice(price);
         //调用接口
         boolean b = orderInterface.addToOrder(order);
         if (!b) {

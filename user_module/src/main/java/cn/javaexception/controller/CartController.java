@@ -3,13 +3,13 @@ package cn.javaexception.controller;
 
 import cn.javaexception.entity.Cart;
 import cn.javaexception.service.CartService;
-import cn.javaexception.util.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import utils.JsonData;
 
 import javax.validation.Valid;
 import java.util.Objects;

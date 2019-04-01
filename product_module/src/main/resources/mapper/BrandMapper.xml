@@ -3,7 +3,7 @@
 <mapper namespace="cn.javaexception.mapper.BrandMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.javaexception.entity.Brand">
+    <resultMap id="BaseResultMap" type="cn.javaexception.model.Brand">
         <id column="id" property="id" />
         <result column="name" property="name" />
     </resultMap>

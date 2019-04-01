@@ -1,6 +1,6 @@
 package cn.javaexception.service;
 
-import cn.javaexception.entity.Brand;
+import cn.javaexception.model.Brand;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author huchao
- * @since 2019-03-05
+ * @since 2019-03-27
  */
 public interface BrandService extends IService<Brand> {
 
