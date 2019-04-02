@@ -5,12 +5,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
-@TableName(value = "Orders")
+@TableName(value = "t_order")
 public class Order {
-    private Integer id;
+    private String id;
     private Integer userId;
     private Integer statusId;
 
@@ -18,8 +19,7 @@ public class Order {
     @JsonFormat(
             pattern = "yyyy-MM-dd HH:mm:ss"
     )
-    private Date time;//创建时间
+    private LocalDateTime time;//创建时间
     private float price;
-
 
 }

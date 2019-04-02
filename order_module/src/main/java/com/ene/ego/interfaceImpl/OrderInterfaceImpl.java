@@ -1,16 +1,42 @@
 package com.ene.ego.interfaceImpl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.ene.ego.mapper.OrderInterfaceMapper;
+import com.ene.ego.mapper.OrderItemInterfaceMapper;
 import order_module.entity.Order;
 import order_module.service.OrderInterface;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * @author hcuhao
  * @date 2019-03-12-11:56
  */
 public class OrderInterfaceImpl implements OrderInterface {
+
+    @Autowired
+    OrderItemInterfaceMapper orderItemInterfaceMapper;
+    @Autowired
+    OrderInterfaceMapper     orderInterfaceMapper;
+
+
+    /**
+     * @author JDR
+     * @description 查询订单与订单详情
+     * @param  orderId
+     * @return Order
+     */
     @Override
-    public Order selectById(Integer orderId) {
-        return null;
+    public Order selectById(String orderId) {
+
+        if(orderId==null)
+        {
+            return null;
+        }
+        Order torder = orderInterfaceMapper.selectById(orderId);
+        List<Order.OrderItem> orderItems = orderItemInterfaceMapper.selectList(new QueryWrapper<Order.OrderItem>().eq("order_id", orderId));
+        return new Order().setOrderItems(orderItems);
     }
 
     @Override
@@ -32,11 +58,7 @@ public class OrderInterfaceImpl implements OrderInterface {
     public boolean addToOrder(Order order) {
         return false;
     }
-//    @Autowired
-//    OrderItemInterfaceMapper orderItemInterfaceMapper;
-//    @Autowired
-//    OrderInterfaceMapper orderInterfaceMapper;
-//
+
 //    /**
 //     * @author JDR
 //     * @description 查询订单与订单详情

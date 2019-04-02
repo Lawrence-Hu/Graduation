@@ -4,7 +4,7 @@ import order_module.entity.Order;
 
 public interface OrderInterface {
 //
-    Order selectById(Integer orderId);//查询订单
+    Order selectById(String orderId);//查询订单
 //
     boolean updatePriceById(Integer orderId,Integer orderPrice);//修改价格
 //
