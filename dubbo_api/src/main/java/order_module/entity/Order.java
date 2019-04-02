@@ -1,5 +1,6 @@
 package order_module.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -20,6 +21,7 @@ public class Order {
     private Integer statusId;//订单状态id
     private LocalDateTime time;//创建时间
     private float price;//总价格
+    @TableField(exist = false)
     private List<OrderItem> orderItems;//订单属性
 
     @Data

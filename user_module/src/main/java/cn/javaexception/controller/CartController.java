@@ -35,10 +35,7 @@ public class CartController {
      * @description 添加到购物车
      */
     @PostMapping("/add")
-    public JsonData addProductToCart(@Valid @RequestBody Cart cart, Errors errors) {
-        if (errors.hasErrors()) {
-            return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
-        }
+    public JsonData addProductToCart(@RequestBody Cart cart, Errors errors) {
         return cartService.addProduct(cart);
     }
 

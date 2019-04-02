@@ -48,9 +48,15 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         Subject subject = SecurityUtils.getSubject();
         User principal = (User) subject.getPrincipal();
         //查询该商品
-        Product product = productInterface.findProductById(cart.getProductId());
+        JsonData jsonData = productInterface.findProductById(cart.getProductId());
+        Product product;
+        if (jsonData.getCode() != -1){
+            product = (Product) jsonData.getData();
+        }
+        else
+            return jsonData;
         //查询供应商
-        User supplier = userMapper.selectById(cart.getSupplierId());
+        User supplier = userMapper.selectById(product.getUserId());
         //查询购物车
         Cart dbCart = cartMapper.selectOne(new QueryWrapper<Cart>().eq("product_id", cart.getProductId()));
         //判断是否购物车已有该商品
@@ -60,14 +66,6 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         //判断产品是否存在
         if (product == null) {
             return JsonData.buildError("该商品不存在呢！");
-        }
-        //判断产品用户是否存在
-        if (supplier == null) {
-            return JsonData.buildError("没有该供应商呢！");
-        }
-        //判断用户supplier是否与产品id一致
-        if (!supplier.getId().equals(product.getUserId())) {
-            return JsonData.buildError("供应商id不一致呢！");
         }
         //判断数量是否足够
         if (product.getProductsStock() < cart.getQuantity()) {
@@ -79,10 +77,11 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         }
         //判断供应商是否冻结或实名
         if (supplier.getStatus().equals("1")) {
-            return JsonData.buildError("供应商账号异常呢！");
+            return JsonData.buildError("供应商账号异常呢！暂时不能购买！");
         }
-        int insert = cartMapper.insert(cart.setAddTime(LocalDateTime.now()));
-        return insert > 0 ? JsonData.buildSuccess("添加数据成功！") : JsonData.buildError("系统异常！请刷新后再试！");
+        cart.setAddTime(LocalDateTime.now()).setSupplierId(supplier.getId()).setUserId(principal.getId());
+        int insert = cartMapper.insert(cart);
+        return insert > 0 ? JsonData.buildSuccess("添加购物车成功！") : JsonData.buildError("系统异常！请刷新后再试！");
     }
 
     /**
@@ -99,14 +98,13 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         //获取所有Cart_id
         for (Integer id : cartIds) {
             int i = cartMapper.delete(new QueryWrapper<Cart>().eq("user_id", principal.getId()).eq("id", id));
-            if(i==1)
-            delete++;
+            if (i == 1)
+                delete++;
         }
         //前端数据有误
         if (0 < delete && delete < cartIds.length) {
             return JsonData.buildSuccess("只删除了部分数据,请检查传入参数是否正确！");
         }
-        System.out.println(delete);
         return delete == cartIds.length ? JsonData.buildSuccess("删除购物车商品成功！") : JsonData.buildError("删除失败！请检查参数是否正确！");
     }
 }

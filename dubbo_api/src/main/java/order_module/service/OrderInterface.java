@@ -1,6 +1,7 @@
 package order_module.service;
 
 import order_module.entity.Order;
+import utils.JsonData;
 
 public interface OrderInterface {
 //
@@ -14,5 +15,5 @@ public interface OrderInterface {
 //
 //
 
-     boolean addToOrder(Order order);
+     JsonData addToOrder(Order order);
 }

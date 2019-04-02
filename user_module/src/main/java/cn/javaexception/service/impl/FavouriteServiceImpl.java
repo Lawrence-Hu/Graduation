@@ -41,7 +41,13 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
             return JsonData.buildError("用户未登录！非法操作！");
         }
         //判断商品信息
-        Product product = productInterface.findProductById(favourite.getProductId());
+        JsonData jsonData = productInterface.findProductById(favourite.getProductId());
+        Product product;
+        if(jsonData.getCode()!=-1)
+            product = (Product) jsonData.getData();
+        else
+            return jsonData;
+
         if (null == product) {
             return JsonData.buildError("没有该商品！");
         }
@@ -56,12 +62,12 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
             return JsonData.buildError("你已经收藏了该商品呢！");
         }
         //增加商品热度
-        boolean b = productInterface.updateHotIndexById(favourite.getProductId(), Boolean.TRUE);
+        productInterface.updateHotIndexById(favourite.getProductId(), Boolean.TRUE);
         //添加数据
         System.out.println(favourite);
         int i = favouriteMapper.insert(favourite.setTime(LocalDateTime.now()).setUserId(principal.getId()));
 
-        return i > 0 && b ? JsonData.buildSuccess("添加成功！") : JsonData.buildError("添加失败！");
+        return i > 0? JsonData.buildSuccess("添加成功！") : JsonData.buildError("添加失败！");
     }
 
     @Override
@@ -85,8 +91,8 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
                     .eq("user_id", principal.getId())
                     .eq("id", id));
             //减少热度
-            boolean b = productInterface.updateHotIndexById(favourite.getProductId(), Boolean.FALSE);
-            if (i == 1 && b)
+            productInterface.updateHotIndexById(favourite.getProductId(), Boolean.FALSE);
+            if (i == 1)
                 delete++;
         }
         if (delete < ids.length && delete > 0) {

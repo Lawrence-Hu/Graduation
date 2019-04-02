@@ -1,6 +1,7 @@
 package product_module.service;
 
 import product_module.entity.Product;
+import utils.JsonData;
 
 /**
  * 2 * @Author: HuChao
@@ -8,6 +9,6 @@ import product_module.entity.Product;
  * 4
  */
 public interface ProductInterface {
-    Product findProductById(Integer id);
+    JsonData findProductById(Integer id);
     boolean updateHotIndexById(Integer id,boolean type);
 }

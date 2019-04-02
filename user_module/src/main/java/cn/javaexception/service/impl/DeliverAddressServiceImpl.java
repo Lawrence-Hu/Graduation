@@ -71,14 +71,14 @@ public class DeliverAddressServiceImpl extends ServiceImpl<DeliverAddressMapper,
         User principal = (User)subject.getPrincipal();
         //判断地址是否存在
         if(deliverAddressMapper.selectById(address.getId())==null){
-            return JsonData.buildError("没有改收货地址！更新失败！");
+            return JsonData.buildError("没有该收货地址！更新失败！");
         }
         //查新改地址是否是当前用户的地址
         DeliverAddress ret = deliverAddressMapper.selectById(address.getId());
         if (!ret.getUserId().equals(principal.getId())){
-            return JsonData.buildError("用户操作非法！");
+            return JsonData.buildError("更新失败");
         }
-        //跟新地址
+        //更新地址
         boolean b = ret.setUpdateTime(LocalDateTime.now()).updateById();
         return b?JsonData.buildSuccess("更新成功"):JsonData.buildError("更新失败");
     }
