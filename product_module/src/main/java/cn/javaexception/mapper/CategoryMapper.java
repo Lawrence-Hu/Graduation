@@ -1,6 +1,6 @@
 package cn.javaexception.mapper;
 
-import cn.javaexception.model.Brand;
+import cn.javaexception.model.Category;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author huchao
  * @since 2019-04-04
  */
-public interface BrandMapper extends BaseMapper<Brand> {
+public interface CategoryMapper extends BaseMapper<Category> {
 
 }

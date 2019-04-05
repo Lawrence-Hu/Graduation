@@ -1,8 +1,8 @@
 package cn.javaexception.service.impl;
 
-import cn.javaexception.model.Img;
-import cn.javaexception.mapper.ImgMapper;
-import cn.javaexception.service.ImgService;
+import cn.javaexception.model.Category;
+import cn.javaexception.mapper.CategoryMapper;
+import cn.javaexception.service.CategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-04-04
  */
 @Service
-public class ImgServiceImpl extends ServiceImpl<ImgMapper, Img> implements ImgService {
+public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements CategoryService {
 
 }

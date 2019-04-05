@@ -1,6 +1,6 @@
 package cn.javaexception.service;
 
-import cn.javaexception.model.Product;
+import cn.javaexception.model.Category;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author huchao
  * @since 2019-04-04
  */
-public interface ProductService extends IService<Product> {
+public interface CategoryService extends IService<Category> {
 
 }

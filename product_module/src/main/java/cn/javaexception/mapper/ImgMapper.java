@@ -2,7 +2,6 @@ package cn.javaexception.mapper;
 
 import cn.javaexception.model.Img;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -10,9 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author huchao
- * @since 2019-03-27
+ * @since 2019-04-04
  */
-@Mapper
 public interface ImgMapper extends BaseMapper<Img> {
 
 }

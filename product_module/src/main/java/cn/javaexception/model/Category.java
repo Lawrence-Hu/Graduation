@@ -1,9 +1,11 @@
 package cn.javaexception.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
@@ -21,7 +23,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Brand extends Model<Brand> {
+public class Category extends Model<Category> {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,6 +32,12 @@ public class Brand extends Model<Brand> {
 
     private String name;
 
+    private String creatTime;
+
+    private Boolean isOnPage;
+
+    @TableField(exist = false)
+    private List<CategoryItems> categoryItems;
 
     @Override
     protected Serializable pkVal() {

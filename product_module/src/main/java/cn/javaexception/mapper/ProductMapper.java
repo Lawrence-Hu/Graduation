@@ -1,8 +1,12 @@
 package cn.javaexception.mapper;
 
 import cn.javaexception.model.Product;
+import cn.javaexception.vo.CategoriesAndCarouselsVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * <p>
@@ -10,9 +14,7 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author huchao
- * @since 2019-03-27
+ * @since 2019-04-04
  */
-@Mapper
 public interface ProductMapper extends BaseMapper<Product> {
-
 }
