@@ -21,7 +21,7 @@ import java.util.Objects;
  * @since 2019-03-02
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -74,7 +74,7 @@ public class UserController {
      * @author huchao
      * @description 用户注册
      */
-    @PostMapping("/register")
+    @PostMapping
     public JsonData register(@RequestBody LocalLogin localLogin, Errors errors) {
         System.out.println(localLogin);
         if (errors.hasErrors()) {

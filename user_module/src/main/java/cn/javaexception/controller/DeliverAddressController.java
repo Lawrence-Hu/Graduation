@@ -21,7 +21,7 @@ import java.util.Objects;
  * @since 2019-03-02
  */
 @RestController
-@RequestMapping("/deliverAddress")
+@RequestMapping("/api/deliverAddress")
 public class DeliverAddressController {
     @Autowired
     DeliverAddressService deliverAddressService;
@@ -32,7 +32,7 @@ public class DeliverAddressController {
      * @author huchao
      * @description 添加新地址
      */
-    @PostMapping("/add")
+    @PostMapping
     public JsonData addAddress(@RequestBody @Valid DeliverAddress address, Errors errors) {
         if (errors.hasErrors()) {
            return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
@@ -46,7 +46,7 @@ public class DeliverAddressController {
      * @return JsonData
      */
 
-    @PostMapping("/updateAddress")
+    @PutMapping
     public JsonData updateAddress(@RequestBody DeliverAddress address, Errors errors) {
         if (errors.hasErrors()) {
             return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
@@ -61,7 +61,7 @@ public class DeliverAddressController {
      * @author huchao
      * @description 删除收货地址
      */
-    @PostMapping("/delete")
+    @DeleteMapping
     //考虑一下json格式
     public JsonData deleteAddress(@RequestBody Integer[] addressIds) {
         if (addressIds.length==0){

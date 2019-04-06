@@ -5,10 +5,7 @@ import cn.javaexception.entity.Cart;
 import cn.javaexception.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import utils.JsonData;
 
 import javax.validation.Valid;
@@ -23,7 +20,7 @@ import java.util.Objects;
  * @since 2019-03-02
  */
 @RestController
-@RequestMapping("/cart")
+@RequestMapping("/api/cart")
 public class CartController {
     @Autowired
     private CartService cartService;
@@ -34,7 +31,7 @@ public class CartController {
      * @author huchao
      * @description 添加到购物车
      */
-    @PostMapping("/add")
+    @PostMapping
     public JsonData addProductToCart(@RequestBody Cart cart, Errors errors) {
         return cartService.addProduct(cart);
     }
@@ -45,7 +42,7 @@ public class CartController {
      * @author huchao
      * @description 删除购物车商品
      */
-    @PostMapping("/delete")
+    @DeleteMapping
     //考虑一下json格式
     public JsonData deleteProductsFromCart(@RequestBody Integer[] cartIds) {
         if (cartIds.length==0){
@@ -60,7 +57,7 @@ public class CartController {
      * @author huchao
      * @description 购物车详情
      */
-    @PostMapping("/detail")
+    @GetMapping("/detail")
     public JsonData getCartDetail(@RequestBody String userId) {
         return null;
     }

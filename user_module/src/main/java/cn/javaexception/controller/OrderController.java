@@ -10,7 +10,7 @@ import utils.JsonData;
  * @author hcuhao
  * @date 2019-03-05-17:14
  */
-@RequestMapping("/order")
+@RequestMapping("/api/order")
 public class OrderController {
     @PostMapping("/add")
     public JsonData addToOrder(@RequestBody Order order){

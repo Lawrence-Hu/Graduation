@@ -47,6 +47,11 @@
             <artifactId>dubbo_api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <!-- elasticsearch启动器 (必须)-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

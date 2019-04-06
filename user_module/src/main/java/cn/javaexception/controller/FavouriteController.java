@@ -17,12 +17,12 @@ import utils.JsonData;
  * @since 2019-03-02
  */
 @RestController
-@RequestMapping("/favourite")
+@RequestMapping("/api/favourite")
 public class FavouriteController {
     @Autowired
     FavouriteService favouriteService;
 
-    @PostMapping("/add")
+    @PostMapping
     public JsonData addToFavorite(@RequestParam("id") Integer id) {
         if (id == null) {
             return JsonData.buildError("产品id不能为空！");
@@ -30,7 +30,7 @@ public class FavouriteController {
         return favouriteService.addTofavourite(new Favourite().setProductId(id));
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping
     public JsonData addToFavorite(@RequestBody Integer[] ids) {
         if (ids == null || ids.length == 0) {
             return JsonData.buildError("产品id不能为空！");

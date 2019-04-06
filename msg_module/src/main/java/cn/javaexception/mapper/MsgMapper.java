@@ -1,6 +1,6 @@
 package cn.javaexception.mapper;
 
-import product_module.Msg;
+import entity.Msg;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
