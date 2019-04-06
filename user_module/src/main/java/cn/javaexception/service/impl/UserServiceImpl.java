@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import utils.JsonData;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -80,9 +81,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //获取最新的激活码 !!! 很关键！直接获取session里的code有可能不是最新的！！！！！
         User ret = principal.selectById();
         if (user.getIdentifyingCode().equals(ret.getIdentifyingCode())) {
-            //判断邮箱是否被绑定过
-            if (userMapper.selectOne(new QueryWrapper<User>().eq("email", user.getEmail())) == null) {
+            User one = userMapper.selectOne(new QueryWrapper<User>().eq("email", user.getEmail()));
+            //判断邮箱未被被绑定过或者邮箱就是自己的账户
+            if (one == null) {
                 //设置新邮箱并让验证码失效
+                ret.setEmail(user.getEmail()).setIdentifyingCode(UUID.randomUUID().toString()).updateById();
+                return JsonData.buildSuccess("修改邮箱成功！");
+            } else if (Objects.equals(one.getId(), principal.getId())) {
                 ret.setEmail(user.getEmail()).setIdentifyingCode(UUID.randomUUID().toString()).updateById();
                 return JsonData.buildSuccess("修改邮箱成功！");
             }
