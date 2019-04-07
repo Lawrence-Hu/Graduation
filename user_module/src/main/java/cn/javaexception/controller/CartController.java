@@ -3,6 +3,7 @@ package cn.javaexception.controller;
 
 import cn.javaexception.entity.Cart;
 import cn.javaexception.service.CartService;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +32,11 @@ public class CartController {
      * @author huchao
      * @description 添加到购物车
      */
-    @PostMapping
+    @PostMapping("/add")
     public JsonData addProductToCart(@RequestBody Cart cart, Errors errors) {
+        System.out.println(SecurityUtils.getSubject().isAuthenticated());
+        System.out.println(SecurityUtils.getSubject().isRemembered());
+        System.out.println(SecurityUtils.getSubject().isPermitted("user"));
         return cartService.addProduct(cart);
     }
 
@@ -42,10 +46,10 @@ public class CartController {
      * @author huchao
      * @description 删除购物车商品
      */
-    @DeleteMapping
+    @PostMapping("/delete")
     //考虑一下json格式
     public JsonData deleteProductsFromCart(@RequestBody Integer[] cartIds) {
-        if (cartIds.length==0){
+        if (cartIds.length == 0) {
             JsonData.buildError("购物车id不能为空！");
         }
         return cartService.deleteProduct(cartIds);

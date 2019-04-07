@@ -32,7 +32,7 @@ public class DeliverAddressController {
      * @author huchao
      * @description 添加新地址
      */
-    @PostMapping
+    @PostMapping("/add")
     public JsonData addAddress(@RequestBody @Valid DeliverAddress address, Errors errors) {
         if (errors.hasErrors()) {
            return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
@@ -46,7 +46,7 @@ public class DeliverAddressController {
      * @return JsonData
      */
 
-    @PutMapping
+    @PostMapping("/update")
     public JsonData updateAddress(@RequestBody DeliverAddress address, Errors errors) {
         if (errors.hasErrors()) {
             return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
@@ -61,7 +61,7 @@ public class DeliverAddressController {
      * @author huchao
      * @description 删除收货地址
      */
-    @DeleteMapping
+    @PostMapping("/delete")
     //考虑一下json格式
     public JsonData deleteAddress(@RequestBody Integer[] addressIds) {
         if (addressIds.length==0){

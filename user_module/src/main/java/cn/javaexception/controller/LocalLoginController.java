@@ -52,7 +52,7 @@ public class LocalLoginController {
         }
         //shrio登录验证
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(localLogin.getAccount(), localLogin.getPassword());
+        UsernamePasswordToken token = new UsernamePasswordToken(localLogin.getAccount(), localLogin.getPassword(),true);
         try {
             subject.login(token);
             //更新用户登录信息
@@ -62,6 +62,7 @@ public class LocalLoginController {
                                                                    .eq("phone", localLogin.getAccount())
                                                                    .or()
                                                                    .eq("account", localLogin.getAccount()));
+            System.out.println(SecurityUtils.getSubject().isRemembered());
             return JsonData.buildSuccess("登录成功");
         } catch (UnknownAccountException e) {
             return JsonData.buildError("用户名不存在");
@@ -70,6 +71,7 @@ public class LocalLoginController {
         } catch (LockedAccountException e) {
             return JsonData.buildSuccess("用户已被冻结");
         }
+
     }
 
     /**
@@ -77,7 +79,7 @@ public class LocalLoginController {
      * @author huchao
      * @description 跳转登录界面
      */
-    @GetMapping("/toLogin")
+    @RequestMapping("/toLogin")
     public JsonData toLogin() {
         return JsonData.buildError("请登录！");
     }

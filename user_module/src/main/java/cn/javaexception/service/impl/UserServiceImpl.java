@@ -166,8 +166,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         User principal = (User) subject.getPrincipal();
         //获取用户最新的邮箱信息
         User dbUser = principal.selectById();
-        System.out.println(principal);
-        System.out.println(dbUser);
+        System.out.println(subject.isRemembered());
+        System.out.println(subject.isAuthenticated());
         //生成验证码
         String strCode = UUID.randomUUID().toString().substring(0, 6);
         //如果用户没有绑定
