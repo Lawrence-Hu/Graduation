@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -28,7 +29,9 @@ public class Order {
     @EqualsAndHashCode(callSuper = false)
     @Accessors(chain = true)
     public static class OrderItem {
+        @NotNull(message = "商品id不能为空！")
         private Integer productId;//物品id
+        @NotNull(message = "商品数量不能为空！")
         private Integer productNum;//物品数量
         private String orderId;//订单号
 
