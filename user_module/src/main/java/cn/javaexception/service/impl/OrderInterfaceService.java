@@ -34,17 +34,22 @@ public class OrderInterfaceService {
         //拿到当前用户
         Subject subject = SecurityUtils.getSubject();
         User principal = (User) subject.getPrincipal();
-        if (principal==null){
-           return JsonData.buildError("用户未登录！");
-        }
         //获取商品详情
         List<Order.OrderItem> items = order.getOrderItems();
         //计算价格
         float price = 0;
         for (Order.OrderItem item : items) {
             //得到产品信息
-            Product product = productInterface.findProductById(item.getProductId());
+            Product product;
+            JsonData jsonData = productInterface.findProductById(item.getProductId());
+           if (jsonData.getCode()!=-1){
+               product = (Product) jsonData.getData();
+           }else {
+               return jsonData;
+           }
             Integer num = item.getProductNum();
+           if(num >product.getProductsStock())
+               return JsonData.buildError(product.getProductName()+"存货不足");
             if (product != null && num != null) {
                 price += product.getShopPrice() * num;
             }else{
@@ -55,10 +60,7 @@ public class OrderInterfaceService {
         order.setUserId(Objects.requireNonNull(principal).getId());
         order.setPrice(price);
         //调用接口
-        boolean b = orderInterface.addToOrder(order);
-        if (!b) {
-           return JsonData.buildError("增加订单失败！");
-        }
-        return JsonData.buildSuccess("添加成功！");
+        JsonData data= orderInterface.addToOrder(order);
+        return data;
     }
 }

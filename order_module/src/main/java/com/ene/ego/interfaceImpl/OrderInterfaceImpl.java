@@ -1,42 +1,27 @@
 package com.ene.ego.interfaceImpl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ene.ego.mapper.OrderInterfaceMapper;
 import com.ene.ego.mapper.OrderItemInterfaceMapper;
 import order_module.entity.Order;
 import order_module.service.OrderInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import utils.JsonData;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author hcuhao
  * @date 2019-03-12-11:56
  */
 public class OrderInterfaceImpl implements OrderInterface {
-
+    @Autowired
+    OrderInterfaceMapper orderInterfaceMapper;
     @Autowired
     OrderItemInterfaceMapper orderItemInterfaceMapper;
-    @Autowired
-    OrderInterfaceMapper     orderInterfaceMapper;
-
-
-    /**
-     * @author JDR
-     * @description 查询订单与订单详情
-     * @param  orderId
-     * @return Order
-     */
     @Override
-    public Order selectById(String orderId) {
-
-        if(orderId==null)
-        {
-            return null;
-        }
-        Order torder = orderInterfaceMapper.selectById(orderId);
-        List<Order.OrderItem> orderItems = orderItemInterfaceMapper.selectList(new QueryWrapper<Order.OrderItem>().eq("order_id", orderId));
-        return new Order().setOrderItems(orderItems);
+    public Order selectById(Integer orderId) {
+        return null;
     }
 
     @Override
@@ -55,10 +40,26 @@ public class OrderInterfaceImpl implements OrderInterface {
     }
 
     @Override
-    public boolean addToOrder(Order order) {
-        return false;
+    public JsonData addToOrder(Order order) {
+        //数据验证
+        if(order==null||order.getOrderItems()==null){
+            return JsonData.buildError("订单商品不能为空！");
+        }
+        int insert = orderInterfaceMapper.insert(order);
+        AtomicInteger sum = new AtomicInteger();
+        List<Order.OrderItem> orderItems = order.getOrderItems();
+        orderItems.forEach((orderItem -> {
+            int i = orderItemInterfaceMapper.insert(orderItem);
+            if(i==1)
+                sum.getAndIncrement();
+        }));
+        return insert==1&&sum.get()==orderItems.size()?JsonData.buildSuccess("新增订单成功！"):JsonData.buildError("新增订单失败！");
     }
-
+//    @Autowired
+//    OrderItemInterfaceMapper orderItemInterfaceMapper;
+//    @Autowired
+//    OrderInterfaceMapper orderInterfaceMapper;
+//
 //    /**
 //     * @author JDR
 //     * @description 查询订单与订单详情
