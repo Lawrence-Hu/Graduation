@@ -47,30 +47,30 @@ public class ProductInterfaceImpl implements ProductInterface {
         return false;
     }
 
-    /**
-     * @param id,type
-     * @return JsonData
-     * @author huchao
-     * @description 修改商品热度
-     * */
-    @Override
-    public JsonData updateHotById(Integer id, Integer type) {
-
-        if(id == null||type == null)
-        {
-            return JsonData.buildError("商品id或热度为空！");
-        }
-        //查询商品
-        Product product = productMapper.selectById(id);
-        type=product.getHotIndex()+type;
-
-        if (product == null) {
-            return JsonData.buildError("商品不存在!");
-        }
-        int i = productMapper.updateById(product.setHotIndex(type));
-
-        return i>0?JsonData.buildSuccess("修改成功！"):JsonData.buildError("系统异常请稍后再试！");
-    }
+//    /**
+//     * @param id,type
+//     * @return JsonData
+//     * @author huchao
+//     * @description 修改商品热度
+//     * */
+//    @Override
+//    public JsonData updateHotById(Integer id, Integer type) {
+//
+//        if(id == null||type == null)
+//        {
+//            return JsonData.buildError("商品id或热度为空！");
+//        }
+//        //查询商品
+//        Product product = productMapper.selectById(id);
+//        type=product.getHotIndex()+type;
+//
+//        if (product == null) {
+//            return JsonData.buildError("商品不存在!");
+//        }
+//        int i = productMapper.updateById(product.setHotIndex(type));
+//
+//        return i>0?JsonData.buildSuccess("修改成功！"):JsonData.buildError("系统异常请稍后再试！");
+//    }
 
     /**
      * @param product
