@@ -4,6 +4,7 @@ package cn.javaexception.controller;
 import cn.javaexception.entity.LocalLogin;
 import cn.javaexception.entity.User;
 import cn.javaexception.service.UserService;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ import java.util.Objects;
  * @since 2019-03-02
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -74,7 +75,7 @@ public class UserController {
      * @author huchao
      * @description 用户注册
      */
-    @PostMapping("/register")
+    @PostMapping
     public JsonData register(@RequestBody LocalLogin localLogin, Errors errors) {
         System.out.println(localLogin);
         if (errors.hasErrors()) {
@@ -94,10 +95,12 @@ public class UserController {
         if (errors.hasErrors()) {
             return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
         }
+        System.out.println(SecurityUtils.getSubject().getPrincipal());
+
         return userService.sendEmailCode(user);
     }
 
-    @GetMapping("/unAuth")
+    @RequestMapping("/unAuth")
     public JsonData unAuth() {
         return JsonData.buildError(401, "您没有实名认证！请认证后重试");
     }

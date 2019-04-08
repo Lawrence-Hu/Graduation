@@ -10,10 +10,12 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import utils.JsonData;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -27,7 +29,7 @@ import java.util.Objects;
  * @since 2019-03-02
  */
 @RestController
-@RequestMapping("/local")
+@RequestMapping("/api/local")
 public class LocalLoginController {
     @Autowired
     private LocalLoginService localLoginService;
@@ -43,13 +45,14 @@ public class LocalLoginController {
 
     @PostMapping("/login")
     public JsonData login(@RequestBody @Valid LocalLogin localLogin, Errors errors) {
+        System.out.println("login");
         //数据校验
         if (errors.hasErrors()) {
             return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
         }
         //shrio登录验证
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(localLogin.getAccount(), localLogin.getPassword());
+        UsernamePasswordToken token = new UsernamePasswordToken(localLogin.getAccount(), localLogin.getPassword(),true);
         try {
             subject.login(token);
             //更新用户登录信息
@@ -59,6 +62,7 @@ public class LocalLoginController {
                                                                    .eq("phone", localLogin.getAccount())
                                                                    .or()
                                                                    .eq("account", localLogin.getAccount()));
+            System.out.println(SecurityUtils.getSubject().isRemembered());
             return JsonData.buildSuccess("登录成功");
         } catch (UnknownAccountException e) {
             return JsonData.buildError("用户名不存在");
@@ -67,6 +71,7 @@ public class LocalLoginController {
         } catch (LockedAccountException e) {
             return JsonData.buildSuccess("用户已被冻结");
         }
+
     }
 
     /**
@@ -74,9 +79,19 @@ public class LocalLoginController {
      * @author huchao
      * @description 跳转登录界面
      */
-    @GetMapping("/toLogin")
+    @RequestMapping("/toLogin")
     public JsonData toLogin() {
         return JsonData.buildError("请登录！");
+    }
+
+    @GetMapping("/loginout")
+    public JsonData loginOut(HttpSession session){
+        Subject subject = SecurityUtils.getSubject();
+        if(subject.getPrincipal()!=null){
+            subject.logout();
+            return JsonData.buildSuccess("退出登录成功");
+        }
+        return JsonData.buildError("用户未登录");
     }
 }
 

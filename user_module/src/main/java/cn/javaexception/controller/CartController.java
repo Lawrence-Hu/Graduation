@@ -3,12 +3,10 @@ package cn.javaexception.controller;
 
 import cn.javaexception.entity.Cart;
 import cn.javaexception.service.CartService;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import utils.JsonData;
 
 import javax.validation.Valid;
@@ -23,7 +21,7 @@ import java.util.Objects;
  * @since 2019-03-02
  */
 @RestController
-@RequestMapping("/cart")
+@RequestMapping("/api/cart")
 public class CartController {
     @Autowired
     private CartService cartService;
@@ -36,6 +34,9 @@ public class CartController {
      */
     @PostMapping("/add")
     public JsonData addProductToCart(@RequestBody Cart cart, Errors errors) {
+        System.out.println(SecurityUtils.getSubject().isAuthenticated());
+        System.out.println(SecurityUtils.getSubject().isRemembered());
+        System.out.println(SecurityUtils.getSubject().isPermitted("user"));
         return cartService.addProduct(cart);
     }
 
@@ -48,7 +49,7 @@ public class CartController {
     @PostMapping("/delete")
     //考虑一下json格式
     public JsonData deleteProductsFromCart(@RequestBody Integer[] cartIds) {
-        if (cartIds.length==0){
+        if (cartIds.length == 0) {
             JsonData.buildError("购物车id不能为空！");
         }
         return cartService.deleteProduct(cartIds);
@@ -60,7 +61,7 @@ public class CartController {
      * @author huchao
      * @description 购物车详情
      */
-    @PostMapping("/detail")
+    @GetMapping("/detail")
     public JsonData getCartDetail(@RequestBody String userId) {
         return null;
     }

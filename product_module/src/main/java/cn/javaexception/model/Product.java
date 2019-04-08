@@ -1,21 +1,27 @@
 package cn.javaexception.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author huchao
- * @since 2019-03-27
+ * @since 2019-04-04
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -30,6 +36,7 @@ public class Product extends Model<Product> {
     /**
      * 产品名
      */
+
     private String productName;
 
     /**
@@ -55,27 +62,27 @@ public class Product extends Model<Product> {
     /**
      * 是否开售
      */
-    private String isSale;
+    private Boolean isSale;
 
     /**
      * 是否精品
      */
-    private String isBest;
+    private Boolean isBest;
 
     /**
      * 是否热销产品
      */
-    private String isHot;
+    private Boolean isHot;
 
     /**
      * 是否新品
      */
-    private String isNew;
+    private Boolean isNew;
 
     /**
      * 是否推荐
      */
-    private String isRecom;
+    private Boolean isRecom;
 
     /**
      * 品牌Id
@@ -116,6 +123,12 @@ public class Product extends Model<Product> {
 
     private Integer hotIndex;
 
+    private String carouselsImgUrl;
+
+    private Boolean isCarosel;
+
+    @TableField(exist = false)
+    List<Img> imgs = new ArrayList<>();
 
     @Override
     protected Serializable pkVal() {

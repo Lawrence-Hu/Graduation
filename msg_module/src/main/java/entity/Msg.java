@@ -1,4 +1,4 @@
-package product_module;
+package entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;

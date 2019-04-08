@@ -37,7 +37,7 @@ public class UserRealm extends AuthorizingRealm {
         //用户未冻结并且已认证
         if (user.getCerification().equals("1") && user.getStatus().equals("0")) {
             //通过认证
-            info.addStringPermission("user");
+            info.addStringPermission("user,admin");
         }
         return info;
     }
@@ -45,6 +45,7 @@ public class UserRealm extends AuthorizingRealm {
     //执行认证逻辑
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        System.out.println("登录认证");
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         LocalLogin localLogin = new LocalLogin(Arrays.toString(token.getPassword()), token.getUsername());
         //查询是否有该用户

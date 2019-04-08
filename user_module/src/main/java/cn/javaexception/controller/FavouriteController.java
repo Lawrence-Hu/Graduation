@@ -17,7 +17,7 @@ import utils.JsonData;
  * @since 2019-03-02
  */
 @RestController
-@RequestMapping("/favourite")
+@RequestMapping("/api/favourite")
 public class FavouriteController {
     @Autowired
     FavouriteService favouriteService;

@@ -11,7 +11,7 @@ import utils.JsonData;
  * @date 2019-03-12-14:09
  */
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/api/home")
 public class HomePageController {
     @Autowired
     HomeService homeService;

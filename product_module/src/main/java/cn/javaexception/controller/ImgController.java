@@ -1,14 +1,9 @@
 package cn.javaexception.controller;
 
 
-import cn.javaexception.service.ImgService;
-import com.alibaba.dubbo.config.annotation.Reference;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
-import user_module.service.UserInterface;
 
 /**
  * <p>
@@ -16,7 +11,7 @@ import user_module.service.UserInterface;
  * </p>
  *
  * @author huchao
- * @since 2019-03-27
+ * @since 2019-04-04
  */
 @RestController
 @RequestMapping("/img")

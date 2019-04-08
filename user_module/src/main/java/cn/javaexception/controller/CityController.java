@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2019-03-02
  */
 @RestController
-@RequestMapping("/city")
+@RequestMapping("/api/city")
 public class CityController {
 
 }

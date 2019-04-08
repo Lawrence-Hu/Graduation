@@ -1,10 +1,13 @@
 package cn.javaexception.shrio;
 
+import cn.javaexception.filter.ShiroAuthenticationInfoFilter;
+import cn.javaexception.filter.ShiroAuthorizationInfoFilter;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.Filter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -19,18 +22,19 @@ public class ShrioConfig {
     public ShiroFilterFactoryBean getShiroFilterFactoryBean(DefaultWebSecurityManager defaultWebSecurityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(defaultWebSecurityManager);
-        Map<String,String> map = new LinkedHashMap<>();
-        map.put("/cart/*","perms[user]");
-        map.put("/deliverAddress/*","authc");
-        map.put("/favourite/*","authc");
-        map.put("/user/register","anon");
-        map.put("/user/*","authc");
-        map.put("/order/*","authc");
-        map.put("/local/toLogin","anon");
-        map.put("/home/*","anon");
+        Map<String, Filter> filters = shiroFilterFactoryBean.getFilters();
+        filters.put("perms",new ShiroAuthorizationInfoFilter());
+        Map<String, String> map = new LinkedHashMap<>();
+        map.put("/api/cart/*", "perms[user,admin]");
+        map.put("/api/deliverAddress/*", "perms[user]");
+        map.put("/api/favourite/*", "perms[user]");
+        map.put("/api/user/*", "perms[user]");
+        map.put("/api/order/*", "perms[user]");
+        map.put("/api/user/register", "anon");
+        map.put("/api/local/toLogin", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
-        shiroFilterFactoryBean.setLoginUrl("/local/toLogin");
-        shiroFilterFactoryBean.setUnauthorizedUrl("/user/unAuth");
+        shiroFilterFactoryBean.setLoginUrl("/api/local/toLogin");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/api/user/unAuth");
         return shiroFilterFactoryBean;
     }
 

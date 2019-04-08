@@ -21,7 +21,7 @@ import java.util.Objects;
  * @since 2019-03-02
  */
 @RestController
-@RequestMapping("/deliverAddress")
+@RequestMapping("/api/deliverAddress")
 public class DeliverAddressController {
     @Autowired
     DeliverAddressService deliverAddressService;
@@ -46,7 +46,7 @@ public class DeliverAddressController {
      * @return JsonData
      */
 
-    @PostMapping("/updateAddress")
+    @PostMapping("/update")
     public JsonData updateAddress(@RequestBody DeliverAddress address, Errors errors) {
         if (errors.hasErrors()) {
             return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
