@@ -28,7 +28,7 @@ public class Img extends Model<Img> {
 
     private String imgUrl;
 
-    private String productId;
+    private Integer productId;
 
 
     @Override

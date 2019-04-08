@@ -1,6 +1,7 @@
 package product_module.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,6 +9,7 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 2 * @Author: HuChao
@@ -119,5 +121,20 @@ public class Product implements Serializable {
      *商品热度值
      */
     private Integer hotIndex;
+
+    @TableField(exist = false)//图片属性
+    private List<Img> img;
+
+    @Data
+    @EqualsAndHashCode(callSuper = false)
+    @Accessors(chain = true)
+    public static class Img{
+
+        private Integer id;
+
+        private String imgUrl;
+
+        private Integer productId;
+    }
 
 }

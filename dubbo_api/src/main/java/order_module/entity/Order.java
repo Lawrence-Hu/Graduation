@@ -1,6 +1,7 @@
 package order_module.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -9,12 +10,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * @author hcuhao
- * @date 2019-03-12-11:20
+ * @author JDR
+ * @date 2019-04-01-14:00
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@TableName(value = "t_order")
 public class Order {
     private String id;//订单号
     private Integer userId;//用户id
@@ -27,6 +29,7 @@ public class Order {
     @Data
     @EqualsAndHashCode(callSuper = false)
     @Accessors(chain = true)
+    @TableName(value = "t_order_item")
     public static class OrderItem {
         private Integer productId;//物品id
         private Integer productNum;//物品数量

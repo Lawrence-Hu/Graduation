@@ -9,6 +9,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import user_module.service.UserInterface;
 
+import java.util.Collection;
+
 /**
  * <p>
  *  服务实现类
@@ -26,4 +28,5 @@ public class ImgServiceImpl extends ServiceImpl<ImgMapper, Img> implements ImgSe
         System.out.println("service:"+userInterface);
         userInterface.findUserById(1);
     }
+
 }

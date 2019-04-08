@@ -61,11 +61,13 @@ public class EgoApplicationTests {
     @Test
     public void selectById() {
 
+//        Order order = orderInterfaceMapper.selectById("96cc9fb2-1a75-4fe0-9f27-9f5579a024c6");
+//        System.out.println(order);
+//        List<Order.OrderItem> OrderItems = orderItemInterfaceMapper.selectList(new QueryWrapper<Order.OrderItem>().eq("order_id", "96cc9fb2-1a75-4fe0-9f27-9f5579a024c6"));
+//        order.setOrderItems(OrderItems);
+//        System.out.println(order);
         Order order = orderInterfaceMapper.selectById("96cc9fb2-1a75-4fe0-9f27-9f5579a024c6");
-        System.out.println(order);
-        List<Order.OrderItem> OrderItems = orderItemInterfaceMapper.selectList(new QueryWrapper<Order.OrderItem>().eq("order_id", "96cc9fb2-1a75-4fe0-9f27-9f5579a024c6"));
-        order.setOrderItems(OrderItems);
-        System.out.println(order);
+        orderInterfaceMapper.updateById(order.setPrice(666));
 
     }
 

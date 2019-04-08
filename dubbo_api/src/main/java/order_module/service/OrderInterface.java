@@ -5,13 +5,13 @@ import utils.JsonData;
 
 public interface OrderInterface {
 //
-    Order selectById(String orderId);//查询订单
+    JsonData selectById(String orderId);//查询订单
 //
-    boolean updatePriceById(Integer orderId,Integer orderPrice);//修改价格
+    JsonData updatePriceById(String orderId,Integer orderPrice);//修改价格
 //
-    boolean delOrder(Integer orderId);//删除订单
+    JsonData delOrder(String orderId);//删除订单
 //
-   boolean updateOrderSta(Integer orderId,Integer statusId);//修改订单状态
+    JsonData updateOrderSta(String orderId,Integer statusId);//修改订单状态
 //
 //
 
