@@ -44,7 +44,7 @@ public class OrderInterfaceImpl implements OrderInterface {
         }
         List<Order.OrderItem> OrderItems = orderItemInterfaceMapper.selectList(new QueryWrapper<Order.OrderItem>().eq("order_id", orderId));
         order.setOrderItems(OrderItems);
-        return JsonData.buildSuccess(0,order);
+        return JsonData.buildSuccess(order);
     }
 
         /**
@@ -56,7 +56,7 @@ public class OrderInterfaceImpl implements OrderInterface {
     @Override
     public JsonData updatePriceById(String orderId, Integer orderPrice) {
 
-        if(orderId==null||orderPrice==null) {
+        if(orderId==null && orderPrice==null) {
             return JsonData.buildError("请输入订单号和修改的价格!");
         }
         Order order=orderInterfaceMapper.selectById(orderId);
@@ -65,7 +65,7 @@ public class OrderInterfaceImpl implements OrderInterface {
             JsonData.buildError("请输入正确的订单号!");
         }
         orderInterfaceMapper.updateById(order.setPrice(orderPrice));
-        return JsonData.buildSuccess(0,order.getPrice(),"修改成功!");
+        return JsonData.buildSuccess(order.getPrice(),"修改成功!");
     }
 
         /**
@@ -97,7 +97,7 @@ public class OrderInterfaceImpl implements OrderInterface {
     @Override
     public JsonData updateOrderSta(String orderId, Integer statusId) {
 
-        if (orderId==null||statusId==null)
+        if (orderId==null || statusId==null)
         {
             return JsonData.buildError("请输入订单号或选择订单状态!");
         }
@@ -110,7 +110,7 @@ public class OrderInterfaceImpl implements OrderInterface {
     @Override
     public JsonData addToOrder(Order order) {
         //数据验证
-        if(order==null||order.getOrderItems()==null){
+        if(order==null || order.getOrderItems()==null){
             return JsonData.buildError("订单商品不能为空！");
         }
         int insert = orderInterfaceMapper.insert(order);

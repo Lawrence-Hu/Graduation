@@ -14,4 +14,9 @@ public interface ProductInterface {
    // JsonData updateHotById(Integer id,Integer type);
     JsonData addProduct(Product product);//添加商品
     JsonData delProductById(Integer id);//删除商品
+    //is接口  用于修改部分属性
+    JsonData updateIsSaleById(Integer id,Boolean type);//是否开售
+    JsonData updateIsBestById(Integer id,Boolean type);//是否精品
+    JsonData updateIsNewById(Integer id,Boolean type);//是否新品
+    JsonData updateIsRecomById(Integer id,Boolean type);//是否推荐
 }
