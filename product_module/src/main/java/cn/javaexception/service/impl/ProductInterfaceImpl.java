@@ -86,40 +86,40 @@ public class ProductInterfaceImpl implements ProductInterface {
     public JsonData addProduct(Product product) {
 
         List<Product.Img> imgList = product.getImg();
-
         Error error = ValidatorUtil.validate(product);
-        if (error.hasError()){
-            return JsonData.buildError(error.getErrorInfo());
-        }
-        if (product == null ||  imgList == null)//验证判断
-        {
-            return JsonData.buildError("请输入商品的信息!");
-        }
-        if(product.getProductName()==null)
-        {
-            return  JsonData.buildError("商品名字不能为空!");
-        }
-        if(product.getMarketPrice()==null||product.getMarketPrice()<0)
-        {
-            return  JsonData.buildError("商品价格不能为空或负数!");
-        }
-        if(product.getProductsStock()==null||product.getProductsStock()<0)
-        {
-            return  JsonData.buildError("商品库存不能为空或负数!");
-        }
-        if(product.getProductUnitId()==null)
-        {
-            return  JsonData.buildError("商品规格不能为空!");
-        }
 
-        if(product.getBrandId()==null)
-        {
-            return  JsonData.buildError("商品品牌不能为空!");
-        }
-        if(product.getProductDesc()==null)
-        {
-            return  JsonData.buildError("商品描述不能为空!");
-        }
+      if (error.hasError()){
+           return JsonData.buildError(error.getErrorInfo());
+       }
+//        if (product == null ||  imgList == null)//验证判断
+//        {
+//            return JsonData.buildError("请输入商品的信息!");
+//        }
+//        if(product.getProductName()==null)
+//        {
+//            return  JsonData.buildError("商品名字不能为空!");
+//        }
+//        if(product.getMarketPrice()==null||product.getMarketPrice()<0)
+//        {
+//            return  JsonData.buildError("商品价格不能为空或负数!");
+//        }
+//        if(product.getProductsStock()==null||product.getProductsStock()<0)
+//        {
+//            return  JsonData.buildError("商品库存不能为空或负数!");
+//        }
+//        if(product.getProductUnitId()==null)
+//        {
+//            return  JsonData.buildError("商品规格不能为空!");
+//        }
+//
+//        if(product.getBrandId()==null)
+//        {
+//            return  JsonData.buildError("商品品牌不能为空!");
+//        }
+//        if(product.getProductDesc()==null)
+//        {
+//            return  JsonData.buildError("商品描述不能为空!");
+//        }
         product.setSaleTime(LocalDateTime.now() );
 
         int i = productMapper.insert(product);
@@ -147,18 +147,18 @@ public class ProductInterfaceImpl implements ProductInterface {
     public JsonData delProductById(Integer id) {
 
         if(id==null) {
-            return JsonData.buildError("请输入商品的id号");
+            return JsonData.buildError("请输入商品的id号!");
         }
         Product product= productMapper.selectById(id);
         if(product == null)
         {
-            return  JsonData.buildError("请输入正确的商品id号");
+            return  JsonData.buildError("请输入正确的商品id号!");
         }
 
         int i=productMapper.deleteById(id);
         int j=imgInterfaceMapper.delete(new QueryWrapper<Product.Img>().eq("product_id",id));
 
-        return i+j>0? JsonData.buildSuccess("删除成功"):JsonData.buildError("系统异常，请稍后再试");
+        return i+j>0? JsonData.buildSuccess("删除成功!"):JsonData.buildError("系统异常，请稍后再试");
 
     }
 

@@ -10,6 +10,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -37,11 +39,13 @@ public class Product extends Model<Product> {
      * 产品名
      */
 
+
     private String productName;
 
     /**
      * 市场价格
      */
+
     private Float marketPrice;
 
     /**
@@ -52,16 +56,19 @@ public class Product extends Model<Product> {
     /**
      * 存库
      */
+
     private Integer productsStock;
 
     /**
      * 商品规格id
      */
+
     private Integer productUnitId;
 
     /**
      * 是否开售
      */
+
     private Boolean isSale;
 
     /**
@@ -87,11 +94,13 @@ public class Product extends Model<Product> {
     /**
      * 品牌Id
      */
+
     private Integer brandId;
 
     /**
      * 商品描述
      */
+
     private String productDesc;
 
     /**

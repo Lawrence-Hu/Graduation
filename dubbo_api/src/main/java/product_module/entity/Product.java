@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -32,12 +33,14 @@ public class Product implements Serializable {
     /**
      * 产品名
      */
-
+    @NotNull(message = "商品名字不能为空!")
     private String productName;
 
     /**
      * 市场价格
      */
+    @NotNull(message = "商品价格不能为空!")
+    @Min(value = 0,message = "商品价格不能小于0!")
     private Float marketPrice;
 
     /**
@@ -48,11 +51,14 @@ public class Product implements Serializable {
     /**
      * 存库
      */
+    @NotNull(message = "商品库存不能为空!")
+    @Min(value = 0,message = "商品库存不能小于0!")
     private Integer productsStock;
 
     /**
      * 商品规格id
      */
+    @NotNull(message = "商品规格不能为空!")
     private Integer productUnitId;
 
     /**
@@ -83,11 +89,13 @@ public class Product implements Serializable {
     /**
      * 品牌Id
      */
+    @NotNull(message = "商品品牌不能为空!")
     private Integer brandId;
 
     /**
      * 商品描述
      */
+    @NotNull(message = "商品描述不能为空!")
     private String productDesc;
 
     /**
