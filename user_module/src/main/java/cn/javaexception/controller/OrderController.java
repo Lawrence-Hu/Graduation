@@ -3,6 +3,7 @@ package cn.javaexception.controller;
 import cn.javaexception.service.OrderService;
 import order_module.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class OrderController {
     OrderService orderService;
 
     @PostMapping("/add")
-    public JsonData addToOrder(@RequestBody @Valid List<Order.OrderItem> order){
+    public JsonData addToOrder(@RequestBody @Valid List<Order.OrderItem> order, Errors error){
         System.out.println(order);
         JsonData jsonData = orderService.addToOrder(order);
         return jsonData;

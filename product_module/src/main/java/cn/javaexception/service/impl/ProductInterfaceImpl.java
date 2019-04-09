@@ -8,7 +8,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import product_module.entity.Product;
 import product_module.service.ProductInterface;
+import utils.Error;
 import utils.JsonData;
+import utils.ValidatorUtil;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -84,6 +86,11 @@ public class ProductInterfaceImpl implements ProductInterface {
     public JsonData addProduct(Product product) {
 
         List<Product.Img> imgList = product.getImg();
+
+        Error error = ValidatorUtil.validate(product);
+        if (error.hasError()){
+            return JsonData.buildError(error.getErrorInfo());
+        }
         if (product == null ||  imgList == null)//验证判断
         {
             return JsonData.buildError("请输入商品的信息!");

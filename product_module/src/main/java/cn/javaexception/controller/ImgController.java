@@ -2,11 +2,13 @@ package cn.javaexception.controller;
 
 
 import cn.javaexception.config.UploadConfig;
+import cn.javaexception.model.Brand;
 import cn.javaexception.utils.Upload;
 import com.alibaba.dubbo.common.utils.StringUtils;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -15,6 +17,7 @@ import utils.JsonData;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Validator;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -36,7 +39,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/img")
 public class ImgController {
-
     @PostMapping("/api/upload")
     public JsonData upload(@RequestParam("file") MultipartFile[] files){
         Client client = new Client();

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,6 +32,7 @@ public class Product implements Serializable {
     /**
      * 产品名
      */
+
     private String productName;
 
     /**
