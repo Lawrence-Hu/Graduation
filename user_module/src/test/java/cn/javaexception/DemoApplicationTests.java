@@ -1,18 +1,21 @@
 package cn.javaexception;
 
-import cn.javaexception.vo.OrderVo;
+import cn.javaexception.service.AlipayService;
 import org.junit.Test;
-import utils.Error;
-import utils.ValidatorUtil;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
+import java.util.Map;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class DemoApplicationTests {
+    @Autowired
+    AlipayService alipayService;
     @Test
     public void contextLoads() {
-        Error error = ValidatorUtil.validate(new OrderVo().setProductId(12).setQuantity(1));
-        if (error.hasError()){
-            System.out.println(error.getErrorInfo());
-        }
+        String tradeStatusByTradeNo = alipayService.getTradeStatusByTradeNo("2019040922001420431000044233");
     }
 }

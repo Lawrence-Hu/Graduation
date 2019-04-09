@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
+            <optional>true</optional>
         </dependency>
 
         <!--Springboot test-->
@@ -59,6 +59,11 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.23</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -66,6 +71,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork><!-- 如果没有该配置，热部署的devtools不生效 -->
+                </configuration>
             </plugin>
         </plugins>
     </build>

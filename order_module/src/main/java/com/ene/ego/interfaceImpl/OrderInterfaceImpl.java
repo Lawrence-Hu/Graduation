@@ -124,6 +124,16 @@ public class OrderInterfaceImpl implements OrderInterface {
         return insert==1&&sum.get()==orderItems.size()?JsonData.buildSuccess("新增订单成功！"):JsonData.buildError("新增订单失败！");
     }
 
+    @Override
+    public JsonData findOrderById(String id) {
+        return null;
+    }
+
+    @Override
+    public boolean changeOrderStatus(int i) {
+        return false;
+    }
+
 
 //    @Override
 //    public JsonData addToOrder(Order order) {

@@ -16,4 +16,8 @@ public interface OrderInterface {
 //
 
      JsonData addToOrder(Order order);
+     //按订单号查询
+    JsonData findOrderById(String id);
+    //数字表示对应的数据库状态
+    boolean changeOrderStatus(int i);
 }
