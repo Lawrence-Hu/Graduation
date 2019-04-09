@@ -37,7 +37,7 @@ public class UserRealm extends AuthorizingRealm {
         //用户未冻结并且已认证
         if (user.getCerification().equals("1") && user.getStatus().equals("0")) {
             //通过认证
-            info.addStringPermission("user,admin");
+            info.addStringPermission("user");
         }
         return info;
     }
