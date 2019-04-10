@@ -189,14 +189,14 @@ public class ProductInterfaceImpl implements ProductInterface {
             JsonData.buildError("商品未审核!");
         }
         //type为真,修改值为1
-        if(product.getIsSale()=="0" && type==true)
+        if(product.getIsSale()==false && type==true)
         {
-            productMapper.updateById(product.setIsSale("1"));
+            productMapper.updateById(product.setIsSale(true));
             return JsonData.buildSuccess("修改成功,商品已开售!");
         }
-        if(product.getIsSale()=="1" && type==false)
+        if(product.getIsSale()==true && type==false)
         {
-            productMapper.updateById(product.setIsSale("0"));
+            productMapper.updateById(product.setIsSale(false));
             return  JsonData.buildSuccess("修改成功，商品已停售");
         }
         return JsonData.buildError("操作失败，请检查商品状态后重试!");
@@ -209,19 +209,73 @@ public class ProductInterfaceImpl implements ProductInterface {
      */
     @Override
     public JsonData updateIsBestById(Integer id, Boolean type) {
-        return null;
+
+        if(id==null||type==null)
+        {
+            return  JsonData.buildError("商品id或type不能为空!");
+        }
+        Product product=productMapper.selectById(id);
+        if(product==null)
+        {
+            JsonData.buildError("商品不存在，请检查id是否正确!");
+        }
+        String msg = product.getProductStatus();
+        if(msg=="-1")
+        {
+            JsonData.buildError("商品违规!");
+        }
+        if(msg=="0")
+        {
+            JsonData.buildError("商品未审核!");
+        }
+        if(product.getIsBest()==false && type==true)
+        {
+            productMapper.updateById(product.setIsBest(true));
+            return JsonData.buildSuccess("修改成功，商品已加精!");
+        }
+        if(product.getIsBest()==true&& type==false)
+        {
+            productMapper.updateById(product.setIsBest(false));
+            return JsonData.buildSuccess("修改成功，商品已取消加精!");
+        }
+
+        return JsonData.buildError("操作失败，请检查商品状态后重试!");
     }
 
     /**
      * @param id,type
      * @return JsonData
      * @author JDR
-     * @description 是否热销
+     * @description 修改新品
      */
+
+    //默认上架为新品，审核过后才能修改
     @Override
     public JsonData updateIsNewById(Integer id, Boolean type) {
-        return null;
+
+        if(id==null||type==null)
+        {
+            return  JsonData.buildError("商品id或type不能为空!");
+        }
+        Product product=productMapper.selectById(id);
+        if(product==null)
+        {
+            JsonData.buildError("商品不存在，请检查id是否正确!");
+        }
+        String msg = product.getProductStatus();
+        if(msg=="0")
+        {
+            JsonData.buildError("商品未审核!");
+        }
+        if(product.getIsNew()==true && type==false)
+        {
+            productMapper.updateById(product.setIsNew(false));
+            return JsonData.buildSuccess("修改成功，商品已取消新品!");
+        }
+
+        return JsonData.buildError("操作失败，请检查商品状态后重试!");
     }
+
 
     /**
      * @param id,type
@@ -231,6 +285,37 @@ public class ProductInterfaceImpl implements ProductInterface {
      */
     @Override
     public JsonData updateIsRecomById(Integer id, Boolean type) {
-        return null;
+
+        if(id==null||type==null)
+        {
+            return  JsonData.buildError("商品id或type不能为空!");
+        }
+        Product product=productMapper.selectById(id);
+        if(product==null)
+        {
+            JsonData.buildError("商品不存在，请检查id是否正确!");
+        }
+
+        String msg = product.getProductStatus();
+        if(msg=="-1")
+        {
+            JsonData.buildError("商品违规!");
+        }
+        if(msg=="0")
+        {
+            JsonData.buildError("商品未审核!");
+        }
+        if(product.getIsRecom()==false && type==true)
+        {
+            productMapper.updateById(product.setIsRecom(true));
+            return JsonData.buildSuccess("修改成功，商品已推荐!");
+        }
+        if(product.getIsRecom()==true&& type==false)
+        {
+            productMapper.updateById(product.setIsRecom(false));
+            return JsonData.buildSuccess("修改成功，商品已取消推荐!");
+        }
+
+        return JsonData.buildError("操作失败，请检查商品状态后重试!");
     }
 }

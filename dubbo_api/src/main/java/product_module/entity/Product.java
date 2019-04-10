@@ -64,12 +64,12 @@ public class Product implements Serializable {
     /**
      * 是否开售
      */
-    private String isSale;
+    private Boolean isSale;
 
     /**
      * 是否精品
      */
-    private String isBest;
+    private Boolean isBest;
 
     /**
      * 是否热销产品
@@ -79,12 +79,12 @@ public class Product implements Serializable {
     /**
      * 是否新品
      */
-    private String isNew;
+    private Boolean isNew;
 
     /**
      * 是否推荐
      */
-    private String isRecom;
+    private Boolean isRecom;
 
     /**
      * 品牌Id

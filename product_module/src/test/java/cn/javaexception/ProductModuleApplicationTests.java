@@ -21,8 +21,8 @@ public class ProductModuleApplicationTests {
 
 //    @Autowired
 //    ElasticsearchTemplate elasticsearchTemplate;
-//    @Autowired
-//    ProductInterfaceImpl productInterface;
+    @Autowired
+    ProductInterfaceImpl productInterface;
     @Test
     public void test() {
 //        Product.Img img=new Product.Img();
@@ -39,6 +39,9 @@ public class ProductModuleApplicationTests {
 //        product.setProductDesc("这是苹果xsmax");
 //        JsonData jsonData = productInterface.addProduct(product);
 //        System.out.println(jsonData);
+
+        JsonData jsonData = productInterface.updateIsBestById(1, true);
+        System.out.println(jsonData);
 
     }
 
