@@ -63,7 +63,7 @@ public class DeliverAddressController {
      */
     @PostMapping("/delete")
     //考虑一下json格式
-    public JsonData deleteAddress(@RequestBody Integer[] addressIds) {
+    public JsonData deleteAddress(@RequestBody String[] addressIds) {
         if (addressIds.length==0){
             return JsonData.buildError("地址id不能为空！！");
         }

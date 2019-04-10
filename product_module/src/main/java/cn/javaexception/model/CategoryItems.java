@@ -26,8 +26,8 @@ public class CategoryItems extends Model<CategoryItems> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id")
+    private String id;
 
     private String name;
 
@@ -35,7 +35,7 @@ public class CategoryItems extends Model<CategoryItems> {
 
     private String imgUrl;
 
-    private Integer categoryId;
+    private String categoryId;
 
     private Boolean isOnPage;
 

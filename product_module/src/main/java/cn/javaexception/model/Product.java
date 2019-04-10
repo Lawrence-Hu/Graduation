@@ -32,8 +32,8 @@ public class Product extends Model<Product> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id")
+    private String id;
 
     /**
      * 产品名
@@ -63,7 +63,7 @@ public class Product extends Model<Product> {
      * 商品规格id
      */
 
-    private Integer productUnitId;
+    private String productUnitId;
 
     /**
      * 是否开售
@@ -95,7 +95,7 @@ public class Product extends Model<Product> {
      * 品牌Id
      */
 
-    private Integer brandId;
+    private String brandId;
 
     /**
      * 商品描述
@@ -126,9 +126,9 @@ public class Product extends Model<Product> {
     /**
      * 商品种类表
      */
-    private Integer productCataId;
+    private String productCataId;
 
-    private Integer userId;
+    private String userId;
 
     private Integer hotIndex;
 

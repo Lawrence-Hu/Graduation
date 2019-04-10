@@ -23,7 +23,7 @@ public class FavouriteController {
     FavouriteService favouriteService;
 
     @PostMapping("/add")
-    public JsonData addToFavorite(@RequestParam("id") Integer id) {
+    public JsonData addToFavorite(@RequestParam("id") String id) {
         if (id == null) {
             return JsonData.buildError("产品id不能为空！");
         }
@@ -31,7 +31,7 @@ public class FavouriteController {
     }
 
     @PostMapping("/delete")
-    public JsonData addToFavorite(@RequestBody Integer[] ids) {
+    public JsonData addToFavorite(@RequestBody String[] ids) {
         if (ids == null || ids.length == 0) {
             return JsonData.buildError("产品id不能为空！");
         }

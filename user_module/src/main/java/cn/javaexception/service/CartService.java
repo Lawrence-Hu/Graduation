@@ -16,5 +16,5 @@ public interface CartService extends IService<Cart> {
 
     JsonData addProduct(Cart cart);
 
-    JsonData deleteProduct(Integer[] cartIds);
+    JsonData deleteProduct(String[] cartIds);
 }

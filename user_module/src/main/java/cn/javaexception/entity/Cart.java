@@ -27,20 +27,20 @@ public class Cart extends Model<Cart> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id")
+    private String id;
 
     /**
      * 产品id
      */
     @NotNull(message = "产品号不能为null")
-    private Integer productId;
+    private String productId;
 
     /**
      * 供应用户id
      */
     @NotNull(message = "供应用户id不能为空")
-    private Integer supplierId;
+    private String supplierId;
 
     /**
      * 数量
@@ -49,7 +49,7 @@ public class Cart extends Model<Cart> {
     private Integer quantity;
 
     @NotNull(message = "用户id不能为空")
-    private Integer userId;
+    private String userId;
     /**
      * 加入购物车时间
      */

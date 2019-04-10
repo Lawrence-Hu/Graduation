@@ -13,7 +13,7 @@ import java.util.Date;
 public class Order {
     private String id;
     private Integer userId;
-    private Integer statusId;
+    private String statusId;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(

@@ -16,7 +16,7 @@ public interface DeliverAddressService extends IService<DeliverAddress> {
 
     JsonData addAddress(DeliverAddress address);
 
-    JsonData deleteAddress(Integer[] addressIds);
+    JsonData deleteAddress(String[] addressIds);
 
     JsonData updateAddress(DeliverAddress address);
 }

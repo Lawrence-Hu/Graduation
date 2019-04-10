@@ -9,14 +9,14 @@ import utils.JsonData;
  * 4
  */
 public interface ProductInterface {
-    JsonData findProductById(Integer id);//查询商品
-    boolean updateHotIndexById(Integer id,Boolean type);//修改商品
+    JsonData findProductById(String id);//查询商品
+    boolean updateHotIndexById(String id,Boolean type);//修改商品
    // JsonData updateHotById(Integer id,Integer type);
     JsonData addProduct(Product product);//添加商品
-    JsonData delProductById(Integer id);//删除商品
+    JsonData delProductById(String id);//删除商品
     //is接口  用于修改部分属性
-    JsonData updateIsSaleById(Integer id,Boolean type);//是否开售
-    JsonData updateIsBestById(Integer id,Boolean type);//是否精品
-    JsonData updateIsNewById(Integer id,Boolean type);//是否新品
-    JsonData updateIsRecomById(Integer id,Boolean type);//是否推荐
+    JsonData updateIsSaleById(String id,Boolean type);//是否开售
+    JsonData updateIsBestById(String id,Boolean type);//是否精品
+    JsonData updateIsNewById(String id,Boolean type);//是否新品
+    JsonData updateIsRecomById(String id,Boolean type);//是否推荐
 }

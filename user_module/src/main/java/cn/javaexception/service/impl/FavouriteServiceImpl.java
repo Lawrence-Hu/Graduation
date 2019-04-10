@@ -71,7 +71,7 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
     }
 
     @Override
-    public JsonData deleteFavouriteItems(Integer[] ids) {
+    public JsonData deleteFavouriteItems(String[] ids) {
         //获取用户信息
         Subject subject = SecurityUtils.getSubject();
         User principal = (User) subject.getPrincipal();
@@ -79,7 +79,7 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
             return JsonData.buildError("用户未登录！非法操作！");
         }
         int delete = 0;
-        for (Integer id : ids) {
+        for (String id : ids) {
             //查询该收藏
             Favourite favourite = favouriteMapper.selectById(id);
             //避免id查不到跳过

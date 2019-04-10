@@ -54,7 +54,7 @@ public class OrderInterfaceImpl implements OrderInterface {
      * @return Order
      */
     @Override
-    public JsonData updatePriceById(String orderId, Integer orderPrice) {
+    public JsonData updatePriceById(String orderId, Float orderPrice) {
 
         if(orderId==null && orderPrice==null) {
             return JsonData.buildError("请输入订单号和修改的价格!");
@@ -95,7 +95,7 @@ public class OrderInterfaceImpl implements OrderInterface {
      * @return Order
      */
     @Override
-    public JsonData updateOrderSta(String orderId, Integer statusId) {
+    public JsonData updateOrderSta(String orderId, String statusId) {
 
         if (orderId==null || statusId==null)
         {

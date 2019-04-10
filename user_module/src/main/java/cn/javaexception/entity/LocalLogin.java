@@ -28,8 +28,8 @@ public class LocalLogin extends Model<LocalLogin> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id")
+    private String id;
     @NotNull(message = "密码不呢为空")
     private String password;
     @NotNull(message = "用户名不能为空")

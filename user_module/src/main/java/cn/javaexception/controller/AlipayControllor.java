@@ -3,25 +3,20 @@ package cn.javaexception.controller;
 import cn.javaexception.pay.AlipayConfig;
 import cn.javaexception.service.AlipayService;
 import cn.javaexception.util.RequestUtils;
+import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.domain.AlipayFundTransToaccountTransferModel;
-import com.alipay.api.domain.AlipayTradeWapPayModel;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayFundTransToaccountTransferRequest;
-import com.alipay.api.request.AlipayTradeWapPayRequest;
 import com.alipay.api.response.AlipayFundTransToaccountTransferResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/alipay")
@@ -33,7 +28,7 @@ public class AlipayControllor {
     @Autowired
     AlipayService alipayService;
     @GetMapping("/order")
-    public void getPay(HttpServletResponse response,String orderId) throws AlipayApiException {
+    public void getPay(HttpServletResponse response,String orderId,HttpServletRequest request) throws AlipayApiException {
         // form表单生产
         String form = alipayService.pay(orderId);
         response.setContentType("text/html;charset=utf-8");
@@ -80,5 +75,16 @@ public class AlipayControllor {
         } catch (AlipayApiException e) {
             e.printStackTrace();
         }
+    }
+    @PostMapping("/test")
+    public JSONObject test(@RequestBody JSONObject jsonObject){
+        JSONObject jsonObject1 = new JSONObject();
+        jsonObject1.put("name","huchao");
+        jsonObject1.put("age",18);
+        jsonObject1.put("favor",new String[]{"123","234"});
+        jsonObject.put("test",jsonObject1);
+        Object test = jsonObject.getJSONObject("test").get("namekkjk");
+        System.out.println(test);
+        return jsonObject;
     }
 }

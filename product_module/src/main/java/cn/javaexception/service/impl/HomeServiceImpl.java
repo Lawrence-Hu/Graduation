@@ -7,15 +7,17 @@ import cn.javaexception.mapper.ProductUnitMapper;
 import cn.javaexception.model.Category;
 import cn.javaexception.model.CategoryItems;
 import cn.javaexception.model.Product;
+import cn.javaexception.service.CategoryService;
 import cn.javaexception.service.HomeService;
-import cn.javaexception.vo.CategoriesAndCarouselsVo;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import utils.JsonData;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -29,6 +31,8 @@ public class HomeServiceImpl implements HomeService {
     CategoryMapper categoryMapper;
     @Autowired
     CategoryItemsMapper categoryItemsMapper;
+    @Autowired
+    CategoryService categoryService;
 
     @Override
     public JsonData getHome() {
@@ -63,24 +67,32 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public JsonData getCategoriesAndCarousels() {
-        CategoriesAndCarouselsVo data = new CategoriesAndCarouselsVo();
-
-        List<Product> products = productMapper.selectList(new QueryWrapper<Product>()
-                                              .select("id", "carousels_img_url"));
-        List<Category> categories = categoryMapper.selectList(new QueryWrapper<Category>()
-                                                  .select("id", "name")
-                                                  .eq("is_on_page", Boolean.TRUE));
-
-        for (Category category : categories) {
-            List<CategoryItems> categoryItems = categoryItemsMapper.selectList(new QueryWrapper<CategoryItems>()
-                    .select("id", "name", "img_url")
-                    .eq("is_on_page", Boolean.TRUE)
-                    .eq("category_id", category.getId()));
-            category.setCategoryItems(categoryItems);
-        }
-
-        data.setCarousels(products);
-        data.setCategories(categories);
-        return JsonData.buildSuccess(data);
+        JSONObject data = new JSONObject();
+//
+//        List<Product> carousels = productMapper.selectList(new QueryWrapper<Product>()
+//                .select("id", "carousels_img_url"));
+//
+//        List<Category> categories = categoryMapper.selectList(new QueryWrapper<Category>()
+//                .select("id", "name")
+//                .eq("is_on_page", Boolean.TRUE));
+//
+//        List<Integer> list = categories.stream().map(category -> category.getId()).collect(Collectors.toList());
+//
+//        List<CategoryItems> maps = categoryItemsMapper.selectList(new QueryWrapper<CategoryItems>()
+//                .select("id", "name", "img_url", "category_id")
+//                .eq("is_on_page", Boolean.TRUE)
+//                .in("category_id", list));
+//
+//
+//        for (Category category : categories) {
+//            List<CategoryItems> items = maps.stream().filter(map -> map.getCategoryId().equals(category.getId())).collect(Collectors.toList());
+//            category.setCategoryItems(items);
+//        }
+//        data.put("categories",categories);
+//        data.put("carousels",carousels);
+//        return JsonData.buildSuccess(data);
+        ArrayList<Category> list = new ArrayList<>();
+        System.out.println(list);
+        return null;
     }
 }

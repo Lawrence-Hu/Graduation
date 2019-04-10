@@ -46,13 +46,13 @@ public class DeliverAddressServiceImpl extends ServiceImpl<DeliverAddressMapper,
      * @description 此处有bug 若需完全没问题还需要查数据库删除的地址id是否是当前用户的！！！ //bug以修复
      */
     @Override
-    public JsonData deleteAddress(Integer[] addresseIds) {
+    public JsonData deleteAddress(String[] addresseIds) {
         //获取当前用户
         Subject subject = SecurityUtils.getSubject();
         User principal = (User) subject.getPrincipal();
         //删除的条数
         int delete = 0;
-        for (Integer id : addresseIds) {
+        for (String id : addresseIds) {
             int i = deliverAddressMapper.delete(new QueryWrapper<DeliverAddress>().eq("user_id", principal.getId()).eq("id", id));
             if(i==1)
             delete++;

@@ -20,8 +20,8 @@ import java.util.List;
 @TableName(value = "t_order")
 public class Order {
     private String id;//订单号
-    private Integer userId;//用户id
-    private Integer statusId;//订单状态id
+    private String userId;//用户id
+    private String statusId;//订单状态id
     private LocalDateTime time;//创建时间
     private float price;//总价格
     @TableField(exist = false)
@@ -33,7 +33,7 @@ public class Order {
     @TableName(value = "t_order_item")
     public static class OrderItem {
         @NotNull(message = "商品id不能为空！")
-        private Integer productId;//物品id
+        private String productId;//物品id
         @NotNull(message = "商品数量不能为空！")
         private Integer productNum;//物品数量
         private String orderId;//订单号

@@ -25,8 +25,8 @@ public class Product implements Serializable {
 
 
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id")
+    private String id;
 
     private static final long serialVersionUID = 1L;
 
@@ -59,7 +59,7 @@ public class Product implements Serializable {
      * 商品规格id
      */
     @NotNull(message = "商品规格不能为空!")
-    private Integer productUnitId;
+    private String productUnitId;
 
     /**
      * 是否开售
@@ -90,7 +90,7 @@ public class Product implements Serializable {
      * 品牌Id
      */
     @NotNull(message = "商品品牌不能为空!")
-    private Integer brandId;
+    private String brandId;
 
     /**
      * 商品描述
@@ -126,7 +126,7 @@ public class Product implements Serializable {
     /**
      * 商品种类表
      */
-    private Integer userId;
+    private String userId;
     /**
      *商品热度值
      */
@@ -140,11 +140,11 @@ public class Product implements Serializable {
     @Accessors(chain = true)
     public static class Img{
 
-        private Integer id;
+        private String id;
 
         private String imgUrl;
 
-        private Integer productId;
+        private String productId;
     }
 
 }

@@ -48,7 +48,7 @@ public class CartController {
      */
     @PostMapping("/delete")
     //考虑一下json格式
-    public JsonData deleteProductsFromCart(@RequestBody Integer[] cartIds) {
+    public JsonData deleteProductsFromCart(@RequestBody String[] cartIds) {
         if (cartIds.length == 0) {
             JsonData.buildError("购物车id不能为空！");
         }

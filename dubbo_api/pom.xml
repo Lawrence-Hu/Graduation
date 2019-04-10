@@ -18,7 +18,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.1.0</version>
+            <version>LATEST</version>
         </dependency>
         <!-- Dubbo Spring Boot Starter -->
         <dependency>
@@ -27,11 +27,11 @@
             <version>0.2.0</version>
         </dependency>
 
-        <!-- mysql-connector-java -->
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.15</version>
+            <version>6.0.6</version>
         </dependency>
         <!--druid 连接池 -->
         <dependency>

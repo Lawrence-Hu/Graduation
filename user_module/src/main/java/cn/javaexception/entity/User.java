@@ -30,9 +30,9 @@ public class User extends Model<User> {
     /**
      * '主键id'
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id")
     //@NotNull(message = "用户id不能为空")
-    private Integer id;
+    private String id;
 
     /**
      * '姓名'
@@ -110,7 +110,7 @@ public class User extends Model<User> {
     /**
      * '默认收货地址'
      */
-    private Integer deliveryAddressId;
+    private String deliveryAddressId;
     /**
      * '验证码'
      *

@@ -4,6 +4,7 @@ import cn.javaexception.pay.AlipayConfig;
 import cn.javaexception.service.AlipayService;
 import cn.javaexception.vo.AlipayQueryResponseVo;
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
@@ -83,7 +84,6 @@ public class AlipayServiceImpl implements AlipayService {
         //查询该订单
         String out_trade_no = map.get("out_trade_no").toString();
         orderInterface.findOrderById(out_trade_no);
-
         //查看该订单支付状态
         String trade_status = getTradeStatusByTradeNo("out_trade_no");
         if (trade_status.equals("TRADE_SUCCESS")||trade_status.equals("TRADE_FINISHED")){

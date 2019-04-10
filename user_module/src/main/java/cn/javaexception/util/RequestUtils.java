@@ -16,7 +16,6 @@ public class RequestUtils {
         {
             String paramName = (String) enums.nextElement();
             String paramValue = request.getParameter(paramName);
-
             //形成键值对应的map
             map.put(paramName, paramValue);
         }

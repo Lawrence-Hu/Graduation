@@ -16,5 +16,5 @@ import utils.JsonData;
 public interface FavouriteService extends IService<Favourite> {
     JsonData addTofavourite(Favourite favourite);
 
-    JsonData deleteFavouriteItems(Integer[] ids);
+    JsonData deleteFavouriteItems(String[] ids);
 }

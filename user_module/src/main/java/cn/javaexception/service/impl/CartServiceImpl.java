@@ -91,12 +91,12 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
      * @description 删除购物车商品
      */
     @Override
-    public JsonData deleteProduct(Integer[] cartIds) {
+    public JsonData deleteProduct(String[] cartIds) {
         Subject subject = SecurityUtils.getSubject();
         User principal = (User) subject.getPrincipal();
         int delete = 0;
         //获取所有Cart_id
-        for (Integer id : cartIds) {
+        for (String id : cartIds) {
             int i = cartMapper.delete(new QueryWrapper<Cart>().eq("user_id", principal.getId()).eq("id", id));
             if (i == 1)
                 delete++;

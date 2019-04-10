@@ -25,18 +25,18 @@ import lombok.experimental.Accessors;
 public class Favourite extends Model<Favourite> {
 
     private static final long serialVersionUID = 1L;
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id")
+    private String id;
 
     /**
      * 用户id
      */
-    private Integer userId;
+    private String userId;
 
     /**
      * 产品id
      */
-    private Integer productId;
+    private String productId;
 
     /**
      * 喜欢时间

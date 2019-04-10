@@ -35,7 +35,7 @@ public class ProductInterfaceImpl implements ProductInterface {
      * @description 查询商品
      * */
     @Override
-    public JsonData findProductById(Integer id) {
+    public JsonData findProductById(String id) {
 
         if(id ==null){
             return  JsonData.buildError("商品id为空！");
@@ -47,7 +47,7 @@ public class ProductInterfaceImpl implements ProductInterface {
     }
 
     @Override
-    public boolean updateHotIndexById(Integer id, Boolean type) {
+    public boolean updateHotIndexById(String id, Boolean type) {
         return false;
     }
 
@@ -144,7 +144,7 @@ public class ProductInterfaceImpl implements ProductInterface {
      * @description 删除商品
      */
     @Override
-    public JsonData delProductById(Integer id) {
+    public JsonData delProductById(String id) {
 
         if(id==null) {
             return JsonData.buildError("请输入商品的id号!");
@@ -169,7 +169,7 @@ public class ProductInterfaceImpl implements ProductInterface {
      * @description 是否开售
      */
     @Override
-    public JsonData updateIsSaleById(Integer id, Boolean type) {
+    public JsonData updateIsSaleById(String id, Boolean type) {
         if(id==null||type==null)
         {
             return  JsonData.buildError("商品id或type不能为空!");
@@ -208,7 +208,7 @@ public class ProductInterfaceImpl implements ProductInterface {
      * @description 是否精品
      */
     @Override
-    public JsonData updateIsBestById(Integer id, Boolean type) {
+    public JsonData updateIsBestById(String id, Boolean type) {
 
         if(id==null||type==null)
         {
@@ -251,7 +251,7 @@ public class ProductInterfaceImpl implements ProductInterface {
 
     //默认上架为新品，审核过后才能修改
     @Override
-    public JsonData updateIsNewById(Integer id, Boolean type) {
+    public JsonData updateIsNewById(String id, Boolean type) {
 
         if(id==null||type==null)
         {
@@ -284,7 +284,7 @@ public class ProductInterfaceImpl implements ProductInterface {
      * @description 是否推荐
      */
     @Override
-    public JsonData updateIsRecomById(Integer id, Boolean type) {
+    public JsonData updateIsRecomById(String id, Boolean type) {
 
         if(id==null||type==null)
         {

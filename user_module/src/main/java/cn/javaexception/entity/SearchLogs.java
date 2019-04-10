@@ -24,8 +24,8 @@ public class SearchLogs extends Model<SearchLogs> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id")
+    private String id;
 
     private Integer userId;
 

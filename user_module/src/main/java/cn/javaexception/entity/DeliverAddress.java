@@ -26,25 +26,25 @@ public class DeliverAddress extends Model<DeliverAddress> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id")
+    private String id;
 
     /**
      * 用户id
      */
-    private Integer userId;
+    private String userId;
 
     /**
      * 省id
      */
     @NotNull(message = "省id不能为空")
-    private Integer provinceId;
+    private String provinceId;
 
     /**
      * 城市id
      */
     @NotNull(message = "城市id不能为空")
-    private Integer cityId;
+    private String cityId;
 
     /**
      * 收货姓名

@@ -40,7 +40,7 @@ public class ProductModuleApplicationTests {
 //        JsonData jsonData = productInterface.addProduct(product);
 //        System.out.println(jsonData);
 
-        JsonData jsonData = productInterface.updateIsBestById(1, true);
+        JsonData jsonData = productInterface.updateIsBestById("1", true);
         System.out.println(jsonData);
 
     }
