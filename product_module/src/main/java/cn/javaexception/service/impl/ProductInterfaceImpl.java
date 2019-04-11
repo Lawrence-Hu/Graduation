@@ -335,14 +335,20 @@ public class ProductInterfaceImpl implements ProductInterface {
         {
             JsonData.buildError("商品不存在，请检查id是否正确!");
         }
-        if(product.getProductDesc()=="0"&&type==true)
+        if(product.getProductStatus()=="0"&&type==true)
         {
-            productMapper.updateById(product.setProductDesc("1"));
+            productMapper.updateById(product.setProductStatus("1"));
             return JsonData.buildSuccess("修改成功，商品为审核通过状态");
         }
-        if(product.getProductDesc()=="1"&&type==false)
+        if(product.getProductStatus()=="0"&&type==false)
         {
-            productMapper.updateById(product.setProductDesc("-1"));
+            productMapper.updateById(product.setProductStatus("-1"));
+            return JsonData.buildSuccess("修改成功，商品审核未通过状态");
+        }
+
+        if(product.getProductStatus()=="1"&&type==false)
+        {
+            productMapper.updateById(product.setProductStatus("-1"));
             return  JsonData.buildSuccess("修改成功，商品为下架或者违规状态");
         }
         return JsonData.buildError("操作失败,请重试！");
