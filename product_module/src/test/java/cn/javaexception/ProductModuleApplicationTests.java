@@ -40,8 +40,12 @@ public class ProductModuleApplicationTests {
 //        JsonData jsonData = productInterface.addProduct(product);
 //        System.out.println(jsonData);
 
-        JsonData jsonData = productInterface.updateIsBestById(1, true);
-        System.out.println(jsonData);
+//        JsonData jsonData = productInterface.updateIsBestById(1, true);
+//        System.out.println(jsonData);
+
+
+        JsonData js = productInterface.findProductStatusById(1);
+        System.out.println(js);
 
     }
 

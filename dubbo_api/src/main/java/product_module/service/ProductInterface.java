@@ -19,4 +19,13 @@ public interface ProductInterface {
     JsonData updateIsBestById(Integer id,Boolean type);//是否精品
     JsonData updateIsNewById(Integer id,Boolean type);//是否新品
     JsonData updateIsRecomById(Integer id,Boolean type);//是否推荐
+    JsonData updateProductStatusById(Integer id,Boolean type);//修改审核状态
+
+    //is接口查询 用于查询某些接口
+    Boolean findIsSaleById(Integer id);
+    Boolean findIsBestById(Integer id);
+    Boolean findIsNewById(Integer id);
+    Boolean findIsRecomById(Integer id);
+    JsonData findProductStatusById(Integer id);
+
 }
