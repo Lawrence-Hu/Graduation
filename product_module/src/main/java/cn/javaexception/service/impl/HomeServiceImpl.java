@@ -68,31 +68,28 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public JsonData getCategoriesAndCarousels() {
         JSONObject data = new JSONObject();
-//
-//        List<Product> carousels = productMapper.selectList(new QueryWrapper<Product>()
-//                .select("id", "carousels_img_url"));
-//
-//        List<Category> categories = categoryMapper.selectList(new QueryWrapper<Category>()
-//                .select("id", "name")
-//                .eq("is_on_page", Boolean.TRUE));
-//
-//        List<Integer> list = categories.stream().map(category -> category.getId()).collect(Collectors.toList());
-//
-//        List<CategoryItems> maps = categoryItemsMapper.selectList(new QueryWrapper<CategoryItems>()
-//                .select("id", "name", "img_url", "category_id")
-//                .eq("is_on_page", Boolean.TRUE)
-//                .in("category_id", list));
-//
-//
-//        for (Category category : categories) {
-//            List<CategoryItems> items = maps.stream().filter(map -> map.getCategoryId().equals(category.getId())).collect(Collectors.toList());
-//            category.setCategoryItems(items);
-//        }
-//        data.put("categories",categories);
-//        data.put("carousels",carousels);
-//        return JsonData.buildSuccess(data);
-        ArrayList<Category> list = new ArrayList<>();
-        System.out.println(list);
-        return null;
+
+        List<Product> carousels = productMapper.selectList(new QueryWrapper<Product>()
+                .select("id", "carousels_img_url"));
+
+        List<Category> categories = categoryMapper.selectList(new QueryWrapper<Category>()
+                .select("id", "name")
+                .eq("is_on_page", Boolean.TRUE));
+
+        List<String> list = categories.stream().map(category -> category.getId()).collect(Collectors.toList());
+
+        List<CategoryItems> maps = categoryItemsMapper.selectList(new QueryWrapper<CategoryItems>()
+                .select("id", "name", "img_url", "category_id")
+                .eq("is_on_page", Boolean.TRUE)
+                .in("category_id", list));
+
+        Map<String, List<CategoryItems>> collect = maps.stream().collect(Collectors.groupingBy(CategoryItems::getCategoryId));
+        for (Category category : categories) {
+            category.setCategoryItems(collect.get(category.getId()));
+        }
+
+        data.put("categories",categories);
+        data.put("carousels",carousels);
+        return JsonData.buildSuccess(data);
     }
 }

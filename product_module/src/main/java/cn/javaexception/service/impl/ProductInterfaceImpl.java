@@ -325,7 +325,7 @@ public class ProductInterfaceImpl implements ProductInterface {
      * @description 修改商品审核状态
      * */
     @Override
-    public JsonData updateProductStatusById(Integer id, Boolean type) {
+    public JsonData updateProductStatusById(String id, Boolean type) {
         if(id==null||type==null)
         {
             return  JsonData.buildError("商品id或type不能为空!");
@@ -361,7 +361,7 @@ public class ProductInterfaceImpl implements ProductInterface {
      * @description 查询商品是否开售
      * */
     @Override
-    public Boolean findIsSaleById(Integer id) {
+    public Boolean findIsSaleById(String id) {
         if(id == null)
         {
             System.out.println("id不能为空!");
@@ -383,7 +383,7 @@ public class ProductInterfaceImpl implements ProductInterface {
      * @description 查询商品是否加精
      * */
     @Override
-    public Boolean findIsBestById(Integer id) {
+    public Boolean findIsBestById(String id) {
         if(id == null)
         {
             System.out.println("id不能为空!");
@@ -405,7 +405,7 @@ public class ProductInterfaceImpl implements ProductInterface {
      * @description 查询商品是否新品
      * */
     @Override
-    public Boolean findIsNewById(Integer id) {
+    public Boolean findIsNewById(String id) {
         if(id == null)
         {
             System.out.println("id不能为空!");
@@ -427,7 +427,7 @@ public class ProductInterfaceImpl implements ProductInterface {
      * @description 查询商品是否被推荐
      * */
     @Override
-    public Boolean findIsRecomById(Integer id) {
+    public Boolean findIsRecomById(String id) {
         if (id == null) {
             System.out.println("id不能为空!");
             return false;
@@ -446,7 +446,7 @@ public class ProductInterfaceImpl implements ProductInterface {
      * @description 查询商品审核状态
      * */
     @Override
-    public JsonData findProductStatusById(Integer id) {
+    public JsonData findProductStatusById(String id) {
         if (id == null) {
             return JsonData.buildError("id不能为空!");
         }
