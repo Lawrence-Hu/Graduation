@@ -8,9 +8,7 @@ import order_module.service.OrderInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import utils.JsonData;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -23,29 +21,28 @@ public class OrderInterfaceImpl implements OrderInterface {
     @Autowired
     OrderItemInterfaceMapper orderItemInterfaceMapper;
 
-
         /**
      * @author JDR
      * @description 查询订单与订单详情
      * @param  orderId
      * @return Order
      */
-    @Override
-    public JsonData selectById(String orderId) {
-
-        if(orderId==null){
-
-            return  JsonData.buildError("请输入订单号!");
-        }
-        Order order = orderInterfaceMapper.selectById(orderId);
-        if(order==null)
-        {
-            return JsonData.buildError("请输入正确的订单号!");
-        }
-        List<Order.OrderItem> OrderItems = orderItemInterfaceMapper.selectList(new QueryWrapper<Order.OrderItem>().eq("order_id", orderId));
-        order.setOrderItems(OrderItems);
-        return JsonData.buildSuccess(order);
-    }
+//    @Override
+//    public JsonData selectById(String orderId) {
+//
+//        if(orderId==null){
+//
+//            return  JsonData.buildError("请输入订单号!");
+//        }
+//        Order order = orderInterfaceMapper.selectById(orderId);
+//        if(order==null)
+//        {
+//            return JsonData.buildError("请输入正确的订单号!");
+//        }
+//        List<Order.OrderItem> OrderItems = orderItemInterfaceMapper.selectList(new QueryWrapper<Order.OrderItem>().eq("order_id", orderId));
+//        order.setOrderItems(OrderItems);
+//        return JsonData.buildSuccess(order);
+//    }
 
         /**
      * @author JDR
@@ -88,23 +85,23 @@ public class OrderInterfaceImpl implements OrderInterface {
         int i= orderInterfaceMapper.deleteById(orderId);
         return i>0?JsonData.buildSuccess("删除成功!"): JsonData.buildError("系统异常,请稍后重试!");
     }
-        /**
-     * @author JDR
-     * @description 修改订单状态
-     * @param  orderId,statusId
-     * @return Order
-     */
-    @Override
-    public JsonData updateOrderSta(String orderId, String statusId) {
-
-        if (orderId==null || statusId==null)
-        {
-            return JsonData.buildError("请输入订单号或选择订单状态!");
-        }
-        Order order = orderInterfaceMapper.selectById(orderId);
-        int i=orderInterfaceMapper.updateById(order.setStatusId(statusId));
-        return i>0?JsonData.buildSuccess("修改成功!"): JsonData.buildError("系统异常,请稍后重试!");
-    }
+//        /**
+//     * @author JDR
+//     * @description 修改订单状态
+//     * @param  orderId,statusId
+//     * @return Order
+//     */
+//    @Override
+//    public JsonData updateOrderSta(String orderId, String statusId) {
+//
+//        if (orderId==null || statusId==null)
+//        {
+//            return JsonData.buildError("请输入订单号或选择订单状态!");
+//        }
+//        Order order = orderInterfaceMapper.selectById(orderId);
+//        int i=orderInterfaceMapper.updateById(order.setStatusId(statusId));
+//        return i>0?JsonData.buildSuccess("修改成功!"): JsonData.buildError("系统异常,请稍后重试!");
+//    }
 
 
     @Override
@@ -123,15 +120,47 @@ public class OrderInterfaceImpl implements OrderInterface {
         }));
         return insert==1&&sum.get()==orderItems.size()?JsonData.buildSuccess("新增订单成功！"):JsonData.buildError("新增订单失败！");
     }
-
+    /**
+     * @author JDR
+     * @description 查询订单byId
+     * @param  orderId
+     * @return JsonData
+     */
     @Override
-    public JsonData findOrderById(String id) {
-        return null;
+    public JsonData findOrderById(String orderId) {
+        if(orderId==null){
+
+            return  JsonData.buildError("订单号不能为空!");
+        }
+        Order order = orderInterfaceMapper.selectById(orderId);
+        if(order==null)
+        {
+            return JsonData.buildError("请输入正确的订单号!");
+        }
+        List<Order.OrderItem> OrderItems = orderItemInterfaceMapper.selectList(new QueryWrapper<Order.OrderItem>().eq("order_id", orderId));
+        order.setOrderItems(OrderItems);
+        return JsonData.buildSuccess(order);
     }
-
+    /**
+     * @author JDR
+     * @description 修改订单状态
+     * @param  id,statusId
+     * @return boolean
+     */
     @Override
-    public boolean changeOrderStatus(int i) {
-        return false;
+    public boolean changeOrderStatus(String id,Integer i) {
+        if(id==null||i==null)
+        {
+            return false;
+        }
+        Order order =orderInterfaceMapper.selectById(id);
+        if(order==null)
+        {
+            return false;
+        }
+        int j= orderInterfaceMapper.updateById(order.setStatusId(i));
+
+        return j>0? true:false;
     }
 
 
