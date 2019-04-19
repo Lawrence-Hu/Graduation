@@ -17,6 +17,7 @@ import order_module.service.AlipayInterface;
 import order_module.service.OrderInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import utils.JsonData;
 
 import java.util.Map;
 import java.util.UUID;
@@ -54,7 +55,7 @@ public class AlipayServiceImpl implements AlipayService {
     @Override
     public String pay(String orderId) throws AlipayApiException {
         //查询商品
-        orderInterface.findOrderById(orderId);
+        JsonData jsonData = orderInterface.findOrderById(orderId);
         AlipayTradeWapPayRequest alipay_request=new AlipayTradeWapPayRequest();
         // 封装请求支付信息
         AlipayTradeWapPayModel model=new AlipayTradeWapPayModel();

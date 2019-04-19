@@ -33,4 +33,45 @@ public class OrderController {
         JsonData jsonData = orderService.addToOrder(order);
         return jsonData;
     }
+
+    /**
+     * orderDetail by page
+     * @return
+     */
+    @PostMapping("/all")
+    public JsonData orderDetail(String currentPage,String pageSize){
+
+        return null;
+    }
+
+    /**
+     * findOrderDetailByOrderId
+     * @param orderId
+     * @return
+     */
+    @PostMapping("/detail")
+    public JsonData orderDetial(String orderId){
+
+        return null;
+    }
+
+    /**
+     * findAllOrderforSellerAll
+     * @return
+     */
+    @PostMapping("/sell/all")
+    public JsonData getSellOrderAll(){
+
+        return null;
+    }
+
+    /**
+     * findOrderDetialforSellerByOrderId
+     * @param orderId
+     * @return
+     */
+    @PostMapping("/sell/detail")
+    public JsonData getSellDetailById(String orderId){
+        return null;
+    }
 }

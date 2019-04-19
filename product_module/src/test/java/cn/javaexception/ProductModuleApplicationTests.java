@@ -44,8 +44,8 @@ public class ProductModuleApplicationTests {
 //        System.out.println(jsonData);
 
 
-        JsonData js = productInterface.findProductStatusById(1);
-        System.out.println(js);
+        //JsonData js = productInterface.findProductStatusById(1);
+       // System.out.println(js);
 
     }
 

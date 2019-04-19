@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
         if (e instanceof org.springframework.web.servlet.NoHandlerFoundException) {
             return JsonData.buildError(404, e.getMessage());
         } else {
-            return JsonData.buildError(500, "服务器内部错误！");
+            return JsonData.buildError(500, "服务器忙，登录失败");
         }
     }
 }
