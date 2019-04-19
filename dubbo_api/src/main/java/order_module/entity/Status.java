@@ -9,6 +9,6 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class Status {
-    private String id;
+    private Integer id;
     private String status;
 }

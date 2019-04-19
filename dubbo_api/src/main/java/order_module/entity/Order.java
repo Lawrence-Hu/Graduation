@@ -21,7 +21,7 @@ import java.util.List;
 public class Order {
     private String id;//订单号
     private String userId;//用户id
-    private String statusId;//订单状态id
+    private Integer statusId;//订单状态id
     private LocalDateTime time;//创建时间
     private float price;//总价格
     @TableField(exist = false)
