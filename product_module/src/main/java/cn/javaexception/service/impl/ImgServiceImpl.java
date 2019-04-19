@@ -1,15 +1,12 @@
 package cn.javaexception.service.impl;
 
-import cn.javaexception.model.Img;
 import cn.javaexception.mapper.ImgMapper;
+import cn.javaexception.model.Img;
 import cn.javaexception.service.ImgService;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
 import org.springframework.stereotype.Service;
 import user_module.service.UserInterface;
-
-import java.util.Collection;
 
 /**
  * <p>
@@ -26,7 +23,7 @@ public class ImgServiceImpl extends ServiceImpl<ImgMapper, Img> implements ImgSe
     @Override
     public void test() {
         System.out.println("service:"+userInterface);
-        userInterface.findUserById(1);
+        userInterface.findUserById("1");
     }
 
 }

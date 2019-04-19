@@ -92,7 +92,7 @@ public class AlipayServiceImpl implements AlipayService {
             float amount = Float.parseFloat(map.get("total_amount").toString());
             //TODO
             //如果一致则修改订单状态
-            orderInterface.changeOrderStatus(1);
+            orderInterface.changeOrderStatus("1",2);
 
         }else{
             throw new RuntimeException("无效的回调");

@@ -16,9 +16,9 @@ public class UserInterfaceImpl implements UserInterface {
     UserInterfaceMapper userInterfaceMapper;
 
     @Override
-    public User findUserById(Integer id) {
+    public User findUserById(String id) {
         //User user = userInterfaceMapper.selectById(id);
-        System.out.println("23");
+       // System.out.println("23");
         return null;
     }
 }

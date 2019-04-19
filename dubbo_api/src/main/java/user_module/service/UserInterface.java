@@ -8,5 +8,5 @@ import user_module.entity.User;
  * 4
  */
 public interface UserInterface {
-    public User findUserById(Integer id);
+    User findUserById(String id);
 }
