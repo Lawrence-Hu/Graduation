@@ -1,5 +1,7 @@
 package cn.javaexception.shrio;
 
+import cn.javaexception.entity.AuthUser;
+import cn.javaexception.mapper.AuthUserMapper;
 import cn.javaexception.mapper.UserMapper;
 import cn.javaexception.service.LocalLoginService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -22,9 +24,9 @@ import java.util.Arrays;
  */
 public class UserRealm extends AuthorizingRealm {
     @Autowired
-    private LocalLoginService localLoginService;
-    @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private AuthUserMapper authUserMapper;
 
     //授权逻辑
     @Override
@@ -37,7 +39,7 @@ public class UserRealm extends AuthorizingRealm {
         //用户未冻结并且已认证
         if (user.getCerification().equals("1") && user.getStatus().equals("0")) {
             //通过认证
-            info.addStringPermission("user,admin");
+            info.addStringPermission(user.getAuthUser().getIdentity());
         }
         return info;
     }
@@ -54,6 +56,9 @@ public class UserRealm extends AuthorizingRealm {
                 .eq("phone", localLogin.getAccount())
                 .or()
                 .eq("account", localLogin.getAccount()));
+        AuthUser authUser = authUserMapper.selectById(user.getRoleId());
+        user.setAuthUser(authUser);
+
         LocalLogin login;
         if (user == null) {
             //用户名不存在

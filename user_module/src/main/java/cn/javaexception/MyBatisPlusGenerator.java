@@ -30,8 +30,7 @@
 //    //作者
 //    private static String authorName = "huchao";
 //    //要生成的表名
-//    private static String[] tables = {"user", "search_logs", "cart", "city",
-//            "deliver_address", "favourite", "local_login", "oauth_login", "province", "search_logs"};
+//    private static String[] tables = {"auth_user"};
 //
 //    //数据库类型
 //    private static DbType dbType = DbType.MYSQL;
@@ -39,7 +38,7 @@
 //    private static String driverName = "com.mysql.cj.jdbc.Driver";
 //    private static String url = "jdbc:mysql://134.175.13.62:3306/user_module?useUnicode=true&useSSL=false&characterEncoding=utf8";
 //    private static String username = "root";
-//    private static String password = "HuChao123.";
+//    private static String password = "QweAsdZxc123.";
 //
 //
 //    public static void main(String[] args) {
@@ -50,7 +49,7 @@
 //         * 获取项目路径
 //         */
 //        try {
-//            canonicalPath = new File("C:\\Users\\Laerence\\IdeaProjects\\Graduation\\user_module").getCanonicalPath();
+//            canonicalPath = new File("/home/huchao/Graduation/user_module").getCanonicalPath();
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }

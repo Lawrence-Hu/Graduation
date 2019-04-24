@@ -1,6 +1,7 @@
 package cn.javaexception.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 
@@ -100,7 +101,7 @@ public class User extends Model<User> {
     /**
      * '角色'
      */
-    private String role;
+    private String roleId;
 
     /**
      * '个人简历'
@@ -116,6 +117,8 @@ public class User extends Model<User> {
      *
      */
     private String identifyingCode;
+    @TableField(exist = false)
+    private AuthUser authUser;
 
     @Override
     protected Serializable pkVal() {

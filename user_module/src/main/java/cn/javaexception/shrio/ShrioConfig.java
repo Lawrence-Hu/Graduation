@@ -25,11 +25,14 @@ public class ShrioConfig {
         Map<String, Filter> filters = shiroFilterFactoryBean.getFilters();
         filters.put("perms",new ShiroAuthorizationInfoFilter());
         Map<String, String> map = new LinkedHashMap<>();
-        map.put("/api/cart/*", "perms[user,admin]");
+        map.put("/api/cart/*", "perms[user]");
         map.put("/api/deliverAddress/*", "perms[user]");
         map.put("/api/favourite/*", "perms[user]");
         map.put("/api/user/*", "perms[user]");
         map.put("/api/order/*", "perms[user]");
+        map.put("/api/admin/super/*", "perms[superAdmin]");
+        map.put("/api/admin/normal/*", "perms[normalAdmin]");
+        map.put("/api/admin/verify/*", "perms[verifyAdmin]");
         map.put("/api/user/register", "anon");
         map.put("/api/local/toLogin", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
