@@ -30,7 +30,7 @@ public class ShrioConfig {
         map.put("/api/favourite/*", "perms[user]");
         map.put("/api/user/*", "perms[user]");
         map.put("/api/order/*", "perms[user]");
-        map.put("/api/admin/super/*", "perms[superAdmin]");
+        map.put("/api/admin/*", "perms[superAdmin]");
         map.put("/api/admin/normal/*", "perms[normalAdmin]");
         map.put("/api/admin/verify/*", "perms[verifyAdmin]");
         map.put("/api/user/register", "anon");
