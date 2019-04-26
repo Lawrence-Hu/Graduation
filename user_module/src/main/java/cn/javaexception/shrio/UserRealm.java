@@ -49,6 +49,7 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         System.out.println("登录认证");
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
+        System.out.println(token.getPassword());
         LocalLogin localLogin = new LocalLogin(Arrays.toString(token.getPassword()), token.getUsername());
         //查询是否有该用户
         User user = userMapper.selectOne(new QueryWrapper<User>().eq("email", localLogin.getAccount())

@@ -102,7 +102,7 @@ public class UserController {
 
     @RequestMapping("/unAuth")
     public JsonData unAuth() {
-        return JsonData.buildError(401, "您没有实名认证！请认证后重试");
+        return JsonData.buildError(401, "您的权限不足!");
     }
 
 }
