@@ -1,13 +1,12 @@
 package cn.javaexception.controller
 
-import cn.javaexception.entity.User
+
 import cn.javaexception.service.AdminService
-import groovy.json.JsonBuilder
-import groovy.json.JsonSlurper
+import cn.javaexception.service.UserService
+import org.apache.shiro.SecurityUtils
+import org.apache.shiro.authz.annotation.RequiresRoles
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import utils.JsonData
 
 @RestController
@@ -15,14 +14,20 @@ import utils.JsonData
 class AdminController {
     @Autowired
     AdminService adminService
+    @Autowired
+    UserService userService
 
-    @GetMapping("/super")
-    def test(String a){
-        def pages = adminService.allUsersByPages
-        println pages.properties
-        def jsonSluper = new JsonSlurper()
-        println(pages.records.class)
-        pages.records<<new User()
-        return JsonData.buildSuccess(pages.properties)
+    @PostMapping("/info/allUsers")
+    @RequiresRoles(["normalAdmin"])
+    def getAllUsers(@RequestBody params){
+        def users = adminService.getAllUsersByPages(params)
+        return JsonData.buildSuccess(users)
+    }
+
+    @GetMapping("/info")
+    @RequiresRoles(["normalAdmin"])
+    def getAdminInfo(){
+        def object = SecurityUtils.getSubject().getPrincipal()
+        return JsonData.buildSuccess(object)
     }
 }

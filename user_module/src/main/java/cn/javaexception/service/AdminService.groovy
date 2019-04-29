@@ -1,5 +1,5 @@
 package cn.javaexception.service
 
 interface AdminService {
-    def getAllUsersByPages()
+    def getAllUsersByPages(parmas)
 }

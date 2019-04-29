@@ -22,10 +22,17 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public JsonData defaultErrorHandler(HttpServletRequest req, Exception e){
-        e.printStackTrace();
         if (e instanceof org.springframework.web.servlet.NoHandlerFoundException) {
             return JsonData.buildError(404, e.getMessage());
-        } else {
+        }
+        if (e instanceof org.apache.shiro.authz.UnauthorizedException){
+            return JsonData.buildError(401,"您的权限不足");
+        }
+        if(e instanceof  org.apache.shiro.authz.UnauthenticatedException){
+            return JsonData.buildError(201, "登录身份失效,请登录!");
+        }
+        else {
+            e.printStackTrace();
             return JsonData.buildError(500, "服务器忙，登录失败");
         }
     }

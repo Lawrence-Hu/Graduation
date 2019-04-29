@@ -2,6 +2,7 @@ package cn.javaexception.controller;
 
 import cn.javaexception.service.OrderService;
 import order_module.entity.Order;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import java.util.List;
  */
 @RequestMapping("/api/order")
 @RestController
+@RequiresRoles({"user"})
 public class OrderController {
     /**
      * productId : 1

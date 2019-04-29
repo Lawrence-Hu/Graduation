@@ -91,7 +91,7 @@ public class User extends Model<User> {
     /**
      * '是否认证 0 否 1是'
      */
-    private String cerification;
+    private String certification;
 
     /**
      * '生日'

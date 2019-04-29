@@ -5,6 +5,7 @@ import cn.javaexception.entity.LocalLogin;
 import cn.javaexception.entity.User;
 import cn.javaexception.service.UserService;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ import java.util.Objects;
  * @since 2019-03-02
  */
 @RestController
+@RequiresRoles({"user"})
 @RequestMapping("/api/user")
 public class UserController {
     @Autowired
@@ -70,21 +72,6 @@ public class UserController {
     }
 
     /**
-     * @param localLogin
-     * @return JsonData
-     * @author huchao
-     * @description 用户注册
-     */
-    @PostMapping
-    public JsonData register(@RequestBody LocalLogin localLogin, Errors errors) {
-        System.out.println(localLogin);
-        if (errors.hasErrors()) {
-            return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
-        }
-        return userService.register(localLogin);
-    }
-
-    /**
      * @param user
      * @return JsonData
      * @author huchao
@@ -100,10 +87,6 @@ public class UserController {
         return userService.sendEmailCode(user);
     }
 
-    @RequestMapping("/unAuth")
-    public JsonData unAuth() {
-        return JsonData.buildError(401, "您的权限不足!");
-    }
 
 }
 

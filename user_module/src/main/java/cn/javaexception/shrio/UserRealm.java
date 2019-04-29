@@ -37,9 +37,9 @@ public class UserRealm extends AuthorizingRealm {
         //获取当前用户
         User user = (User) subject.getPrincipal();
         //用户未冻结并且已认证
-        if (user.getCerification().equals("1") && user.getStatus().equals("0")) {
+        if (user.getCertification().equals("1") && user.getStatus().equals("0")) {
             //通过认证
-            info.addStringPermission(user.getAuthUser().getIdentity());
+            info.addRole(user.getAuthUser().getIdentity());
         }
         return info;
     }
@@ -57,9 +57,6 @@ public class UserRealm extends AuthorizingRealm {
                 .eq("phone", localLogin.getAccount())
                 .or()
                 .eq("account", localLogin.getAccount()));
-        AuthUser authUser = authUserMapper.selectById(user.getRoleId());
-        user.setAuthUser(authUser);
-
         LocalLogin login;
         if (user == null) {
             //用户名不存在
@@ -69,6 +66,9 @@ public class UserRealm extends AuthorizingRealm {
         if (user.getStatus().equals("1")) {
             throw new LockedAccountException();
         }
+        AuthUser authUser = authUserMapper.selectById(user.getRoleId());
+        user.setAuthUser(authUser);
+
         login = localLogin.selectOne(new QueryWrapper<LocalLogin>().eq("account", user.getAccount()));
         //判断密码
         return new SimpleAuthenticationInfo(user, login.getPassword(), getName());

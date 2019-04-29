@@ -5,10 +5,13 @@ import cn.javaexception.filter.ShiroAuthorizationInfoFilter;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.RememberMeManager;
+import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
+import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -28,22 +31,38 @@ public class ShrioConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(defaultWebSecurityManager);
         Map<String, Filter> filters = shiroFilterFactoryBean.getFilters();
-        filters.put("perms",new ShiroAuthorizationInfoFilter());
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("/api/cart/*", "perms[user]");
-        map.put("/api/deliverAddress/*", "perms[user]");
-        map.put("/api/favourite/*", "perms[user]");
-        map.put("/api/user/*", "perms[user]");
-        map.put("/api/order/*", "perms[user]");
-        map.put("/api/admin/*", "perms[superAdmin]");
-        map.put("/api/admin/normal/*", "perms[normalAdmin]");
-        map.put("/api/admin/verify/*", "perms[verifyAdmin]");
-        map.put("/api/user/register", "anon");
-        map.put("/api/local/toLogin", "anon");
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
+//        filters.put("perms",new ShiroAuthorizationInfoFilter());
+//        Map<String, String> map = new LinkedHashMap<>();
+//        map.put("/api/cart/*", "perms[user]");
+//        map.put("/api/deliverAddress/*", "perms[user]");
+//        map.put("/api/favourite/*", "perms[user]");
+//        map.put("/api/user/*", "perms[user]");
+//        map.put("/api/order/*", "perms[user]");
+//        map.put("/api/admin/*", "perms[superAdmin]");
+//        map.put("/api/admin/normal/*", "perms[normalAdmin]");
+//        map.put("/api/admin/verify/*", "perms[verifyAdmin]");
+//        map.put("/api/user/register", "anon");
+//        map.put("/api/local/toLogin", "anon");
+//        shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         shiroFilterFactoryBean.setLoginUrl("/api/local/toLogin");
         shiroFilterFactoryBean.setUnauthorizedUrl("/api/user/unAuth");
         return shiroFilterFactoryBean;
+    }
+
+    @Bean
+    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(DefaultWebSecurityManager defaultWebSecurityManager) {
+        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor
+                = new AuthorizationAttributeSourceAdvisor();
+        authorizationAttributeSourceAdvisor.setSecurityManager(defaultWebSecurityManager);
+        return authorizationAttributeSourceAdvisor;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
+        DefaultAdvisorAutoProxyCreator defaultAAP = new DefaultAdvisorAutoProxyCreator();
+        defaultAAP.setProxyTargetClass(true);
+        return defaultAAP;
     }
 
     @Bean

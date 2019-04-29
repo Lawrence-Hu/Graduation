@@ -5,9 +5,11 @@ import cn.javaexception.mapper.UserMapper;
 import cn.javaexception.entity.LocalLogin;
 import cn.javaexception.entity.User;
 import cn.javaexception.service.LocalLoginService;
+import cn.javaexception.service.UserService;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
@@ -35,6 +37,8 @@ public class LocalLoginController {
     private LocalLoginService localLoginService;
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private UserService userService;
 
     /**
      * @param localLogin
@@ -73,15 +77,19 @@ public class LocalLoginController {
         }
 
     }
-
     /**
+     * @param localLogin
      * @return JsonData
      * @author huchao
-     * @description 跳转登录界面
+     * @description 用户注册
      */
-    @RequestMapping("/toLogin")
-    public JsonData toLogin() {
-        return JsonData.buildError("请登录！");
+    @PostMapping("/register")
+    public JsonData register(@RequestBody LocalLogin localLogin, Errors errors) {
+        System.out.println(localLogin);
+        if (errors.hasErrors()) {
+            return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
+        }
+        return userService.register(localLogin);
     }
 
     @GetMapping("/loginout")

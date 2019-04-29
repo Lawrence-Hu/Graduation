@@ -10,6 +10,7 @@ import com.alipay.api.domain.AlipayFundTransToaccountTransferModel;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayFundTransToaccountTransferRequest;
 import com.alipay.api.response.AlipayFundTransToaccountTransferResponse;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.util.Map;
 
 @RestController
+@RequiresRoles({"user"})
 @RequestMapping("/api/alipay")
 public class AlipayControllor {
     @Autowired
