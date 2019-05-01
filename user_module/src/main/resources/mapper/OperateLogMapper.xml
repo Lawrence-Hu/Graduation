@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.javaexception.mapper.OperateLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.javaexception.entity.OperateLog">
+        <id column="id" property="id" />
+        <result column="operate_category_id" property="operateCategoryId" />
+        <result column="createdTime" property="createdTime" />
+        <result column="opreater_id" property="opreaterId" />
+        <result column="before_operate_data" property="beforeOperateData" />
+        <result column="after_operate_data" property="afterOperateData" />
+        <result column="api_gateway" property="apiGateway" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, operate_category_id, createdTime, opreater_id, before_operate_data, after_operate_data, api_gateway
+    </sql>
+
+</mapper>
