@@ -37,7 +37,7 @@ public class UserRealm extends AuthorizingRealm {
         //获取当前用户
         User user = (User) subject.getPrincipal();
         //用户未冻结并且已认证
-        if (user.getCertification().equals("1") && user.getStatus().equals("0")) {
+        if (user.getCertification().equals("1") && user.getStatus().equals("1")) {
             //通过认证
             info.addRole(user.getAuthUser().getIdentity());
         }
@@ -49,7 +49,7 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         System.out.println("登录认证");
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
-        System.out.println(token.getPassword());
+
         LocalLogin localLogin = new LocalLogin(Arrays.toString(token.getPassword()), token.getUsername());
         //查询是否有该用户
         User user = userMapper.selectOne(new QueryWrapper<User>().eq("email", localLogin.getAccount())
@@ -63,7 +63,7 @@ public class UserRealm extends AuthorizingRealm {
             return null;
         }
         //账户冻结
-        if (user.getStatus().equals("1")) {
+        if (!user.getStatus().equals("1")) {
             throw new LockedAccountException();
         }
         AuthUser authUser = authUserMapper.selectById(user.getRoleId());

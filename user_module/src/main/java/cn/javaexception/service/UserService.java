@@ -15,6 +15,8 @@ import utils.JsonData;
  */
 public interface UserService extends IService<User> {
 
+    User getUserInfoById(String id);
+
     JsonData setDefaultDeliverAddress(User user);
 
     boolean setPhoneNumber(User user);
@@ -25,4 +27,8 @@ public interface UserService extends IService<User> {
     JsonData register(LocalLogin localLogin);
 
     JsonData setEmail(User user);
+
+    JsonData updateUserInfoById(User user);
+
+    User selectUserInfo(User user);
 }

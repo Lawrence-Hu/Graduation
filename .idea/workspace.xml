@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/util/PageUtil.groovy" line="7" mnemonic="0" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="40414db3-593a-43ff-9e83-e7f55aeed878" name="Default Changelist" comment="项目结构更新">
+    <list default="true" id="40414db3-593a-43ff-9e83-e7f55aeed878" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/util/PageUtil.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo_api/dubbo_api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo_api/dubbo_api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/msg_module/msg_module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/msg_module/msg_module.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order_module/order_module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/order_module/order_module.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_module/product_module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/product_module/product_module.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/MyBatisPlusGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/MyBatisPlusGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AdminController.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AdminController.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/shrio/ShrioConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/shrio/ShrioConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/DeliverAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/DeliverAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/Favourite.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/Favourite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/SearchLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/SearchLogs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/AdminService.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/AdminService.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/AdminServiceImpl.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/AdminServiceImpl.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/CartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/DeliverAddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/DeliverAddressServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/FavouriteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/FavouriteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/shrio/UserRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/shrio/UserRealm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user_module/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_module/user_module.iml" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/user_module.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_module/src/test/java/cn/javaexception/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/user_module/src/test/java/cn/javaexception/DemoApplicationTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dubbo_api/target/" />
     <ignored path="$PROJECT_DIR$/order_module/target/" />
@@ -25,17 +38,31 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" show_ignored="true" />
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/DemoApplication.java">
+        <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AdminController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="319">
+              <caret line="62" column="56" lean-forward="true" selection-start-line="62" selection-start-column="56" selection-end-line="62" selection-end-column="56" />
+              <folding>
+                <element signature="e#37#78#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/UserStatusServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -44,22 +71,76 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AdminController.groovy">
+        <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/OperateLogService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+            <state relative-caret-position="216">
+              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/OperateCategoryService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/LocalLoginServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/DemoApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding>
-                <element signature="e#37#72#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/user_module/src/main/resources/application.properties">
+        <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+            <state relative-caret-position="414">
+              <caret line="120" column="42" lean-forward="true" selection-start-line="120" selection-start-column="42" selection-end-line="120" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/UserMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/LocalLoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="73" column="49" selection-start-line="73" selection-start-column="49" selection-end-line="73" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -80,57 +161,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/util/GlobalExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/mapper/BrandMapper.java" />
-        <option value="$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/mapper/CatagoryMapper.java" />
-        <option value="$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/mapper/ImgMapper.java" />
-        <option value="$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/mapper/ProductMapper.java" />
-        <option value="$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/mapper/ProductUnitMapper.java" />
-        <option value="$PROJECT_DIR$/order_module/src/main/java/com/ene/ego/mapper/OrderInterfaceMapper.java" />
-        <option value="$PROJECT_DIR$/order_module/src/main/java/com/ene/ego/mapper/OrderItemInterfaceMapper.java" />
-        <option value="$PROJECT_DIR$/dubbo_api/src/main/java/product_module/service/ProductInterfce.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/OrderInterfaceService.java" />
-        <option value="$PROJECT_DIR$/product_module/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/UserInterfaceImpl.java" />
-        <option value="$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/service/ImgService.java" />
-        <option value="$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/ProductModuleApplication.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/ProvinceServiceImpl.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/ProvinceService.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/ProvinceController.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/HomeController.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/LocalLogin.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/Cart.java" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_1_4_RELEASE.xml" />
-        <option value="$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/service/impl/ProductInterfaceImpl.java" />
-        <option value="$PROJECT_DIR$/order_module/src/main/java/com/ene/ego/interfaceImpl/OrderInterfaceImpl.java" />
-        <option value="$PROJECT_DIR$/order_module/src/main/java/com/ene/ego/beans/Order.java" />
-        <option value="$PROJECT_DIR$/dubbo_api/src/main/java/order_module/entity/Order.java" />
-        <option value="$PROJECT_DIR$/dubbo_api/src/main/java/product_module/service/ProductInterface.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/util/RequestUtils.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AlipayControllor.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/CartServiceImpl.java" />
-        <option value="$PROJECT_DIR$/user_module/pom.xml" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/util/Handler.java" />
         <option value="$PROJECT_DIR$/user_module/src/test/java/cn/javaexception/CartHander.java" />
-        <option value="$PROJECT_DIR$/user_module/src/test/java/cn/javaexception/DemoApplicationTests.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/FavouriteServiceImpl.java" />
         <option value="$PROJECT_DIR$/product_module/src/test/java/cn/javaexception/ProductModuleApplicationTests.java" />
         <option value="$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/controller/ImgController.java" />
         <option value="$PROJECT_DIR$/dubbo_api/src/main/java/user_module/service/UserInterface.java" />
         <option value="$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/service/impl/ImgServiceImpl.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/CartController.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/AlipayServiceImpl.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/UserController.java" />
         <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/DemoApplication.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/AdminService.groovy" />
         <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/filter/CorsFilter.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/UserMapper.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/shrio/UserRealm.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/AdminServiceImpl.groovy" />
         <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/shrio/ShrioConfig.java" />
-        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AdminController.groovy" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AuthUserController.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/CartController.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/CityController.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/DeliverAddressController.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/FavouriteController.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/OauthLoginController.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/ProvinceController.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/SearchLogsController.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AlipayControllor.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/OrderController.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/LocalLoginController.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/util/GlobalExceptionHandler.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/user_module/src/test/java/cn/javaexception/User.java" />
+        <option value="$PROJECT_DIR$/user_module/src/test/java/cn/javaexception/DemoApplicationTests.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/util/PageUtil.groovy" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/AdminService.groovy" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/UserStatus.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/UserStatusServiceImpl.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/UserStatusMapper.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/UserStatusService.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/AdminServiceImpl.groovy" />
         <option value="$PROJECT_DIR$/user_module/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/MyBatisPlusGenerator.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/OperateCategoryMapper.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/OperateLogMapper.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/Cart.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/City.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/DeliverAddress.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/Favourite.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/OperateLog.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/SearchLogs.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/CartServiceImpl.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/DeliverAddressServiceImpl.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/FavouriteServiceImpl.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/shrio/UserRealm.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/User.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/UserService.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/UserMapper.java" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AdminController.groovy" />
+        <option value="$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/UserServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -166,7 +247,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -214,13 +295,63 @@
               <item name="user_module" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javaexception" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graduation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="user_module" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javaexception" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graduation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="user_module" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javaexception" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graduation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="user_module" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javaexception" type="462c0819:PsiDirectoryNode" />
+              <item name="shrio" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graduation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="user_module" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javaexception" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graduation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="user_module" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graduation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -233,10 +364,14 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556274582204" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -265,6 +400,19 @@
     <option name="contentProportion" value="0.3116883" />
   </component>
   <component name="RunManager" selected="Spring Boot.DemoApplication">
+    <configuration name="MyBatisPlusGenerator (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.javaexception.MyBatisPlusGenerator" />
+      <module name="user_module" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.javaexception.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MyBatisPlusGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cn.javaexception.MyBatisPlusGenerator" />
       <module name="product_module" />
@@ -274,6 +422,37 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="user_module" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.javaexception.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.javaexception" />
+      <option name="MAIN_CLASS_NAME" value="cn.javaexception.DemoApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="user_module" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.javaexception.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.javaexception" />
+      <option name="MAIN_CLASS_NAME" value="cn.javaexception.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -315,6 +494,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.DemoApplication" />
+        <item itemvalue="Application.MyBatisPlusGenerator (1)" />
+        <item itemvalue="JUnit.DemoApplicationTests" />
+        <item itemvalue="JUnit.DemoApplicationTests.contextLoads" />
         <item itemvalue="Application.MyBatisPlusGenerator" />
       </list>
     </recent_temporary>
@@ -360,6 +542,11 @@
       <workItem from="1556246134616" duration="7816000" />
       <workItem from="1556260320555" duration="2017000" />
       <workItem from="1556273173185" duration="1391000" />
+      <workItem from="1556623863594" duration="6363000" />
+      <workItem from="1556638096879" duration="750000" />
+      <workItem from="1556640110353" duration="462000" />
+      <workItem from="1556684622618" duration="1463000" />
+      <workItem from="1556687630604" duration="26555000" />
     </task>
     <task id="LOCAL-00001" summary="项目结构更新">
       <created>1554108535776</created>
@@ -396,11 +583,50 @@
       <option name="project" value="LOCAL" />
       <updated>1556176312778</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update权限问题">
+      <created>1556519575613</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1556519575613</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="DemoApplicationTests - 2019.04.30 at 20h 16m 25s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests_contextLoads - 2019.04.30 at 20h 23m 37s.xml">
+      <configuration name="DemoApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.04.30 at 20h 28m 00s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.04.30 at 20h 28m 28s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.04.30 at 20h 28m 41s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.04.30 at 20h 35m 57s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.04.30 at 20h 36m 49s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.04.30 at 20h 37m 02s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.04.30 at 20h 49m 02s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.04.30 at 20h 49m 13s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59310000" />
+    <option name="totallyTimeSpent" value="103319000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -412,10 +638,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="26" width="1920" height="1054" extended-state="6" />
+    <frame x="0" y="31" width="2560" height="1410" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19829424" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21354581" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -423,9 +649,10 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Problems" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33841133" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33829287" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -434,11 +661,11 @@
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49946696" weight="0.3297062" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50159913" side_tool="true" weight="0.4319913" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32535365" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32498044" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.4978678" weight="0.3297062" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="15" sideWeight="0.49840087" visible="true" weight="0.42981502" />
+      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.4978678" weight="0.32889584" />
+      <window_info anchor="bottom" id="Run Dashboard" order="15" sideWeight="0.49840087" visible="true" weight="0.4275646" />
       <window_info anchor="bottom" id="Duplicate detector" order="16" weight="0.3297062" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -534,186 +761,150 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="项目结构更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="项目结构更新" />
+    <MESSAGE value="update权限问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="update权限问题" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/OauthLoginServiceImpl.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar!/javax/validation/constraints/Size.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
+        <state relative-caret-position="216">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar!/javax/validation/constraints/Min.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar!/javax/validation/constraints/Max.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/UserInterfaceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.5.RELEASE/spring-web-5.1.5.RELEASE.jar!/org/springframework/web/bind/annotation/RequestBody.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/util/PageUtil.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding>
+            <element signature="e#31#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/AlipayServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/UserStatusController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/LocalLoginServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/AdminService.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        <state relative-caret-position="90">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/HomeServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="366">
+          <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/DeliverAddressController.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/UserStatusService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        <state relative-caret-position="216">
+          <caret line="13" column="57" selection-start-line="13" selection-start-column="57" selection-end-line="13" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/DeliverAddressService.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/MyBatisPlusGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        <state relative-caret-position="667">
+          <caret line="127" column="53" lean-forward="true" selection-start-line="127" selection-start-column="53" selection-end-line="127" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/DeliverAddressServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/OperateCategoryMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
+        <state relative-caret-position="216">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/OrderServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/OperateLogMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        <state relative-caret-position="216">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/product_module/src/test/java/cn/javaexception/ProductModuleApplicationTests.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/OperateCategoryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="657">
-          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dubbo_api/src/main/java/order_module/service/OrderInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/ProductModuleApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="12" column="27" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/service/impl/BrandServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
+        <state relative-caret-position="270">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/service/impl/CategoryItemsServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/UserStatusMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/service/impl/CategoryServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/service/impl/HomeServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/controller/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/controller/ImgController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-710">
-          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/service/ImgService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dubbo_api/src/main/java/user_module/service/UserInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product_module/src/main/java/cn/javaexception/service/impl/ImgServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="108">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/UserInterfaceImpl.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/AdminServiceImpl.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="560">
+          <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+          <folding>
+            <element signature="e#40#75#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/.gitignore" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="jar:///usr/local/jdk/lib/src.zip!/java.base/java/time/LocalDateTime.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/vo/OrderVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/vo/AlipayQueryResponseVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-471">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/OrderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/AlipayServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
+        <state relative-caret-position="198">
+          <caret line="208" column="31" selection-start-line="208" selection-start-column="18" selection-end-line="208" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -724,182 +915,236 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.7.1/mybatis-plus-core-3.0.7.1.jar!/com/baomidou/mybatisplus/core/mapper/BaseMapper.class">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/Cart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+        <state relative-caret-position="445">
+          <caret line="56" column="16" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/AdminService.groovy">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/City.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="396">
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/LocalLoginController.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/DeliverAddress.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="69" column="27" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="27" />
+        <state relative-caret-position="445">
+          <caret line="82" column="16" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/UserController.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/Favourite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+        <state relative-caret-position="445">
+          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/util/RequestUtils.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/LocalLogin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="236">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/util/SendJMail.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/OauthLogin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="234">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/util/FormatValidator.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/OperateCategory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="270">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/filter/ShiroAuthenticationInfoFilter.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/Province.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="37" column="83" selection-start-line="37" selection-start-column="77" selection-end-line="37" selection-end-column="83" />
+        <state relative-caret-position="270">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/filter/CorsFilter.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/UserStatus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="25" column="82" selection-start-line="25" selection-start-column="82" selection-end-line="25" selection-end-column="82" />
+        <state relative-caret-position="360">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/UserInterfaceMapper.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/CartServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        <state relative-caret-position="198">
+          <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AlipayControllor.java">
+    <entry file="jar:///usr/local/jdk/lib/src.zip!/java.base/java/util/Date.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="73" column="13" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AuthUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dubbo_api/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/CartController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        <state relative-caret-position="234">
+          <caret line="165" column="11" selection-start-line="165" selection-start-column="11" selection-end-line="165" selection-end-column="11" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#6467#6468#0" expanded="true" />
+            <element signature="e#6515#6516#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/CityMapper.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/DeliverAddressServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="15" selection-start-line="15" selection-end-line="16" />
+        <state relative-caret-position="576">
+          <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/AuthUserMapper.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/FavouriteServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/shrio/UserRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/AdminServiceImpl.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#39#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1387">
-          <caret line="73" column="19" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="19" />
+        <state relative-caret-position="90">
+          <caret line="75" column="16" selection-start-line="75" selection-start-column="16" selection-end-line="75" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/shrio/ShrioConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="44" column="54" lean-forward="true" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
+        <state relative-caret-position="18">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/DemoApplication.java">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/shrio/UserRealm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="542">
+          <caret line="69" column="34" lean-forward="true" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AdminController.groovy">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/filter/CorsFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+        <state relative-caret-position="445">
+          <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/SearchLogs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/local/jdk/lib/src.zip!/java.base/java/io/ObjectStreamClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="2189" selection-start-line="2189" selection-end-line="2189" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/OperateLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="72" column="16" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/LocalLoginService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/LocalLoginServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/LocalLoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="73" column="49" selection-start-line="73" selection-start-column="49" selection-end-line="73" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/DemoApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
-            <element signature="e#37#72#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_module/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+        <state relative-caret-position="504">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/UserStatusServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/OperateLogService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/OperateCategoryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/controller/AdminController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="62" column="56" lean-forward="true" selection-start-line="62" selection-start-column="56" selection-end-line="62" selection-end-column="56" />
+          <folding>
+            <element signature="e#37#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_module/src/main/java/cn/javaexception/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="120" column="42" lean-forward="true" selection-start-line="120" selection-start-column="42" selection-end-line="120" selection-end-column="42" />
         </state>
       </provider>
     </entry>

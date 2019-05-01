@@ -16,6 +16,7 @@ import product_module.service.ProductInterface;
 import utils.JsonData;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -65,7 +66,7 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
         productInterface.updateHotIndexById(favourite.getProductId(), Boolean.TRUE);
         //添加数据
         System.out.println(favourite);
-        int i = favouriteMapper.insert(favourite.setTime(LocalDateTime.now()).setUserId(principal.getId()));
+        int i = favouriteMapper.insert(favourite.setTime(new Date()).setUserId(principal.getId()));
 
         return i > 0? JsonData.buildSuccess("添加成功！") : JsonData.buildError("添加失败！");
     }

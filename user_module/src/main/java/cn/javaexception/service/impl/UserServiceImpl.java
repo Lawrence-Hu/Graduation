@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import utils.JsonData;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -100,6 +101,38 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return JsonData.buildError("验证码不正确！");
     }
 
+    @Override
+    public JsonData updateUserInfoById(User user) {
+        //判断是否用户的的信息谁否已被占用
+        List<User> list = userMapper.selectList(new QueryWrapper<User>().eq("phone", user.getPhone()).or().eq("email", user.getEmail()));
+        if (list == null) {
+            int i = userMapper.updateById(user);
+            return i > 0 ? JsonData.buildSuccess("修改成功!") : JsonData.buildError("未修改任何信息,请检查信息是否正确");
+        } else {
+            for (User temp : list) {
+                if (temp.getId().equals(user.getId())) {
+                    int i = userMapper.updateById(user);
+                    return i > 0 ? JsonData.buildSuccess("修改成功!") : JsonData.buildError("未修改任何信息,请检查信息是否正确");
+                } else {
+                    return JsonData.buildError("更新失败,邮箱或手机号已被占用!");
+                }
+            }
+        }
+      return JsonData.buildError("更新失败,邮箱或手机号已被占用!");
+    }
+
+    @Override
+    public User selectUserInfo(User user) {
+        User select = userMapper.selectOne(new QueryWrapper<User>().select("id", "alipay_account", "certification", "email", "role_id", "status", "phone", "name").eq("id", user.getId()));
+        return select;
+    }
+
+    @Override
+    public User getUserInfoById(String id) {
+        User user = userMapper.selectById(id);
+        return user;
+    }
+
     /**
      * @param user
      * @return boolean
@@ -125,19 +158,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         } else {
             return JsonData.buildError("设置失败，请刷新后重试！");
         }
-    }
-
-    /**
-     * @param user
-     * @return boolean
-     * @author huchao
-     * @description 判断是否为当前用户！
-     */
-
-    private boolean isCurrentUser(User user) {
-        Subject subject = SecurityUtils.getSubject();
-        User principal = (User) subject.getPrincipal();
-        return !user.getId().equals(principal.getId());
     }
 
     /**

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import utils.JsonData;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -35,7 +36,7 @@ public class DeliverAddressServiceImpl extends ServiceImpl<DeliverAddressMapper,
         //判断省id在不在
         //判断城市id在不在
         //城市id与省id是否一致
-        int insert = deliverAddressMapper.insert(address.setUserId(principal.getId()).setCreateTime(LocalDateTime.now()));
+        int insert = deliverAddressMapper.insert(address.setUserId(principal.getId()).setCreateTime(new Date()));
         return insert > 0 ? JsonData.buildSuccess("添加地址成功！") : JsonData.buildError("添加地址失败！");
     }
 
@@ -79,7 +80,7 @@ public class DeliverAddressServiceImpl extends ServiceImpl<DeliverAddressMapper,
             return JsonData.buildError("更新失败");
         }
         //更新地址
-        boolean b = ret.setUpdateTime(LocalDateTime.now()).updateById();
+        boolean b = ret.setUpdateTime(new Date()).updateById();
         return b?JsonData.buildSuccess("更新成功"):JsonData.buildError("更新失败");
     }
 }

@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -69,7 +70,7 @@ public class User extends Model<User> {
     /**
      * '创建时间'
      */
-    private LocalDateTime createdTime;
+    private Date createdTime;
 
     /**
      * '个人签名'
@@ -86,7 +87,7 @@ public class User extends Model<User> {
     /**
      * '上次登录时间'
      */
-    private LocalDateTime lastLoginTime;
+    private Date lastLoginTime;
 
     /**
      * '是否认证 0 否 1是'
@@ -96,7 +97,7 @@ public class User extends Model<User> {
     /**
      * '生日'
      */
-    private LocalDateTime birthday;
+    private Date birthday;
 
     /**
      * '角色'
@@ -116,6 +117,10 @@ public class User extends Model<User> {
      * '验证码'
      *
      */
+    private String alipayAccount;
+    @TableField(exist = false)
+    private UserStatus userStatus;
+    @TableField(exist = false)
     private String identifyingCode;
     @TableField(exist = false)
     private AuthUser authUser;

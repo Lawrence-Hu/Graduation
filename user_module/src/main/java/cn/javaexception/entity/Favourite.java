@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -41,7 +42,7 @@ public class Favourite extends Model<Favourite> {
     /**
      * 喜欢时间
      */
-    private LocalDateTime time;
+    private Date time;
 
 
     @Override
