@@ -20,6 +20,7 @@ import utils.JsonData;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -49,7 +50,6 @@ public class LocalLoginController {
 
     @PostMapping("/login")
     public JsonData login(@RequestBody @Valid LocalLogin localLogin, Errors errors) {
-        System.out.println("login");
         //数据校验
         if (errors.hasErrors()) {
             return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
@@ -60,13 +60,12 @@ public class LocalLoginController {
         try {
             subject.login(token);
             //更新用户登录信息
-            userMapper.update(null, new UpdateWrapper<User>().set("last_login_time", LocalDateTime.now())
+            userMapper.update(null, new UpdateWrapper<User>().set("last_login_time", new Date())
                                                                    .eq("email", localLogin.getAccount())
                                                                    .or()
                                                                    .eq("phone", localLogin.getAccount())
                                                                    .or()
                                                                    .eq("account", localLogin.getAccount()));
-            System.out.println(SecurityUtils.getSubject().isRemembered());
             return JsonData.buildSuccess("登录成功");
         } catch (UnknownAccountException e) {
             return JsonData.buildError("用户名不存在");

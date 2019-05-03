@@ -1,6 +1,5 @@
 package cn.javaexception.service.impl
 
-
 import cn.javaexception.entity.User
 import cn.javaexception.entity.UserStatus
 import cn.javaexception.mapper.AuthUserMapper

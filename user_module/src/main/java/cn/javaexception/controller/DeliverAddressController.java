@@ -69,7 +69,6 @@ public class DeliverAddressController {
         if (addressIds.length==0){
             return JsonData.buildError("地址id不能为空！！");
         }
-        System.out.println(Arrays.asList(addressIds));
         return deliverAddressService.deleteAddress(addressIds);
     }
 }

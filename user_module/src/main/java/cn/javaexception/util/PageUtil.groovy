@@ -10,4 +10,12 @@ class PageUtil {
     @NotNull(message="分页数量不能为空")
     @Min(message = "当前页不合法",value = 0L)
     Long currentPage
+
+    @Override
+    String toString() {
+        return "PageUtil{" +
+                "pageSize=" + pageSize +
+                ", currentPage=" + currentPage +
+                '}'
+    }
 }

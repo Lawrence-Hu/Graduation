@@ -1,13 +1,12 @@
 package cn.javaexception.controller
 
-import cn.javaexception.entity.OperateLog
+import cn.javaexception.annotation.OperateAnnotation
+import cn.javaexception.entity.OperateCategory
 import cn.javaexception.entity.User
 import cn.javaexception.service.AdminService
 import cn.javaexception.service.OperateLogService
 import cn.javaexception.service.UserService
 import cn.javaexception.util.PageUtil
-import com.alibaba.fastjson.JSON
-import com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.shiro.SecurityUtils
 import org.apache.shiro.authz.annotation.Logical
 import org.apache.shiro.authz.annotation.RequiresRoles
@@ -47,30 +46,18 @@ class AdminController {
 
     @PostMapping("/user/update")
     @RequiresRoles(value ="superAdmin")
-    def updateUserInfo(@RequestBody User user){
+    @OperateAnnotation(service=UserService.class,params = User.class,category = OperateCategory.user_info)
+    def updateUserInfo(@RequestBody @Valid User user,Errors errors){
+        if (errors.hasErrors()){
+            return JsonData.buildError(errors.getFieldError().getDefaultMessage())
+        }
          //如果权限不同不能修改
         def principal =(User) SecurityUtils.getSubject().getPrincipal()
        if(userService.getById(user.getId()).getRoleId()==userService.getById(principal.getId()).getRoleId()){
            return JsonData.buildError("您不能修改和你权限相同的用户!")
        }
-        //保存用户信息
-        def before = userService.selectUserInfo(user)
-
         //更新
         def data =userService.updateUserInfoById(user)
-        //加入操作作日志
-        if(data.getCode()==0){
-            def after = userService.selectUserInfo(user)
-            def id = principal.getId()
-            OperateLog log = new OperateLog()
-            //json转换
-            log.setBeforeOperateData(JSON.toJSONString(before))
-            log.setAfterOperateData(JSON.toJSONString(after))
-            log.setCreatedTime(new Date())
-            log.setOpreaterId(id)
-            log.setOperateCategoryId("修改用户信息")
-            operateLogService.save(log)
-        }
         return data
     }
 }

@@ -31,9 +31,12 @@ public class GlobalExceptionHandler {
         if(e instanceof  org.apache.shiro.authz.UnauthenticatedException){
             return JsonData.buildError(201, "登录身份失效,请登录!");
         }
+        if(e instanceof org.springframework.http.converter.HttpMessageNotReadableException){
+            return JsonData.buildError("请求参数错误!");
+        }
         else {
             e.printStackTrace();
-            return JsonData.buildError(500, "服务器忙，登录失败");
+            return JsonData.buildError(500, "服务器忙,请稍后重试");
         }
     }
 }

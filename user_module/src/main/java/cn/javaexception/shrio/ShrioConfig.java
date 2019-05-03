@@ -1,8 +1,5 @@
 package cn.javaexception.shrio;
 
-import cn.javaexception.filter.ShiroAuthenticationInfoFilter;
-import cn.javaexception.filter.ShiroAuthorizationInfoFilter;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.RememberMeManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -16,7 +13,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.Filter;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -58,7 +54,7 @@ public class ShrioConfig {
     }
 
     @Bean
-    @ConditionalOnMissingBean
+    //@ConditionalOnMissingBean
     public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
         DefaultAdvisorAutoProxyCreator defaultAAP = new DefaultAdvisorAutoProxyCreator();
         defaultAAP.setProxyTargetClass(true);

@@ -30,5 +30,5 @@ public interface UserService extends IService<User> {
 
     JsonData updateUserInfoById(User user);
 
-    User selectUserInfo(User user);
+    User operateLog(User user);
 }
