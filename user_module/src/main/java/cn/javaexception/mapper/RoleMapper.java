@@ -1,6 +1,6 @@
 package cn.javaexception.mapper;
 
-import cn.javaexception.entity.AuthUser;
+import cn.javaexception.entity.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2019-04-24
  */
 @Mapper
-public interface AuthUserMapper extends BaseMapper<AuthUser> {
+public interface RoleMapper extends BaseMapper<Role> {
 
 }

@@ -30,7 +30,7 @@
 //    //作者
 //    private static String authorName = "huchao";
 //    //要生成的表名
-//    private static String[] tables = {"operate_log","operate_category"};
+//    private static String[] tables = {"permission","role_permission"};
 //
 //    //数据库类型
 //    private static DbType dbType = DbType.MYSQL;

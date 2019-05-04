@@ -1,11 +1,11 @@
 package cn.javaexception.service.impl;
 
+import cn.javaexception.entity.User;
 import cn.javaexception.mapper.DeliverAddressMapper;
 import cn.javaexception.mapper.UserMapper;
-import cn.javaexception.entity.LocalLogin;
-import cn.javaexception.entity.User;
 import cn.javaexception.service.UserService;
 import cn.javaexception.util.SendJMail;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.shiro.SecurityUtils;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import utils.JsonData;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -35,31 +34,27 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private DeliverAddressMapper deliverAddressMapper;
 
     /**
-     * @param localLogin
+     * @param account
      * @return map
      * @author huchao
      * @description 用户注册
      */
     @Override
-    public JsonData register(LocalLogin localLogin) {
+    public JsonData register(String account,String password) {
         //判断用户是否存在
-        if (null != userMapper.selectOne(new QueryWrapper<User>()
-                .eq("account", localLogin.getAccount())
+        if (!userMapper.selectList(new QueryWrapper<User>()
+                .eq("account", account)
                 .or()
-                .eq("phone", localLogin.getAccount())
+                .eq("phone", account)
                 .or()
-                .eq("email", localLogin.getAccount()))) {
-            return JsonData.buildError("用户已存在!");
+                .eq("email", account)).isEmpty()) {
+            return JsonData.buildError("用户名已被占用!");
         }
         //用户注册
-        int i = userMapper.insert(new User().setAccount(localLogin.getAccount()).setCreatedTime(new Date()));
-        boolean b = localLogin.insert();
+        User user = new User().setAccount(account).setPassword(password).setCreatedTime(new Date());
 
-        if (i > 0 && b) {
-            return JsonData.buildSuccess("用户注册成功！");
-        } else {
-            return JsonData.buildError("用户注册失败，请重试！");
-        }
+        return userMapper.insert(user) >0? JsonData.buildSuccess("用户注册成功！"):JsonData.buildError("用户注册失败，请重试！");
+
     }
 
     /**
@@ -102,90 +97,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return JsonData.buildError("验证码不正确！");
     }
 
-    @Override
-    public JsonData updateUserInfoById(User user) {
-//        //判断是否用户的的信息谁否已被占用
-//        User temp1 = userMapper.selectOne(new QueryWrapper<User>().eq("phone", user.getPhone()).or().eq("email",user.getPhone()));
-//
-//        User temp2 = userMapper.selectOne(new QueryWrapper<User>().eq("email", user.getEmail()).or().eq("phone",user.getEmail()));
-//        if (temp1==null&&temp2==null) {
-//            System.out.println("直接修改");
-//            int i = userMapper.updateById(user);
-//            return i > 0 ? JsonData.buildSuccess("修改成功!") : JsonData.buildError("未修改任何信息,请检查信息是否正确");
-//        }
-//        //手机号没有占用
-//        if(temp1==null&&temp2.getId().equals(user.getId())){
-//            System.out.println("1");
-//            int i = userMapper.updateById(user);
-//            return i > 0 ? JsonData.buildSuccess("修改成功!") : JsonData.buildError("未修改任何信息,请检查信息是否正确");
-//        }
-//        //邮箱没有被占用
-//        if (temp2==null&&temp1.getId().equals(user.getId())){
-//            System.out.println("2");
-//            int i = userMapper.updateById(user);
-//            return i > 0 ? JsonData.buildSuccess("修改成功!") : JsonData.buildError("未修改任何信息,请检查信息是否正确");
-//        }
-//        //邮箱和手机号都没有占用
-//        if(temp1.getId().equals(user.getId()) && temp2.getId().equals(user.getId())){
-//            System.out.println("3");
-//            int i = userMapper.updateById(user);
-//            return i > 0 ? JsonData.buildSuccess("修改成功!") : JsonData.buildError("未修改任何信息,请检查信息是否正确");
-//        }
-//       return JsonData.buildError("修改失败!,手机号或邮箱已被占用!");
-        //直接更新
-        User dbUser = userMapper.selectById(user.getId());
-        boolean isUpdateEmail = userMapper.selectList(new QueryWrapper<User>()
-                .eq("phone", user.getEmail())
-                .or()
-                .eq("email", user.getEmail())).stream().allMatch(u -> dbUser.getId().equals(u.getId()));
-        boolean isUpdatePhone = userMapper.selectList(new QueryWrapper<User>()
-                .eq("phone",user.getPhone())
-                .or()
-                .eq("email",user.getPhone())).stream().allMatch(u-> u.getId().equals(dbUser.getId()));
-
-        //没有修改邮箱修改了手机号
-        if(user.getEmail().equals(dbUser.getEmail())&&!user.getPhone().equals(dbUser.getPhone())){
-            if(isUpdatePhone){
-                //执行更新
-                System.out.println("修改了手机号");
-              return userMapper.updateById(user)!=0?JsonData.buildSuccess("修改用户信息成功!"):JsonData.buildSuccess("修改用户信息失败!");
-            }else{
-                return JsonData.buildError("修改失败!手机号已被占用!");
-            }
-        }
-        //没有修改手机号修改了邮箱
-        if(user.getPhone()!=null&&!user.getEmail().equals(dbUser.getEmail())&&user.getPhone().equals(dbUser.getPhone())){
-            if(isUpdateEmail){
-                //执行更新
-                System.out.println("修改了邮箱");
-                return userMapper.updateById(user)!=0?JsonData.buildSuccess("修改用户信息成功!"):JsonData.buildSuccess("修改用户信息失败!");
-            }else{
-                return JsonData.buildError("修改失败!邮箱号已被占用!");
-            }
-        }
-        //修改了手机号修改了邮箱
-        if(!user.getEmail().equals(dbUser.getEmail())&&!user.getPhone().equals(dbUser.getPhone())){
-            if(isUpdateEmail&&isUpdatePhone){
-                //执行更新
-                System.out.println("都修改了");
-                return userMapper.updateById(user)!=0?JsonData.buildSuccess("修改用户信息成功!"):JsonData.buildSuccess("修改用户信息失败!");
-            }
-        }
-        //都没修改直接更新
-        System.out.println("都没修改");
-        return userMapper.updateById(user)!=0?JsonData.buildSuccess("修改用户信息成功!"):JsonData.buildError("未修改任何信息!");
-    }
 
     @Override
-    public User operateLog(User user) {
-        User select = userMapper.selectOne(new QueryWrapper<User>().select("id","address", "alipay_account", "certification", "email", "role_id", "status", "phone", "name").eq("id", user.getId()));
-        return select;
+    public User operateLog(JSONObject data) {
+        System.err.println(data);
+        return userMapper.selectOne(new QueryWrapper<User>().select("id","address", "alipay_account", "certification", "email", "role_id", "status", "phone", "name").eq("id", data.get("id")));
     }
+
 
     @Override
     public User getUserInfoById(String id) {
-        User user = userMapper.selectById(id);
-        return user;
+        return userMapper.selectById(id);
     }
 
     /**
@@ -242,9 +164,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //获取用户最新的邮箱信息
         User dbUser = principal.selectById();
         //生成验证码
-        Long l = System.currentTimeMillis();
+        long l = System.currentTimeMillis();
 
-        String strCode =l.toString().substring(0,6);
+        String strCode = Long.toString(l).substring(0,6);
         //如果用户没有绑定
         try {
             if (dbUser.getEmail() == null || "".equals(dbUser.getEmail())) {

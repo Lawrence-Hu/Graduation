@@ -17,13 +17,13 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class AuthUser extends Model<AuthUser> {
+public class Role extends Model<Role> {
 
     private static final long serialVersionUID = 1L;
 
     private String id;
 
-    private String authName;
+    private String roleName;
 
     private String identity;
 

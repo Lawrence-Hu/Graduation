@@ -19,6 +19,10 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class UserStatus extends Model<UserStatus> {
 
+    public static final String STATUS_OK = "1";
+    public static final String STATUS_FROZEN = "2";
+    public static final String STATUS_ABNORMAL = "3";
+
     private static final long serialVersionUID = 1L;
 
     private String id;

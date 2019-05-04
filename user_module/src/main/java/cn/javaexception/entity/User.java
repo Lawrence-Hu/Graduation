@@ -45,6 +45,10 @@ public class User extends Model<User> {
     private String name;
 
     /**
+     * 'mima
+     */
+    private String password;
+    /**
      * '账号'
      */
     private String account;
@@ -136,7 +140,7 @@ public class User extends Model<User> {
     private UserStatus userStatus;
 
     @TableField(exist = false)
-    private AuthUser authUser;
+    private Role role;
 
     @Override
     protected Serializable pkVal() {

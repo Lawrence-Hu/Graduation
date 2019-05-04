@@ -1,6 +1,6 @@
 package cn.javaexception.service;
 
-import cn.javaexception.entity.AuthUser;
+import cn.javaexception.entity.Role;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author huchao
  * @since 2019-04-24
  */
-public interface AuthUserService extends IService<AuthUser> {
+public interface RoleService extends IService<Role> {
 
 }

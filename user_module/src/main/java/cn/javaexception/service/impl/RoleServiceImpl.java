@@ -1,8 +1,8 @@
 package cn.javaexception.service.impl;
 
-import cn.javaexception.entity.AuthUser;
-import cn.javaexception.mapper.AuthUserMapper;
-import cn.javaexception.service.AuthUserService;
+import cn.javaexception.entity.Role;
+import cn.javaexception.mapper.RoleMapper;
+import cn.javaexception.service.RoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-04-24
  */
 @Service
-public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> implements AuthUserService {
+public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
 }

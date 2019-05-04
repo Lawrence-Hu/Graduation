@@ -12,10 +12,8 @@ import org.springframework.context.annotation.Bean;
 public class DemoApplication {
     @Bean
     public PaginationInterceptor paginationInterceptor() {
-        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
-        return paginationInterceptor;
+        return new PaginationInterceptor();
     }
-
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
