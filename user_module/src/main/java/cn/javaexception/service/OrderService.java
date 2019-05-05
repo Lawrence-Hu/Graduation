@@ -1,10 +1,7 @@
 package cn.javaexception.service;
 
-import order_module.entity.Order;
-import utils.JsonData;
-
-import java.util.List;
+import cn.javaexception.util.JsonData;
 
 public interface OrderService {
-   JsonData addToOrder(List<Order.OrderItem> orderVos);
+   JsonData addToOrder();
 }

@@ -1,22 +1,21 @@
 package cn.javaexception.service.impl;
 
-import cn.javaexception.mapper.UserMapper;
 import cn.javaexception.entity.Cart;
-import cn.javaexception.mapper.CartMapper;
+import cn.javaexception.entity.Product;
 import cn.javaexception.entity.User;
+import cn.javaexception.entity.UserStatus;
+import cn.javaexception.mapper.CartMapper;
+import cn.javaexception.mapper.ProductMapper;
+import cn.javaexception.mapper.UserMapper;
 import cn.javaexception.service.CartService;
-import com.alibaba.dubbo.config.annotation.Reference;
+import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import product_module.entity.Product;
-import product_module.service.ProductInterface;
-import utils.JsonData;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -32,8 +31,8 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
 
     @Autowired
     private CartMapper cartMapper;
-    @Reference
-    private ProductInterface productInterface;
+    @Autowired
+    private ProductMapper productMapper;
     @Autowired
     private UserMapper userMapper;
 
@@ -49,13 +48,11 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         Subject subject = SecurityUtils.getSubject();
         User principal = (User) subject.getPrincipal();
         //查询该商品
-        JsonData jsonData = productInterface.findProductById(cart.getProductId());
-        Product product;
-        if (jsonData.getCode() != -1){
-            product = (Product) jsonData.getData();
+        Product product = productMapper.selectById(cart.getProductId());
+        //判断产品是否存在
+        if (product == null) {
+            return JsonData.buildError("该商品不存在呢！");
         }
-        else
-            return jsonData;
         //查询供应商
         User supplier = userMapper.selectById(product.getUserId());
         //查询购物车
@@ -63,10 +60,6 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         //判断是否购物车已有该商品
         if (dbCart != null) {
             return JsonData.buildError("购物车里面已经有商品呢！");
-        }
-        //判断产品是否存在
-        if (product == null) {
-            return JsonData.buildError("该商品不存在呢！");
         }
         //判断数量是否足够
         if (product.getProductsStock() < cart.getQuantity()) {
@@ -77,7 +70,7 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
             return JsonData.buildError("不能把自己的商品放入购物车哦！");
         }
         //判断供应商是否冻结或实名
-        if (supplier.getStatus().equals("1")) {
+        if (supplier.getStatus().equals(UserStatus.STATUS_FROZEN)) {
             return JsonData.buildError("供应商账号异常呢！暂时不能购买！");
         }
         cart.setAddTime(new Date()).setSupplierId(supplier.getId()).setUserId(principal.getId());

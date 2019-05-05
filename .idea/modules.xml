@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/dubbo_api/dubbo_api.iml" filepath="$PROJECT_DIR$/dubbo_api/dubbo_api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/msg_module/msg_module.iml" filepath="$PROJECT_DIR$/msg_module/msg_module.iml" />
-      <module fileurl="file://$PROJECT_DIR$/order_module/order_module.iml" filepath="$PROJECT_DIR$/order_module/order_module.iml" />
-      <module fileurl="file://$PROJECT_DIR$/product_module/product_module.iml" filepath="$PROJECT_DIR$/product_module/product_module.iml" />
       <module fileurl="file://$PROJECT_DIR$/user_module/user_module.iml" filepath="$PROJECT_DIR$/user_module/user_module.iml" />
     </modules>
   </component>

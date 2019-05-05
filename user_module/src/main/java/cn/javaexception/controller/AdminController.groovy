@@ -7,6 +7,7 @@ import cn.javaexception.entity.UserStatus
 import cn.javaexception.service.AdminService
 import cn.javaexception.service.OperateLogService
 import cn.javaexception.service.UserService
+import cn.javaexception.util.JsonData
 import cn.javaexception.util.PageUtil
 import com.alibaba.fastjson.JSONObject
 import org.apache.shiro.SecurityUtils
@@ -16,7 +17,6 @@ import org.apache.shiro.authz.annotation.RequiresRoles
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.validation.Errors
 import org.springframework.web.bind.annotation.*
-import utils.JsonData
 
 import javax.validation.Valid
 

@@ -1,9 +1,9 @@
 package cn.javaexception.service;
 
 import cn.javaexception.entity.User;
+import cn.javaexception.util.JsonData;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.service.IService;
-import utils.JsonData;
 
 /**
  * <p>

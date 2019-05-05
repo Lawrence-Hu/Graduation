@@ -7,10 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="dubbo_api" />
-        <module name="msg_module" />
-        <module name="order_module" />
-        <module name="product_module" />
         <module name="user_module" />
       </profile>
     </annotationProcessing>

@@ -4,6 +4,7 @@ import cn.javaexception.entity.User;
 import cn.javaexception.mapper.DeliverAddressMapper;
 import cn.javaexception.mapper.UserMapper;
 import cn.javaexception.service.UserService;
+import cn.javaexception.util.JsonData;
 import cn.javaexception.util.SendJMail;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -12,7 +13,6 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import utils.JsonData;
 
 import java.util.Date;
 import java.util.Objects;

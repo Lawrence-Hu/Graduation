@@ -1,13 +1,12 @@
 package cn.javaexception.controller;
 
 
+import cn.javaexception.entity.Favourite;
 import cn.javaexception.service.FavouriteService;
+import cn.javaexception.util.JsonData;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import cn.javaexception.entity.Favourite;
-import utils.JsonData;
 
 /**
  * <p>

@@ -61,7 +61,6 @@ public class UserRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
 
         String username = token.getUsername();
-        System.out.println(FormatValidator.isPhone(username));
         User user =null;
         if(FormatValidator.isEmail(username))
             user = userMapper.selectOne(new QueryWrapper<User>().eq("email", username));
@@ -80,8 +79,6 @@ public class UserRealm extends AuthorizingRealm {
             throw new LockedAccountException();
         }
         Role role = roleMapper.selectById(user.getRoleId());
-        System.out.println(user);
-        System.out.println(role);
         user.setRole(role);
 
         //判断密码

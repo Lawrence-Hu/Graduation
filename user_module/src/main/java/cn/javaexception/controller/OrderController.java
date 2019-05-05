@@ -1,18 +1,12 @@
 package cn.javaexception.controller;
 
 import cn.javaexception.service.OrderService;
-import order_module.entity.Order;
+import cn.javaexception.util.JsonData;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import utils.JsonData;
-
-import javax.validation.Valid;
-import java.util.List;
 
 /**
  * @author hcuhao
@@ -29,12 +23,12 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @PostMapping("/add")
-    public JsonData addToOrder(@RequestBody @Valid List<Order.OrderItem> order, Errors error){
-        System.out.println(order);
-        JsonData jsonData = orderService.addToOrder(order);
-        return jsonData;
-    }
+//    @PostMapping("/add")
+//    public JsonData addToOrder(@RequestBody @Valid List<Order.OrderItem> order, Errors error){
+//        System.out.println(order);
+//        JsonData jsonData = orderService.addToOrder(order);
+//        return jsonData;
+//    }
 
     /**
      * orderDetail by page

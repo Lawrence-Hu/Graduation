@@ -1,18 +1,17 @@
 package cn.javaexception.service.impl;
 
-import cn.javaexception.mapper.DeliverAddressMapper;
 import cn.javaexception.entity.DeliverAddress;
 import cn.javaexception.entity.User;
+import cn.javaexception.mapper.DeliverAddressMapper;
 import cn.javaexception.service.DeliverAddressService;
+import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import utils.JsonData;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -52,17 +51,14 @@ public class DeliverAddressServiceImpl extends ServiceImpl<DeliverAddressMapper,
         Subject subject = SecurityUtils.getSubject();
         User principal = (User) subject.getPrincipal();
         //删除的条数
-        int delete = 0;
-        for (String id : addresseIds) {
-            int i = deliverAddressMapper.delete(new QueryWrapper<DeliverAddress>().eq("user_id", principal.getId()).eq("id", id));
-            if(i==1)
-            delete++;
-        }
+
+        int delete  = deliverAddressMapper.delete(new QueryWrapper<DeliverAddress>().eq("user_id", principal.getId()).in("id", addresseIds));
+
         //前端数据有误
         if (0 < delete && delete < addresseIds.length) {
             return JsonData.buildSuccess("只删除了部分数据,请检查传入参数是否正确！");
         }
-        return delete==addresseIds.length? JsonData.buildSuccess("删除成功！") : JsonData.buildError("删除失败！请检查参数是否正确！");
+        return delete==addresseIds.length? JsonData.buildSuccess("删除成功！") : JsonData.buildError("删除失败！请检查参数！");
     }
 
     @Override

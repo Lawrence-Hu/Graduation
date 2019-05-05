@@ -4,19 +4,18 @@ package cn.javaexception.controller;
 import cn.javaexception.entity.User;
 import cn.javaexception.mapper.UserMapper;
 import cn.javaexception.service.UserService;
+import cn.javaexception.util.JsonData;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import utils.JsonData;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -146,6 +145,10 @@ public class UserController {
             return JsonData.buildSuccess("退出登录成功");
         }
         return JsonData.buildError("用户未登录");
+    }
+    @GetMapping("/test")
+    public JsonData test(){
+        return JsonData.buildSuccess("OK");
     }
 }
 

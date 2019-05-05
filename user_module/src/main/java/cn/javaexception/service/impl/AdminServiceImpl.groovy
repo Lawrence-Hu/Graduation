@@ -7,13 +7,13 @@ import cn.javaexception.mapper.RoleMapper
 import cn.javaexception.mapper.UserMapper
 import cn.javaexception.mapper.UserStatusMapper
 import cn.javaexception.service.AdminService
+import cn.javaexception.util.JsonData
 import cn.javaexception.util.PageUtil
 import com.alibaba.fastjson.JSONObject
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import utils.JsonData
 
 @Service
 class AdminServiceImpl implements AdminService{
