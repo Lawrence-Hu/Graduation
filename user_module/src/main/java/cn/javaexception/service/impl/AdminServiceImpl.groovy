@@ -1,19 +1,25 @@
 package cn.javaexception.service.impl
 
-
+import cn.javaexception.entity.Permission
+import cn.javaexception.entity.Role
 import cn.javaexception.entity.User
 import cn.javaexception.entity.UserStatus
+import cn.javaexception.mapper.PermissionMapper
 import cn.javaexception.mapper.RoleMapper
 import cn.javaexception.mapper.UserMapper
 import cn.javaexception.mapper.UserStatusMapper
 import cn.javaexception.service.AdminService
 import cn.javaexception.util.JsonData
 import cn.javaexception.util.PageUtil
+import com.alibaba.fastjson.JSON
+import com.alibaba.fastjson.JSONArray
 import com.alibaba.fastjson.JSONObject
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+
+import java.util.stream.Collectors
 
 @Service
 class AdminServiceImpl implements AdminService{
@@ -23,6 +29,8 @@ class AdminServiceImpl implements AdminService{
     RoleMapper roleMapper
     @Autowired
     UserStatusMapper statusMapper
+    @Autowired
+    PermissionMapper permissionMapper
 
     @Override
     def getAllUsersByPages(PageUtil params,String type) {
@@ -31,23 +39,37 @@ class AdminServiceImpl implements AdminService{
         def users
         if(type==null){
             users=userMapper.selectPage(page,new QueryWrapper<User>().
-                    select("id","name","account","phone","gender","address","email","created_time","status","last_login_time","certification","role_id","alipay_account"))
+                    select("id","name","account","phone","gender","address","email","created_time","status","last_login_time","certification","alipay_account"))
         }else{
             users=userMapper.selectPage(page,new QueryWrapper<User>().
-                    select("id","name","account","phone","gender","address","email","created_time","status","last_login_time","certification","role_id","alipay_account").eq("status",type))
+                    select("id","name","account","phone","gender","address","email","created_time","status","last_login_time","certification","alipay_account").eq("status",type))
         }
-
-        def userAuth = roleMapper.selectList(null)
+        def userIds = users.records.stream().map({ user -> user.getId() }).collect(Collectors.toList())
+        def roles = roleMapper.getUserRolesByUserId(userIds).groupBy { role->role.get("user_id")}
+        for (user in users.records){
+            user.setRoles(roles.get(user.getId()))
+            for(role in roles.get(user.getId())){
+                role.remove("user_id")
+                role.remove("role_name")
+                role.remove("id")
+            }
+        }
         List<UserStatus> status = statusMapper.selectList()
         data.put("statuses",status)
         data.put("users",users.records)
-        data.put("userAuth",userAuth)
         return data
     }
 
     JsonData updateUserInfoById(User user) {
         //直接更新
         User dbUser = userMapper.selectById(user.getId())
+
+        def permissions = permissionMapper.getPermissonsByUserId(user.getId())
+        def hasPer = permissions.stream().any { permission -> permission.getName() == "admin:updateUserInfo" }
+
+        if (hasPer){
+            return JsonData.buildError("当前用户与你有相同权限,不能修改!")
+        }
         boolean isUpdateEmail = userMapper.selectList(new QueryWrapper<User>()
                 .eq("phone", user.getEmail())
                 .or()
@@ -104,4 +126,25 @@ class AdminServiceImpl implements AdminService{
         }
     }
 
+    @Override
+    def getAllUsersByRoles(PageUtil pageUtil) {
+        JSONObject data = new JSONObject()
+        Page<User> page = new Page<>(pageUtil.getCurrentPage(),pageUtil.getPageSize())
+        //获取用户
+        def users = userMapper.selectPage(page, new QueryWrapper<User>().select("name", "id"))
+
+        def userIds = users.records.stream().map({ user -> user.getId() }).collect(Collectors.toList())
+        def roles = roleMapper.getUserRolesByUserId(userIds).groupBy { role->role.get("user_id")}
+
+        for (user in users.records){
+            user.setRoles(roles.get(user.getId()))
+            for(role in roles.get(user.getId())){
+                role.remove("user_id")
+                role.remove("role_name")
+                role.remove("id")
+            }
+        }
+        data.put("users",users.records)
+        return data
+    }
 }

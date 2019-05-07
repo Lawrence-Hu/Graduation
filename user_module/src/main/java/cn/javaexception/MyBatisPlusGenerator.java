@@ -30,7 +30,7 @@
 //    //作者
 //    private static String authorName = "huchao";
 //    //要生成的表名
-//    private static String[] tables = {"product"};
+//    private static String[] tables = {"user_role"};
 //
 //    //数据库类型
 //    private static DbType dbType = DbType.MYSQL;

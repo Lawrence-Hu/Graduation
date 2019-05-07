@@ -1,15 +1,11 @@
 package cn.javaexception.shrio;
 
-import cn.javaexception.entity.Permission;
-import cn.javaexception.entity.Role;
-import cn.javaexception.entity.RolePermission;
-import cn.javaexception.entity.User;
-import cn.javaexception.mapper.PermissionMapper;
-import cn.javaexception.mapper.RoleMapper;
-import cn.javaexception.mapper.RolePermissionMapper;
-import cn.javaexception.mapper.UserMapper;
+import cn.javaexception.entity.*;
+import cn.javaexception.mapper.*;
 import cn.javaexception.util.FormatValidator;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.apache.ibatis.annotations.Select;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -19,8 +15,10 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author hcuhao
@@ -32,8 +30,6 @@ public class UserRealm extends AuthorizingRealm {
     @Autowired
     private RoleMapper roleMapper;
     @Autowired
-    private RolePermissionMapper rolePermissionMapper;
-    @Autowired
     private PermissionMapper permissionMapper;
     //授权逻辑
     @Override
@@ -43,15 +39,12 @@ public class UserRealm extends AuthorizingRealm {
         Subject subject = SecurityUtils.getSubject();
         //获取当前用户
         User user = (User) subject.getPrincipal();
-        //获取当前用户角色权限
-        List<String> permissionIds = rolePermissionMapper.selectList(new QueryWrapper<RolePermission>().eq("role_id", user.getRoleId())).stream().map(RolePermission::getPermissionId).collect(Collectors.toList());
-        List<String> permissionNames = permissionMapper.selectList(new QueryWrapper<Permission>().in("id", permissionIds)).stream().map(Permission::getName).collect(Collectors.toList());
-        //用户未冻结并且已认证
-        if (user.getStatus().equals("1")) {
-            //通过认证
-            info.addStringPermissions(permissionNames);
-            info.addRole(user.getRole().getRoleName());
-        }
+        List<String> permissions = permissionMapper.getPermissonsByUserId(user.getId()).stream().map(Permission::getName).collect(Collectors.toList());
+        List<String> roles = roleMapper.getUserRolesByUserId(Collections.singletonList(user.getId())).stream().map(role -> (String)role.get("role_name")).collect(Collectors.toList());
+        System.out.println(permissions);
+        System.out.println(roles);
+        info.addStringPermissions(permissions);
+        info.addRoles(roles);
         return info;
     }
 
@@ -78,8 +71,6 @@ public class UserRealm extends AuthorizingRealm {
         if (!user.getStatus().equals("1")) {
             throw new LockedAccountException();
         }
-        Role role = roleMapper.selectById(user.getRoleId());
-        user.setRole(role);
 
         //判断密码
         return new SimpleAuthenticationInfo(user, user.getPassword(), getName());

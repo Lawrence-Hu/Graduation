@@ -55,6 +55,9 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         }
         //查询供应商
         User supplier = userMapper.selectById(product.getUserId());
+        if (supplier==null){
+            return JsonData.buildError("商家找不到了!");
+        }
         //查询购物车
         Cart dbCart = cartMapper.selectOne(new QueryWrapper<Cart>().eq("product_id", cart.getProductId()));
         //判断是否购物车已有该商品

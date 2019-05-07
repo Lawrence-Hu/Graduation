@@ -57,11 +57,6 @@ class AdminController {
             return JsonData.buildError(errors.getFieldError().getDefaultMessage())
         }
         def user = JSONObject.toJavaObject(param, User.class)
-        //如果权限不同不能修改
-        def principal =(User) SecurityUtils.getSubject().getPrincipal()
-       if(userService.getById(user.getId()).getRoleId()==userService.getById(principal.getId()).getRoleId()){
-           return JsonData.buildError("您不能修改和你权限相同的用户!")
-       }
         //更新
         def data =adminService.updateUserInfoById(user)
         return data
@@ -91,5 +86,12 @@ class AdminController {
         def users =adminService.getAllUsersByPages(pageUtil,UserStatus.STATUS_FROZEN)
         return JsonData.buildSuccess(users)
     }
-
+    @GetMapping("/user/allUserByRoles")
+    def getAllUserByRoles(@Valid PageUtil pageUtil,Errors errors){
+        if(errors.hasErrors()){
+            return JsonData.buildError(errors.getFieldError().getDefaultMessage())
+        }
+        def users = adminService.getAllUsersByRoles(pageUtil)
+        return JsonData.buildSuccess(users)
+    }
 }
