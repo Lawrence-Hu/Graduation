@@ -1,7 +1,10 @@
 package cn.javaexception.entity;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+import java.util.List;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -27,7 +30,7 @@ public class Role extends Model<Role> {
 
     private String identity;
 
-
+    private List<JSONObject> permissions;
     @Override
     protected Serializable pkVal() {
         return this.id;

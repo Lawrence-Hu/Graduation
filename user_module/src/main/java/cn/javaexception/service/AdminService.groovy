@@ -12,4 +12,6 @@ interface AdminService {
     JsonData changeUserStatusById(String id, String type);
 
     def getAllUsersByRoles(PageUtil pageUtil)
+
+    def findUserRoleById(String s)
 }

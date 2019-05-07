@@ -37,8 +37,7 @@ class AdminController {
         if(errors.hasErrors()){
             return JsonData.buildError(errors.getFieldError().getDefaultMessage())
         }
-        def users =adminService.getAllUsersByPages(pageUtil,null)
-        return JsonData.buildSuccess(users)
+        return adminService.getAllUsersByPages(pageUtil,null)
     }
 
     @GetMapping("/info")
@@ -52,10 +51,7 @@ class AdminController {
     @RequiresRoles(value ="admin")
     @RequiresPermissions(value = ["admin:updateUserInfo"])
     @OperateAnnotation(service=UserService.class,params = JSONObject.class,category = OperateCategory.user_info)
-    def updateUserInfo(@RequestBody JSONObject param,Errors errors){
-        if (errors.hasErrors()){
-            return JsonData.buildError(errors.getFieldError().getDefaultMessage())
-        }
+    def updateUserInfo(@RequestBody JSONObject param){
         def user = JSONObject.toJavaObject(param, User.class)
         //更新
         def data =adminService.updateUserInfoById(user)
@@ -84,7 +80,7 @@ class AdminController {
             return JsonData.buildError(errors.getFieldError().getDefaultMessage())
         }
         def users =adminService.getAllUsersByPages(pageUtil,UserStatus.STATUS_FROZEN)
-        return JsonData.buildSuccess(users)
+        return users
     }
     @GetMapping("/user/allUserByRoles")
     def getAllUserByRoles(@Valid PageUtil pageUtil,Errors errors){
@@ -93,5 +89,16 @@ class AdminController {
         }
         def users = adminService.getAllUsersByRoles(pageUtil)
         return JsonData.buildSuccess(users)
+    }
+    @PostMapping("/addNewRole")
+    def addNewRole(){
+
+    }
+    @GetMapping("/user/getRoles")
+    def findUserRoleById(String id){
+//        if (param.get("id")==null){
+//            return JsonData.buildError("user id cannot be null")
+//        }
+        adminService.findUserRoleById(id)
     }
 }

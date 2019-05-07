@@ -45,6 +45,9 @@ class AdminServiceImpl implements AdminService{
                     select("id","name","account","phone","gender","address","email","created_time","status","last_login_time","certification","alipay_account").eq("status",type))
         }
         def userIds = users.records.stream().map({ user -> user.getId() }).collect(Collectors.toList())
+        if(userIds.isEmpty()){
+            return JsonData.buildError("There is no frozen users !")
+        }
         def roles = roleMapper.getUserRolesByUserId(userIds).groupBy { role->role.get("user_id")}
         for (user in users.records){
             user.setRoles(roles.get(user.getId()))
@@ -57,7 +60,7 @@ class AdminServiceImpl implements AdminService{
         List<UserStatus> status = statusMapper.selectList()
         data.put("statuses",status)
         data.put("users",users.records)
-        return data
+        return JsonData.buildSuccess(data)
     }
 
     JsonData updateUserInfoById(User user) {
@@ -131,9 +134,10 @@ class AdminServiceImpl implements AdminService{
         JSONObject data = new JSONObject()
         Page<User> page = new Page<>(pageUtil.getCurrentPage(),pageUtil.getPageSize())
         //获取用户
-        def users = userMapper.selectPage(page, new QueryWrapper<User>().select("name", "id"))
-
+        def users = userMapper.selectPage(page, new QueryWrapper<User>().select("id","name", "account","created_time"))
+        println users.records
         def userIds = users.records.stream().map({ user -> user.getId() }).collect(Collectors.toList())
+        println userIds
         def roles = roleMapper.getUserRolesByUserId(userIds).groupBy { role->role.get("user_id")}
 
         for (user in users.records){
@@ -146,5 +150,17 @@ class AdminServiceImpl implements AdminService{
         }
         data.put("users",users.records)
         return data
+    }
+
+    @Override
+    def findUserRoleById(String id) {
+        def roles = roleMapper.getUserRolesByUserId(Collections.singletonList(id))
+        def rolesIds = roles.stream().map({ role -> role.get("id") }).collect(Collectors.toList())
+        def permissions = permissionMapper.getPermissionByRoleId(rolesIds)
+        def permissionRoles = permissions.groupBy { permission -> permission.get("role_id") }
+        for (role in roles) {
+            role.put("permissions", permissionRoles.get(role.get("id")))
+        }
+        return JsonData.buildSuccess(roles)
     }
 }
