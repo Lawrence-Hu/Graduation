@@ -21,13 +21,13 @@ import lombok.experimental.Accessors;
 public class OperateCategory extends Model<OperateCategory> {
 
     @TableField(exist = false)
-    private static final String user_info = "用户信息修改";
+    public static final String user_info = "用户信息修改";
     @TableField(exist = false)
-    private static final String product_info = "商品信息修改";
+    public static final String product_info = "商品信息修改";
     @TableField(exist = false)
-    private static final String user_auth = "用户权限修改";
+    public static final String user_auth = "用户权限修改";
     @TableField(exist = false)
-    private static final String product_category = "上品种类添加";
+    public static final String product_category = "上品种类添加";
 
     private static final long serialVersionUID = 1L;
 

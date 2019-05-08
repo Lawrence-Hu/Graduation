@@ -1,5 +1,6 @@
 package cn.javaexception.entity;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -7,7 +8,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -44,6 +47,10 @@ public class User extends Model<User> {
      */
     private String name;
 
+    /**
+     * 'mima
+     */
+    private String password;
     /**
      * '账号'
      */
@@ -107,10 +114,6 @@ public class User extends Model<User> {
     @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     private Date birthday;
 
-    /**
-     * '角色'
-     */
-    private String roleId;
 
     /**
      * '个人简历'
@@ -136,8 +139,7 @@ public class User extends Model<User> {
     private UserStatus userStatus;
 
     @TableField(exist = false)
-    private AuthUser authUser;
-
+    private List<JSONObject> roles;
     @Override
     protected Serializable pkVal() {
         return this.id;

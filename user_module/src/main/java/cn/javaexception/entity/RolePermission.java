@@ -12,22 +12,20 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author huchao
- * @since 2019-05-01
+ * @since 2019-05-03
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class UserStatus extends Model<UserStatus> {
-
-    public static final String STATUS_OK = "1";
-    public static final String STATUS_FROZEN = "2";
-    public static final String STATUS_ABNORMAL = "3";
+public class RolePermission extends Model<RolePermission> {
 
     private static final long serialVersionUID = 1L;
 
     private String id;
 
-    private String statusName;
+    private String roleId;
+
+    private String permissionId;
 
 
     @Override

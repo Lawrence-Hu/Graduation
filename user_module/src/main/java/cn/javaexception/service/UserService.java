@@ -1,9 +1,9 @@
 package cn.javaexception.service;
 
-import cn.javaexception.entity.LocalLogin;
 import cn.javaexception.entity.User;
+import cn.javaexception.util.JsonData;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.service.IService;
-import utils.JsonData;
 
 /**
  * <p>
@@ -24,11 +24,9 @@ public interface UserService extends IService<User> {
 
     JsonData sendEmailCode(User user);
 
-    JsonData register(LocalLogin localLogin);
+    JsonData register(String account,String password);
 
     JsonData setEmail(User user);
 
-    JsonData updateUserInfoById(User user);
-
-    User operateLog(User user);
+    User operateLog(JSONObject user);
 }

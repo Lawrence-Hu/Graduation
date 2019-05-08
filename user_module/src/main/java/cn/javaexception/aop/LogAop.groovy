@@ -39,7 +39,8 @@ class LogAop{
             Object bean = applicationContext.getBean(service)
             def params = joinPoint.getArgs()
             for (param in params){
-                if(param.class==targetParam){
+                if(param.getClass()==targetParam){
+                    println param
                     before = bean.invokeMethod(annotation.value(),param)
                 }
             }
@@ -57,7 +58,7 @@ class LogAop{
             Object bean = applicationContext.getBean(service)
             def params = joinPoint.getArgs()
             for (param in params){
-                if(param.class==targetParam){
+                if(param.getClass()==targetParam){
                     after = bean.invokeMethod(annotation.value(),param)
                     if (after != before){
                         OperateLog log = new OperateLog()

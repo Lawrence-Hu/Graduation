@@ -1,7 +1,10 @@
 package cn.javaexception.entity;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+import java.util.List;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -12,24 +15,22 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author huchao
- * @since 2019-05-01
+ * @since 2019-04-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class UserStatus extends Model<UserStatus> {
-
-    public static final String STATUS_OK = "1";
-    public static final String STATUS_FROZEN = "2";
-    public static final String STATUS_ABNORMAL = "3";
+public class Role extends Model<Role> {
 
     private static final long serialVersionUID = 1L;
 
     private String id;
 
-    private String statusName;
+    private String roleName;
 
+    private String identity;
 
+    private List<JSONObject> permissions;
     @Override
     protected Serializable pkVal() {
         return this.id;

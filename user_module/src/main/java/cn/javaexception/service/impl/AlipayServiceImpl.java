@@ -2,10 +2,6 @@ package cn.javaexception.service.impl;
 
 import cn.javaexception.pay.AlipayConfig;
 import cn.javaexception.service.AlipayService;
-import cn.javaexception.vo.AlipayQueryResponseVo;
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.domain.AlipayTradeQueryModel;
@@ -13,11 +9,8 @@ import com.alipay.api.domain.AlipayTradeWapPayModel;
 import com.alipay.api.request.AlipayTradeQueryRequest;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
 import com.alipay.api.response.AlipayTradeQueryResponse;
-import order_module.service.AlipayInterface;
-import order_module.service.OrderInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import utils.JsonData;
 
 import java.util.Map;
 import java.util.UUID;
@@ -28,10 +21,7 @@ public class AlipayServiceImpl implements AlipayService {
     AlipayClient alipayClient;
     @Autowired
     AlipayConfig alipayConfig;
-    @Reference
-    OrderInterface orderInterface;
-    @Reference
-    AlipayInterface alipayInterface;
+
     @Override
     public String getTradeStatusByTradeNo(String tradeNo){
         AlipayTradeQueryResponse response=null;
@@ -42,9 +32,7 @@ public class AlipayServiceImpl implements AlipayService {
         request.setBizModel(model);
         try {
             response = alipayClient.execute(request);
-            System.out.println(response.getBody());
-            AlipayQueryResponseVo vo = JSONObject.toJavaObject(JSONObject.parseObject(response.getBody()), AlipayQueryResponseVo.class);
-            status  = vo.getAlipay_trade_query_response().getTrade_status();
+            System.out.println(response);
 
         } catch (AlipayApiException e) {
             e.printStackTrace();
@@ -55,7 +43,7 @@ public class AlipayServiceImpl implements AlipayService {
     @Override
     public String pay(String orderId) throws AlipayApiException {
         //查询商品
-        JsonData jsonData = orderInterface.findOrderById(orderId);
+        //JsonData jsonData = orderInterface.findOrderById(orderId);
         AlipayTradeWapPayRequest alipay_request=new AlipayTradeWapPayRequest();
         // 封装请求支付信息
         AlipayTradeWapPayModel model=new AlipayTradeWapPayModel();
@@ -84,7 +72,7 @@ public class AlipayServiceImpl implements AlipayService {
 
         //查询该订单
         String out_trade_no = map.get("out_trade_no").toString();
-        orderInterface.findOrderById(out_trade_no);
+        //orderInterface.findOrderById(out_trade_no);
         //查看该订单支付状态
         String trade_status = getTradeStatusByTradeNo("out_trade_no");
         if (trade_status.equals("TRADE_SUCCESS")||trade_status.equals("TRADE_FINISHED")){
@@ -92,7 +80,7 @@ public class AlipayServiceImpl implements AlipayService {
             float amount = Float.parseFloat(map.get("total_amount").toString());
             //TODO
             //如果一致则修改订单状态
-            orderInterface.changeOrderStatus("1",2);
+            //orderInterface.changeOrderStatus("1",2);
 
         }else{
             throw new RuntimeException("无效的回调");

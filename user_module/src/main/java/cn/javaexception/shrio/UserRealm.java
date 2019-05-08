@@ -1,10 +1,11 @@
 package cn.javaexception.shrio;
 
-import cn.javaexception.entity.AuthUser;
-import cn.javaexception.mapper.AuthUserMapper;
-import cn.javaexception.mapper.UserMapper;
-import cn.javaexception.service.LocalLoginService;
+import cn.javaexception.entity.*;
+import cn.javaexception.mapper.*;
+import cn.javaexception.util.FormatValidator;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.apache.ibatis.annotations.Select;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -14,9 +15,10 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cn.javaexception.entity.LocalLogin;
-import cn.javaexception.entity.User;
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author hcuhao
@@ -26,20 +28,23 @@ public class UserRealm extends AuthorizingRealm {
     @Autowired
     private UserMapper userMapper;
     @Autowired
-    private AuthUserMapper authUserMapper;
-
+    private RoleMapper roleMapper;
+    @Autowired
+    private PermissionMapper permissionMapper;
     //授权逻辑
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        System.out.println("执行授权");
         Subject subject = SecurityUtils.getSubject();
         //获取当前用户
         User user = (User) subject.getPrincipal();
-        //用户未冻结并且已认证
-        if (user.getStatus().equals("1")) {
-            //通过认证
-            info.addRole(user.getAuthUser().getIdentity());
-        }
+        List<String> permissions = permissionMapper.getPermissonsByUserId(user.getId()).stream().map(Permission::getName).collect(Collectors.toList());
+        List<String> roles = roleMapper.getUserRolesByUserId(Collections.singletonList(user.getId())).stream().map(role -> (String)role.get("role_name")).collect(Collectors.toList());
+        System.out.println(permissions);
+        System.out.println(roles);
+        info.addStringPermissions(permissions);
+        info.addRoles(roles);
         return info;
     }
 
@@ -48,14 +53,16 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
 
-        LocalLogin localLogin = new LocalLogin(Arrays.toString(token.getPassword()), token.getUsername());
-        //查询是否有该用户
-        User user = userMapper.selectOne(new QueryWrapper<User>().eq("email", localLogin.getAccount())
-                .or()
-                .eq("phone", localLogin.getAccount())
-                .or()
-                .eq("account", localLogin.getAccount()));
-        LocalLogin login;
+        String username = token.getUsername();
+        User user =null;
+        if(FormatValidator.isEmail(username))
+            user = userMapper.selectOne(new QueryWrapper<User>().eq("email", username));
+        if(user==null && FormatValidator.isPhone(username)){
+            user = userMapper.selectOne(new QueryWrapper<User>().eq("phone",username));
+        }
+        if (user==null)
+            user = userMapper.selectOne(new QueryWrapper<User>().eq("account", username));
+
         if (user == null) {
             //用户名不存在
             return null;
@@ -64,10 +71,8 @@ public class UserRealm extends AuthorizingRealm {
         if (!user.getStatus().equals("1")) {
             throw new LockedAccountException();
         }
-        AuthUser authUser = authUserMapper.selectById(user.getRoleId());
-        user.setAuthUser(authUser);
-        login = localLogin.selectOne(new QueryWrapper<LocalLogin>().eq("account", user.getAccount()));
+
         //判断密码
-        return new SimpleAuthenticationInfo(user, login.getPassword(), getName());
+        return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
     }
 }
