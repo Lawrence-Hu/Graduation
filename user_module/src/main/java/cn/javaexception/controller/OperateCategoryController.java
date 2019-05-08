@@ -1,7 +1,6 @@
 package cn.javaexception.controller;
 
 
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -12,12 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author huchao
- * @since 2019-03-02
+ * @since 2019-05-02
  */
 @RestController
-@RequestMapping("/api/city")
-@RequiresRoles({"user"})
-public class CityController {
+@RequestMapping("/operateCategory")
+public class OperateCategoryController {
 
 }
 

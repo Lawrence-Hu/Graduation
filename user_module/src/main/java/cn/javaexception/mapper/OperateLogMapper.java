@@ -1,9 +1,8 @@
 package cn.javaexception.mapper;
 
-import cn.javaexception.entity.User;
+import cn.javaexception.entity.OperateLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 /**
  * <p>
@@ -11,9 +10,9 @@ import org.apache.ibatis.annotations.Select;
  * </p>
  *
  * @author huchao
- * @since 2019-03-02
+ * @since 2019-05-02
  */
 @Mapper
-public interface UserMapper extends BaseMapper<User> {
+public interface OperateLogMapper extends BaseMapper<OperateLog> {
 
 }

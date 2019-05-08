@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -53,7 +54,7 @@ public class Cart extends Model<Cart> {
     /**
      * 加入购物车时间
      */
-    private LocalDateTime addTime;
+    private Date addTime;
 
 
     @Override

@@ -2,6 +2,7 @@ package cn.javaexception.controller;
 
 
 import cn.javaexception.service.FavouriteService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,7 @@ import utils.JsonData;
  */
 @RestController
 @RequestMapping("/api/favourite")
+@RequiresRoles({"user"})
 public class FavouriteController {
     @Autowired
     FavouriteService favouriteService;

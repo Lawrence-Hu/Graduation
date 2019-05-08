@@ -30,7 +30,7 @@
 //    //作者
 //    private static String authorName = "huchao";
 //    //要生成的表名
-//    private static String[] tables = {"auth_user"};
+//    private static String[] tables = {"operate_log","operate_category"};
 //
 //    //数据库类型
 //    private static DbType dbType = DbType.MYSQL;
@@ -49,7 +49,7 @@
 //         * 获取项目路径
 //         */
 //        try {
-//            canonicalPath = new File("/home/huchao/Graduation/user_module").getCanonicalPath();
+//            canonicalPath = new File("/home/huchao/Desktop/Graduation/user_module").getCanonicalPath();
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
@@ -139,7 +139,7 @@
 //                //.setModuleName("User")
 //                .setParent(basePackage)// 自定义包路径
 //                .setController("controller")// 这里是控制器包名，默认 web
-//                .setEntity("model") // 设置Entity包名，默认entity
+//                .setEntity("entity") // 设置Entity包名，默认entity
 //                .setMapper("mapper") // 设置Mapper包名，默认mapper
 //                .setService("service") // 设置Service包名，默认service
 //                .setServiceImpl("service.impl") // 设置Service Impl包名，默认service.impl

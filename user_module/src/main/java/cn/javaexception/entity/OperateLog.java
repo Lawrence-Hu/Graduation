@@ -1,9 +1,8 @@
 package cn.javaexception.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,23 +16,29 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author huchao
- * @since 2019-03-02
+ * @since 2019-05-02
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class SearchLogs extends Model<SearchLogs> {
+public class OperateLog extends Model<OperateLog> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id")
     private String id;
 
-    private Integer userId;
+    private String operateCategoryId;
 
-    private String keyword;
+    @TableField("createdTime")
+    private Date createdTime;
 
-    private Date time;
+    private String opreaterId;
+
+    private String beforeOperateData;
+
+    private String afterOperateData;
+
+    private String apiGateway;
 
 
     @Override

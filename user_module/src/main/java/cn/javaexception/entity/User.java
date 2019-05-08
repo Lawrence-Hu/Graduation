@@ -7,12 +7,15 @@ import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 /**
  * <p>
@@ -33,6 +36,7 @@ public class User extends Model<User> {
      */
     @TableId(value = "id")
     //@NotNull(message = "用户id不能为空")
+    @NotNull(message = "用户id不能为null")
     private String id;
 
     /**
@@ -48,6 +52,7 @@ public class User extends Model<User> {
     /**
      * '手机号'
      */
+    @NotNull(message = "用户email不能为null")
     private String phone;
 
     /**
@@ -63,13 +68,15 @@ public class User extends Model<User> {
     /**
      * '邮箱'
      */
-    @Email
+    //@Email
+    @NotNull(message = "用户email不能为null")
     private String email;
 
     /**
      * '创建时间'
      */
-    private LocalDateTime createdTime;
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private Date createdTime;
 
     /**
      * '个人签名'
@@ -86,17 +93,19 @@ public class User extends Model<User> {
     /**
      * '上次登录时间'
      */
-    private LocalDateTime lastLoginTime;
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private Date lastLoginTime;
 
     /**
      * '是否认证 0 否 1是'
      */
-    private String cerification;
+    private String certification;
 
     /**
      * '生日'
      */
-    private LocalDateTime birthday;
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private Date birthday;
 
     /**
      * '角色'
@@ -113,10 +122,19 @@ public class User extends Model<User> {
      */
     private String deliveryAddressId;
     /**
+     * 'alipay'
+     *
+     */
+    private String alipayAccount;
+    /**
      * '验证码'
      *
      */
     private String identifyingCode;
+
+    @TableField(exist = false)
+    private UserStatus userStatus;
+
     @TableField(exist = false)
     private AuthUser authUser;
 

@@ -4,6 +4,7 @@ package cn.javaexception.controller;
 import cn.javaexception.entity.Cart;
 import cn.javaexception.service.CartService;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ import java.util.Objects;
  * @since 2019-03-02
  */
 @RestController
+@RequiresRoles({"user"})
 @RequestMapping("/api/cart")
 public class CartController {
     @Autowired

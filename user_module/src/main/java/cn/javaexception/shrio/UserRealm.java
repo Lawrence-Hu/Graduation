@@ -31,15 +31,14 @@ public class UserRealm extends AuthorizingRealm {
     //授权逻辑
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        System.out.println("执行授权逻辑");
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         Subject subject = SecurityUtils.getSubject();
         //获取当前用户
         User user = (User) subject.getPrincipal();
         //用户未冻结并且已认证
-        if (user.getCerification().equals("1") && user.getStatus().equals("0")) {
+        if (user.getStatus().equals("1")) {
             //通过认证
-            info.addStringPermission(user.getAuthUser().getIdentity());
+            info.addRole(user.getAuthUser().getIdentity());
         }
         return info;
     }
@@ -47,9 +46,8 @@ public class UserRealm extends AuthorizingRealm {
     //执行认证逻辑
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        System.out.println("登录认证");
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
-        System.out.println(token.getPassword());
+
         LocalLogin localLogin = new LocalLogin(Arrays.toString(token.getPassword()), token.getUsername());
         //查询是否有该用户
         User user = userMapper.selectOne(new QueryWrapper<User>().eq("email", localLogin.getAccount())
@@ -57,18 +55,17 @@ public class UserRealm extends AuthorizingRealm {
                 .eq("phone", localLogin.getAccount())
                 .or()
                 .eq("account", localLogin.getAccount()));
-        AuthUser authUser = authUserMapper.selectById(user.getRoleId());
-        user.setAuthUser(authUser);
-
         LocalLogin login;
         if (user == null) {
             //用户名不存在
             return null;
         }
         //账户冻结
-        if (user.getStatus().equals("1")) {
+        if (!user.getStatus().equals("1")) {
             throw new LockedAccountException();
         }
+        AuthUser authUser = authUserMapper.selectById(user.getRoleId());
+        user.setAuthUser(authUser);
         login = localLogin.selectOne(new QueryWrapper<LocalLogin>().eq("account", user.getAccount()));
         //判断密码
         return new SimpleAuthenticationInfo(user, login.getPassword(), getName());

@@ -17,6 +17,7 @@ import product_module.service.ProductInterface;
 import utils.JsonData;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -79,7 +80,7 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
         if (supplier.getStatus().equals("1")) {
             return JsonData.buildError("供应商账号异常呢！暂时不能购买！");
         }
-        cart.setAddTime(LocalDateTime.now()).setSupplierId(supplier.getId()).setUserId(principal.getId());
+        cart.setAddTime(new Date()).setSupplierId(supplier.getId()).setUserId(principal.getId());
         int insert = cartMapper.insert(cart);
         return insert > 0 ? JsonData.buildSuccess("添加购物车成功！") : JsonData.buildError("系统异常！请刷新后再试！");
     }
