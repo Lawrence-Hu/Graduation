@@ -14,4 +14,6 @@ interface AdminService {
     def getAllUsersByRoles(PageUtil pageUtil)
 
     def findUserRoleById(String s)
+
+    def findAllRoles()
 }
