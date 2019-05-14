@@ -1,7 +1,10 @@
 package cn.javaexception.service;
 
 import cn.javaexception.entity.Product;
+import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-05-05
  */
 public interface ProductService extends IService<Product> {
-
+    Product getProductInfoById(String id);
+    JsonData addProduct(Product product);
 }

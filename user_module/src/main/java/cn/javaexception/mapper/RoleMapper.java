@@ -21,7 +21,7 @@ import java.util.List;
 @Mapper
 public interface RoleMapper extends BaseMapper<Role> {
     @Select({"<script>",
-            "select role.id, role.role_name,role.identity,user.id 'user_id',role.description,role.created_time from user,user_role,role where user_role.role_id=role.id and user_role.user_id=user.id and user_id in",
+            "select role.id, role.role_name,role.identity,user.id 'user_id'," + "role.description,role.created_time from user,user_role," + "role where user_role.role_id=role.id and user_role.user_id=user.id and user_id in",
                 "<foreach collection='list' index='index' item='id' open='(' separator=',' close=')'>",
                     "#{id}",
                 "</foreach>",

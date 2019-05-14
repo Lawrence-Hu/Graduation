@@ -20,14 +20,4 @@
       <module name="user_module" target="1.8" />
     </bytecodeTargetLevel>
   </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="dubbo-api" options="-parameters" />
-      <module name="module_user" options="-parameters" />
-      <module name="msg_module" options="-parameters" />
-      <module name="order_module" options="-parameters" />
-      <module name="product_module" options="-parameters" />
-      <module name="user_module" options="-parameters" />
-    </option>
-  </component>
 </project>

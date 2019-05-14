@@ -1,8 +1,12 @@
 package cn.javaexception.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.List;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -116,6 +120,9 @@ public class Product extends Model<Product> {
     private String carouselsImgUrl;
 
     private Boolean isCarosel;
+
+    @TableField(exist = false)//图片属性
+    private List<Img> img;
 
 
     @Override
