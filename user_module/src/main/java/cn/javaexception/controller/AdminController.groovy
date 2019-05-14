@@ -6,6 +6,7 @@ import cn.javaexception.entity.User
 import cn.javaexception.entity.UserStatus
 import cn.javaexception.service.AdminService
 import cn.javaexception.service.OperateLogService
+import cn.javaexception.service.UserRoleService
 import cn.javaexception.service.UserService
 import cn.javaexception.util.JsonData
 import cn.javaexception.util.PageUtil
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.*
 
 import javax.validation.Valid
 
+import static org.springframework.util.StringUtils.*
+
 @RestController
 @RequestMapping("/api/admin")
 class AdminController {
@@ -29,6 +32,8 @@ class AdminController {
     UserService userService
     @Autowired
     OperateLogService operateLogService
+    @Autowired
+    UserRoleService userRoleService
 
     @GetMapping("/info/allUsers")
     @RequiresRoles(value=["admin"],logical = Logical.OR)
@@ -54,6 +59,7 @@ class AdminController {
     def updateUserInfo(@RequestBody JSONObject param){
         def user = JSONObject.toJavaObject(param, User.class)
         //更新
+        println "aaaa"
         def data =adminService.updateUserInfoById(user)
         return data
     }
@@ -82,14 +88,6 @@ class AdminController {
         def users =adminService.getAllUsersByPages(pageUtil,UserStatus.STATUS_FROZEN)
         return users
     }
-    @GetMapping("/user/allUserByRoles")
-    def getAllUserByRoles(@Valid PageUtil pageUtil,Errors errors){
-        if(errors.hasErrors()){
-            return JsonData.buildError(errors.getFieldError().getDefaultMessage())
-        }
-        def users = adminService.getAllUsersByRoles(pageUtil)
-        return JsonData.buildSuccess(users)
-    }
     @PostMapping("/addNewRole")
     def addNewRole(){
 
@@ -99,10 +97,49 @@ class AdminController {
         if (id==null){
             return JsonData.buildError("用户id不能为null")
         }
-        adminService.findUserRoleById(id)
+        userRoleService.findUserRoleById(id)
     }
     @GetMapping("/user/getAllRoles")
     def findUserRoles(){
-        adminService.findAllRoles()
+        userRoleService.findAllRoles()
+    }
+
+    @PostMapping("/user/deleteUserRole")
+    def deleteUserRole(@RequestBody JSONObject params){
+        if(isEmpty(params.get("user_id"))){
+            return JsonData.buildError("用户ID不正确！")
+        }
+        userRoleService.deleteUserRole(params)
+    }
+
+    @PostMapping("/user/asignUserRole")
+    def asignUserRole(@RequestBody JSONObject params){
+        if(isEmpty(params.get("user_id"))){
+            return JsonData.buildError("用户ID不正确！")
+        }
+        userRoleService.asginUserRole(params)
+    }
+    @GetMapping("/user/auth")
+    def allUserAuthByPages(@Valid PageUtil pageUtil,Errors errors ){
+        if(errors.hasErrors()){
+            return  JsonData.buildError(errors.getFieldError().getDefaultMessage())
+        }
+        adminService.findUserAuthByPages(pageUtil)
+    }
+
+    @GetMapping("/user/auth/confirm")
+    def authAudit(@RequestBody JSONObject params){
+        if(params.get("id")==null||params.get("user_id")==null||params.get("isPassed")==null){
+            return JsonData.buildError("参数不能为空！")
+        }
+        adminService.updateUserAuthStatus(params)
+    }
+
+    @GetMapping("/user/auth/handled")
+    def allUserAuthHandledByPages(@Valid PageUtil pageUtil,Errors errors ){
+        if(errors.hasErrors()){
+            return  JsonData.buildError(errors.getFieldError().getDefaultMessage())
+        }
+        adminService.findUserAuthHandledByPages(pageUtil)
     }
 }

@@ -52,7 +52,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
         //用户注册
         User user = new User().setAccount(account).setPassword(password).setCreatedTime(new Date());
-
         return userMapper.insert(user) >0? JsonData.buildSuccess("用户注册成功！"):JsonData.buildError("用户注册失败，请重试！");
 
     }

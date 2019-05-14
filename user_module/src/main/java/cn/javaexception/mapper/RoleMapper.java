@@ -28,4 +28,5 @@ public interface RoleMapper extends BaseMapper<Role> {
             "</script>"})
     List<JSONObject> getUserRolesByUserId(List id);
 
+
 }

@@ -1,24 +1,20 @@
 package cn.javaexception.service.impl
 
-import cn.javaexception.entity.Permission
-import cn.javaexception.entity.Role
 import cn.javaexception.entity.User
+import cn.javaexception.entity.UserAuth
+import cn.javaexception.entity.UserAuthImg
 import cn.javaexception.entity.UserStatus
-import cn.javaexception.mapper.PermissionMapper
-import cn.javaexception.mapper.RoleMapper
-import cn.javaexception.mapper.UserMapper
-import cn.javaexception.mapper.UserStatusMapper
+import cn.javaexception.mapper.*
 import cn.javaexception.service.AdminService
 import cn.javaexception.util.JsonData
 import cn.javaexception.util.PageUtil
-import com.alibaba.fastjson.JSON
-import com.alibaba.fastjson.JSONArray
 import com.alibaba.fastjson.JSONObject
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
+import java.util.stream.Collector
 import java.util.stream.Collectors
 
 @Service
@@ -31,6 +27,12 @@ class AdminServiceImpl implements AdminService{
     UserStatusMapper statusMapper
     @Autowired
     PermissionMapper permissionMapper
+    @Autowired
+    UserRoleMapper userRoleMapper
+    @Autowired
+    UserAuthMapper userAuthMapper
+    @Autowired
+    UserAuthImgMapper userAuthImgMapper
 
     @Override
     def getAllUsersByPages(PageUtil params,String type) {
@@ -130,50 +132,46 @@ class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    def getAllUsersByRoles(PageUtil pageUtil) {
-        JSONObject data = new JSONObject()
-        Page<User> page = new Page<>(pageUtil.getCurrentPage(),pageUtil.getPageSize())
-        //获取用户
-        def users = userMapper.selectPage(page, new QueryWrapper<User>().select("id","name", "account","created_time"))
-        println users.records
-        def userIds = users.records.stream().map({ user -> user.getId() }).collect(Collectors.toList())
-        println userIds
-        def roles = roleMapper.getUserRolesByUserId(userIds).groupBy { role->role.get("user_id")}
-
-        for (user in users.records){
-            user.setRoles(roles.get(user.getId()))
-            for(role in roles.get(user.getId())){
-                role.remove("user_id")
-                role.remove("role_name")
-                role.remove("id")
-            }
+    def findUserAuthByPages(PageUtil params) {
+        Page<UserAuth> page = new Page<>(params.getCurrentPage(),params.getPageSize())
+        def records = userAuthMapper.selectPage(page, new QueryWrapper<UserAuth>().eq("is_handled",false))
+        def data = records.getRecords()
+        if (records.records.isEmpty()){
+            return  JsonData.buildError("最近没有要处理的认证信息")
         }
-        data.put("users",users.records)
-        return data
+        def imgs = userAuthImgMapper.selectList(new QueryWrapper<UserAuthImg>().in("auth_id", data.stream().map({record->record.getId()}).collect(Collectors.toList())))
+        def userImg = imgs.groupBy { img -> img.getAuthId() }
+        for(userAudit in data){
+            userAudit.setImgs(userImg.get(userAudit.getId()))
+        }
+        records.setRecords(data)
+        return JsonData.buildSuccess(records)
     }
 
     @Override
-    def findUserRoleById(String id) {
-        def roles = roleMapper.getUserRolesByUserId(Collections.singletonList(id))
-        def rolesIds = roles.stream().map({ role -> role.get("id") }).collect(Collectors.toList())
-        def permissions = permissionMapper.getPermissionByRoleId(rolesIds)
-        def permissionRoles = permissions.groupBy { permission -> permission.get("role_id") }
-        for (role in roles) {
-            role.put("permissions", permissionRoles.get(role.get("id")))
-        }
-        return JsonData.buildSuccess(roles)
+    def updateUserAuthStatus(JSONObject params) {
+        def user_id = params.get("user_id") as String
+        def auth_id = params.get("id") as String
+        def isPassed = params.get("isPassed") as Boolean
+        userMapper.updateById(new User().setId(user_id).setCertification(isPassed))
+        userAuthMapper.updateById(new UserAuth().setId(auth_id).setStatus(isPassed).setIsHandled(true))
+        return JsonData.buildSuccess("处理认证信息成功！")
     }
 
     @Override
-    def findAllRoles() {
-
-        def roles = roleMapper.selectList()
-        def rolesIds = roles.stream().map({ role -> role.getId() }).collect(Collectors.toList())
-        def permissions = permissionMapper.getPermissionByRoleId(rolesIds)
-        def permissionRoles = permissions.groupBy { permission -> permission.get("role_id") }
-        for (role in roles) {
-            role.setPermissions(permissionRoles.get(role.getId()))
+    def findUserAuthHandledByPages(PageUtil pageUtil) {
+        Page<UserAuth> page = new Page<>(pageUtil.getCurrentPage(),pageUtil.getPageSize())
+        def records = userAuthMapper.selectPage(page, new QueryWrapper<UserAuth>().eq("is_handled",true))
+        def data = records.getRecords()
+        if (records.records.isEmpty()){
+            return  JsonData.buildError("最近没有已处理的认证信息")
         }
-        return JsonData.buildSuccess(roles)
+        def imgs = userAuthImgMapper.selectList(new QueryWrapper<UserAuthImg>().in("auth_id", data.stream().map({record->record.getId()}).collect(Collectors.toList())))
+        def userImg = imgs.groupBy { img -> img.getAuthId() }
+        for(userAudit in data){
+            userAudit.setImgs(userImg.get(userAudit.getId()))
+        }
+        records.setRecords(data)
+        return JsonData.buildSuccess(records)
     }
 }

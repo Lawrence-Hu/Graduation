@@ -46,19 +46,19 @@ public class DeliverAddressServiceImpl extends ServiceImpl<DeliverAddressMapper,
      * @description 此处有bug 若需完全没问题还需要查数据库删除的地址id是否是当前用户的！！！ //bug以修复
      */
     @Override
-    public JsonData deleteAddress(String[] addresseIds) {
+    public JsonData deleteAddress(String[] addressIds) {
         //获取当前用户
         Subject subject = SecurityUtils.getSubject();
         User principal = (User) subject.getPrincipal();
         //删除的条数
 
-        int delete  = deliverAddressMapper.delete(new QueryWrapper<DeliverAddress>().eq("user_id", principal.getId()).in("id", addresseIds));
+        int delete  = deliverAddressMapper.delete(new QueryWrapper<DeliverAddress>().eq("user_id", principal.getId()).in("id", addressIds));
 
         //前端数据有误
-        if (0 < delete && delete < addresseIds.length) {
+        if (0 < delete && delete < addressIds.length) {
             return JsonData.buildSuccess("只删除了部分数据,请检查传入参数是否正确！");
         }
-        return delete==addresseIds.length? JsonData.buildSuccess("删除成功！") : JsonData.buildError("删除失败！请检查参数！");
+        return delete==addressIds.length? JsonData.buildSuccess("删除成功！") : JsonData.buildError("删除失败！请检查参数！");
     }
 
     @Override

@@ -17,7 +17,7 @@
       <module name="msg_module" target="1.8" />
       <module name="order_module" target="1.8" />
       <module name="product_module" target="1.8" />
-      <module name="user_module" target="1.8" />
+      <module name="user_module" target="10" />
     </bytecodeTargetLevel>
   </component>
 </project>
