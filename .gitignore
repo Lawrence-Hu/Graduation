@@ -17,7 +17,7 @@ buildNumber.properties
 *.iws
 *.iml
 *.ipr
-
+*.jar
 ## Plugin-specific files:
 
 # IntelliJ
