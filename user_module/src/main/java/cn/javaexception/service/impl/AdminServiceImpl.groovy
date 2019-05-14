@@ -163,4 +163,17 @@ class AdminServiceImpl implements AdminService{
         }
         return JsonData.buildSuccess(roles)
     }
+
+    @Override
+    def findAllRoles() {
+
+        def roles = roleMapper.selectList()
+        def rolesIds = roles.stream().map({ role -> role.getId() }).collect(Collectors.toList())
+        def permissions = permissionMapper.getPermissionByRoleId(rolesIds)
+        def permissionRoles = permissions.groupBy { permission -> permission.get("role_id") }
+        for (role in roles) {
+            role.setPermissions(permissionRoles.get(role.getId()))
+        }
+        return JsonData.buildSuccess(roles)
+    }
 }

@@ -96,9 +96,13 @@ class AdminController {
     }
     @GetMapping("/user/getRoles")
     def findUserRoleById(String id){
-//        if (param.get("id")==null){
-//            return JsonData.buildError("user id cannot be null")
-//        }
+        if (id==null){
+            return JsonData.buildError("用户id不能为null")
+        }
         adminService.findUserRoleById(id)
+    }
+    @GetMapping("/user/getAllRoles")
+    def findUserRoles(){
+        adminService.findAllRoles()
     }
 }
