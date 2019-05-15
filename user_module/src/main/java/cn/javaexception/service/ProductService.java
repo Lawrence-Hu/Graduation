@@ -17,4 +17,6 @@ import java.util.List;
 public interface ProductService extends IService<Product> {
     Product getProductInfoById(String id);
     JsonData addProduct(Product product);
+    JsonData delProductById(String[] id);
+    JsonData updateIsNewById(String id, Boolean type);//修改是否新品
 }

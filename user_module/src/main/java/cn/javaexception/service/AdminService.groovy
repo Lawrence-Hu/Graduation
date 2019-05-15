@@ -1,4 +1,4 @@
-package cn.javaexception.service
+ package cn.javaexception.service
 
 import cn.javaexception.entity.User
 import cn.javaexception.util.JsonData

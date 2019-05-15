@@ -5,11 +5,7 @@ import cn.javaexception.entity.Product;
 import cn.javaexception.service.ProductService;
 import cn.javaexception.util.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,5 +39,18 @@ public class ProductController {
        }
         return  productService.addProduct(product);
    }
+
+   @PostMapping("/delproduct")
+   public  JsonData delproduct(@RequestBody String[] productId){
+        if(productId.length==0)
+        {
+            return  JsonData.buildError("商品id不能为空");
+        }
+        return productService.delProductById(productId);
+   }
+    @GetMapping("/test")
+    public JsonData test(){
+        return JsonData.buildSuccess("OK");
+    }
 }
 

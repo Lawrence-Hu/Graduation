@@ -6,6 +6,7 @@ import cn.javaexception.mapper.ImgMapper;
 import cn.javaexception.mapper.ProductMapper;
 import cn.javaexception.service.ProductService;
 import cn.javaexception.util.JsonData;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -88,4 +89,64 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         }
         return JsonData.buildError("系统异常,请稍后再试");
     }
+
+
+    /**
+     * @param id
+     * @return JsonData
+     * @author JDR
+     * @description 删除商品
+     */
+    @Override
+    public JsonData delProductById(String[] id) {
+
+        if(id==null) {
+            return JsonData.buildError("请输入商品的id号!");
+        }
+        Product product= productMapper.selectById(id);
+        if(product == null)
+        {
+            return  JsonData.buildError("请输入正确的商品id号!");
+        }
+
+        int i=productMapper.deleteById(id);
+        int j=imgMapper.delete(new QueryWrapper<Img>().eq("product_id",id));
+
+        return i+j>0? JsonData.buildSuccess("删除成功!"):JsonData.buildError("系统异常，请稍后再试");
+
+    }
+    /**
+     * @param id,type
+     * @return JsonData
+     * @author JDR
+     * @description 修改新品
+     */
+
+    //默认上架为新品，审核过后才能修改
+    @Override
+    public JsonData updateIsNewById(String id, Boolean type) {
+
+        if(id==null||type==null)
+        {
+            return  JsonData.buildError("商品id或type不能为空!");
+        }
+        Product product=productMapper.selectById(id);
+        if(product==null)
+        {
+            return  JsonData.buildError("商品不存在，请检查id是否正确!");
+        }
+        String msg = product.getProductStatus();
+        if(msg=="0")
+        {
+            JsonData.buildError("商品未审核!");
+        }
+        if(product.getIsNew()==true && type==false)
+        {
+            productMapper.updateById(product.setIsNew(false));
+            return JsonData.buildSuccess("修改成功，商品已取消新品!");
+        }
+
+        return JsonData.buildError("操作失败，请检查商品状态后重试!");
+    }
+
 }
