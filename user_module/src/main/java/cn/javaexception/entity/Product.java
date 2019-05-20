@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
@@ -46,22 +47,17 @@ public class Product extends Model<Product> {
     /**
      * 存库
      */
-    private Integer productsStock;
+    private Integer stock;
 
     /**
      * 商品规格id
      */
-    private String productUnitId;
+    private String unitId;
 
     /**
      * 是否开售
      */
     private Boolean isSale;
-
-    /**
-     * 是否精品
-     */
-    private Boolean isBest;
 
     /**
      * 是否热销产品
@@ -74,11 +70,6 @@ public class Product extends Model<Product> {
     private Boolean isNew;
 
     /**
-     * 是否推荐
-     */
-    private Boolean isRecom;
-
-    /**
      * 品牌Id
      */
     private String brandId;
@@ -86,13 +77,9 @@ public class Product extends Model<Product> {
     /**
      * 商品描述
      */
-    private String productDesc;
+    private String description;
 
-    /**
-     * -1:违规 0:未审核 1:已审核
-     */
-    private String productStatus;
-
+    private Boolean isAudit;
     /**
      * 销售数量
      */
@@ -101,17 +88,17 @@ public class Product extends Model<Product> {
     /**
      * 上架时间
      */
-    private LocalDateTime saleTime;
+    private Date saleTime;
 
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 商品种类表
      */
-    private String productCataId;
+    private String cateId;
 
     private String userId;
 
@@ -123,8 +110,6 @@ public class Product extends Model<Product> {
 
     @TableField(exist = false)//图片属性
     private List<Img> img;
-
-
     @Override
     protected Serializable pkVal() {
         return this.id;

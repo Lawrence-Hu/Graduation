@@ -58,8 +58,6 @@ class AdminController {
     @OperateAnnotation(service=UserService.class,params = JSONObject.class,category = OperateCategory.user_info)
     def updateUserInfo(@RequestBody JSONObject param){
         def user = JSONObject.toJavaObject(param, User.class)
-        //更新
-        println "aaaa"
         def data =adminService.updateUserInfoById(user)
         return data
     }
@@ -119,27 +117,19 @@ class AdminController {
         }
         userRoleService.asginUserRole(params)
     }
-    @GetMapping("/user/auth")
-    def allUserAuthByPages(@Valid PageUtil pageUtil,Errors errors ){
+    @GetMapping("/user/audit")
+    def allUserAuthByPages(@Valid PageUtil pageUtil,Boolean isHandled ,Errors errors ){
         if(errors.hasErrors()){
             return  JsonData.buildError(errors.getFieldError().getDefaultMessage())
         }
-        adminService.findUserAuthByPages(pageUtil)
+        adminService.findUserAuthByPages(pageUtil,isHandled)
     }
 
-    @GetMapping("/user/auth/confirm")
+    @PostMapping("/user/auth/confirm")
     def authAudit(@RequestBody JSONObject params){
         if(params.get("id")==null||params.get("user_id")==null||params.get("isPassed")==null){
             return JsonData.buildError("参数不能为空！")
         }
         adminService.updateUserAuthStatus(params)
-    }
-
-    @GetMapping("/user/auth/handled")
-    def allUserAuthHandledByPages(@Valid PageUtil pageUtil,Errors errors ){
-        if(errors.hasErrors()){
-            return  JsonData.buildError(errors.getFieldError().getDefaultMessage())
-        }
-        adminService.findUserAuthHandledByPages(pageUtil)
     }
 }

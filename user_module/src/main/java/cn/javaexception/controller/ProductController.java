@@ -4,10 +4,16 @@ package cn.javaexception.controller;
 import cn.javaexception.entity.Product;
 import cn.javaexception.service.ProductService;
 import cn.javaexception.util.JsonData;
+import cn.javaexception.util.PageUtil;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <p>
@@ -18,7 +24,7 @@ import java.util.List;
  * @since 2019-05-05
  */
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/api/product")
 public class ProductController {
 
     @Autowired
@@ -48,9 +54,39 @@ public class ProductController {
         }
         return productService.delProductById(productId);
    }
-    @GetMapping("/test")
-    public JsonData test(){
-        return JsonData.buildSuccess("OK");
+
+    @GetMapping("/all")
+    public JsonData getProductsByPages(@Valid PageUtil pageUtil, Errors errors){
+        if (errors.hasErrors()){
+            return JsonData.buildError("分页参数错误！");
+        }
+        return productService.getProductsByPages(pageUtil);
+    }
+    @PostMapping("/update")
+    public JsonData updateProducts(@RequestBody JSONObject object){
+        Product product = JSON.toJavaObject(object, Product.class);
+        return productService.updateById(product)?JsonData.buildSuccess("更新商品成功！"):JsonData.buildError("未做任何修改！请重试！");
+    }
+    @GetMapping("/audit")
+    public JsonData productAudit(@Valid PageUtil pageUtil, Errors errors){
+       if(errors.hasErrors()){
+         return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage())  ;
+       }
+       return  productService.getAuditProductsByPages(pageUtil,false);
+    }
+    @GetMapping("/audit/handled")
+    public JsonData productHandledAudit(@Valid PageUtil pageUtil, Errors errors){
+        if(errors.hasErrors()){
+            return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage())  ;
+        }
+        return  productService.getAuditProductsByPages(pageUtil,true);
+    }
+    @GetMapping("/audit/confirm")
+    public JsonData auditComfirm(@RequestBody JSONObject object){
+       if(object.get("product_id").toString().isBlank()|| object.get("audit_id").toString().isBlank()||object.get("is_passed").toString().isBlank()) {
+           return JsonData.buildError("参数输入错误！");
+       }
+        return productService.updateAuditStatus(object);
     }
 }
 

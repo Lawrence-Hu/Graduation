@@ -1,6 +1,6 @@
 package cn.javaexception.mapper;
 
-import cn.javaexception.entity.UserAuthImg;
+import cn.javaexception.entity.ProductUnit;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,9 +10,9 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author huchao
- * @since 2019-05-13
+ * @since 2019-05-18
  */
 @Mapper
-public interface UserAuthImgMapper extends BaseMapper<UserAuthImg> {
+public interface ProductUnitMapper extends BaseMapper<ProductUnit> {
 
 }

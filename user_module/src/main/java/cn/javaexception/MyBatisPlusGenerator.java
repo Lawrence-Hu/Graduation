@@ -30,7 +30,7 @@
 //    //作者
 //    private static String authorName = "huchao";
 //    //要生成的表名
-//    private static String[] tables = {"user_auth_img"};
+//    private static String[] tables = {"product_category"};
 //
 //    //数据库类型
 //    private static DbType dbType = DbType.MYSQL;
@@ -138,12 +138,8 @@
 //        gen.setPackageInfo(new PackageConfig()
 //                //.setModuleName("User")
 //                .setParent(basePackage)// 自定义包路径
-//                .setController("controller")// 这里是控制器包名，默认 web
 //                .setEntity("entity") // 设置Entity包名，默认entity
 //                .setMapper("mapper") // 设置Mapper包名，默认mapper
-//                .setService("service") // 设置Service包名，默认service
-//                .setServiceImpl("service.impl") // 设置Service Impl包名，默认service.impl
-//                .setXml("mapper") // 设置Mapper XML包名，默认mapper.xml
 //        );
 //
 //        /**
