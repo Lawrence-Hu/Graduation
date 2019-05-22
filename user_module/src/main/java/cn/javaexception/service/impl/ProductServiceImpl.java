@@ -136,7 +136,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
             return  JsonData.buildError("商品不存在，请检查id是否正确!");
         }
         String msg = product.getProductStatus();
-        if(msg=="0")
+        if(msg.equals(0))
         {
             JsonData.buildError("商品未审核!");
         }
