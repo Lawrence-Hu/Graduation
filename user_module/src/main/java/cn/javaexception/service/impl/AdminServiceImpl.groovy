@@ -1,8 +1,8 @@
 package cn.javaexception.service.impl
 
+import cn.javaexception.entity.UserAudit
+import cn.javaexception.entity.AuditImg
 import cn.javaexception.entity.User
-import cn.javaexception.entity.UserAuth
-import cn.javaexception.entity.UserAuthImg
 import cn.javaexception.entity.UserStatus
 import cn.javaexception.mapper.*
 import cn.javaexception.service.AdminService
@@ -14,7 +14,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
-import java.util.stream.Collector
 import java.util.stream.Collectors
 
 @Service
@@ -30,9 +29,9 @@ class AdminServiceImpl implements AdminService{
     @Autowired
     UserRoleMapper userRoleMapper
     @Autowired
-    UserAuthMapper userAuthMapper
+    UserAuditMapper userAuditMapper
     @Autowired
-    UserAuthImgMapper userAuthImgMapper
+    AuditImgMapper auditImgMapper
 
     @Override
     def getAllUsersByPages(PageUtil params,String type) {
@@ -132,15 +131,16 @@ class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    def findUserAuthByPages(PageUtil params) {
-        Page<UserAuth> page = new Page<>(params.getCurrentPage(),params.getPageSize())
-        def records = userAuthMapper.selectPage(page, new QueryWrapper<UserAuth>().eq("is_handled",false))
+    def findUserAuthByPages(PageUtil params,Boolean isHandled) {
+        Page<UserAudit> page = new Page<>(params.getCurrentPage(),params.getPageSize())
+        def records = userAuditMapper.selectPage(page, new QueryWrapper<UserAudit>().eq("is_handled",isHandled))
         def data = records.getRecords()
+        println data
         if (records.records.isEmpty()){
             return  JsonData.buildError("最近没有要处理的认证信息")
         }
-        def imgs = userAuthImgMapper.selectList(new QueryWrapper<UserAuthImg>().in("auth_id", data.stream().map({record->record.getId()}).collect(Collectors.toList())))
-        def userImg = imgs.groupBy { img -> img.getAuthId() }
+        def imgs = auditImgMapper.selectList(new QueryWrapper<AuditImg>().in("audit_id", data.stream().map({record->record.getId()}).collect(Collectors.toList())))
+        def userImg = imgs.groupBy { img -> img.getAuditId() }
         for(userAudit in data){
             userAudit.setImgs(userImg.get(userAudit.getId()))
         }
@@ -154,24 +154,26 @@ class AdminServiceImpl implements AdminService{
         def auth_id = params.get("id") as String
         def isPassed = params.get("isPassed") as Boolean
         userMapper.updateById(new User().setId(user_id).setCertification(isPassed))
-        userAuthMapper.updateById(new UserAuth().setId(auth_id).setStatus(isPassed).setIsHandled(true))
+        userAuditMapper.updateById(new UserAudit().setId(auth_id).setStatus(isPassed).setIsHandled(true))
         return JsonData.buildSuccess("处理认证信息成功！")
     }
 
-    @Override
-    def findUserAuthHandledByPages(PageUtil pageUtil) {
-        Page<UserAuth> page = new Page<>(pageUtil.getCurrentPage(),pageUtil.getPageSize())
-        def records = userAuthMapper.selectPage(page, new QueryWrapper<UserAuth>().eq("is_handled",true))
-        def data = records.getRecords()
-        if (records.records.isEmpty()){
-            return  JsonData.buildError("最近没有已处理的认证信息")
-        }
-        def imgs = userAuthImgMapper.selectList(new QueryWrapper<UserAuthImg>().in("auth_id", data.stream().map({record->record.getId()}).collect(Collectors.toList())))
-        def userImg = imgs.groupBy { img -> img.getAuthId() }
-        for(userAudit in data){
-            userAudit.setImgs(userImg.get(userAudit.getId()))
-        }
-        records.setRecords(data)
-        return JsonData.buildSuccess(records)
-    }
+//    @Override
+//    def findUserAuthHandledByPages(PageUtil pageUtil) {
+//        Page<UserAudit> page = new Page<>(pageUtil.getCurrentPage(),pageUtil.getPageSize())
+//        def records = userAuditMapper.selectPage(page, new QueryWrapper<UserAudit>().eq("is_handled",true))
+//        def data = records.getRecords()
+//        println data
+//        if (records.records.isEmpty()){
+//            return  JsonData.buildError("最近没有已处理的认证信息")
+//        }
+//        def imgs = auditImgMapper.selectList(new QueryWrapper<AuditImg>().in("audit_id", data.stream().map({ record->record.getId()}).collect(Collectors.toList())))
+//        def userImg = imgs.groupBy { img -> img.getAuditId() }
+//        for(userAudit in data){
+//            userAudit.setImgs(userImg.get(userAudit.getId()))
+//        }
+//        records.setRecords(data)
+//        return JsonData.buildSuccess(records)
+//    }
+
 }

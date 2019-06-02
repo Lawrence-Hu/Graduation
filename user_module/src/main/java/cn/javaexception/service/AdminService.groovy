@@ -9,9 +9,7 @@ interface AdminService {
     def getAllUsersByPages(PageUtil params,String type)
     def updateUserInfoById(User user)
     JsonData changeUserStatusById(String id, String type);
-    def findUserAuthByPages(PageUtil pageUtil)
-
+    def findUserAuthByPages(PageUtil pageUtil,Boolean isHandled)
     def updateUserAuthStatus(JSONObject params)
 
-    def findUserAuthHandledByPages(PageUtil pageUtil)
 }

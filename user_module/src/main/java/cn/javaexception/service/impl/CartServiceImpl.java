@@ -65,7 +65,7 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements Ca
             return JsonData.buildError("购物车里面已经有商品呢！");
         }
         //判断数量是否足够
-        if (product.getProductsStock() < cart.getQuantity()) {
+        if (product.getStock() < cart.getQuantity()) {
             return JsonData.buildError("存库数量不足呢！");
         }
         //供应商不能为自己

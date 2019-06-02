@@ -19,12 +19,12 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class UserAuthImg extends Model<UserAuthImg> {
+public class AuditImg extends Model<AuditImg> {
 
     private static final long serialVersionUID = 1L;
 
     private Date createdTime;
-    private String authId;
+    private String auditId;
     private String url;
 
     private String id;

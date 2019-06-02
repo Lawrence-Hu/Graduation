@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Date;
 
 /**
  * <p>
@@ -110,6 +111,8 @@ public class UserController {
         UsernamePasswordToken token = new UsernamePasswordToken(data.get("account").toString(), data.get("password").toString(),true);
         try {
             subject.login(token);
+            User principal = (User)subject.getPrincipal();
+            userMapper.updateById(new User().setId(principal.getId()).setLastLoginTime(new Date()));
             return JsonData.buildSuccess("登录成功");
         } catch (UnknownAccountException e) {
             return JsonData.buildError("用户名不存在");
