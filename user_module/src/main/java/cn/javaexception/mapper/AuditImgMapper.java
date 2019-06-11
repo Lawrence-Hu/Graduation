@@ -4,6 +4,8 @@ import cn.javaexception.entity.AuditImg;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.io.Serializable;
+
 /**
  * <p>
  *  Mapper 接口
@@ -14,5 +16,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface AuditImgMapper extends BaseMapper<AuditImg> {
-
+    @Override
+    AuditImg selectById(Serializable id);
 }

@@ -1,6 +1,6 @@
 package cn.javaexception.controller;
 
-import cn.javaexception.pay.AlipayConfig;
+import cn.javaexception.config.AlipayConfig;
 import cn.javaexception.service.AlipayService;
 import cn.javaexception.util.RequestUtils;
 import com.alibaba.fastjson.JSONObject;
@@ -30,7 +30,7 @@ public class AlipayControllor {
     @Autowired
     AlipayService alipayService;
     @GetMapping("/order")
-    public void getPay(HttpServletResponse response,String orderId,HttpServletRequest request) throws AlipayApiException {
+    public void getPay(HttpServletResponse response, String orderId) throws AlipayApiException {
         // form表单生产
         String form = alipayService.pay(orderId);
         response.setContentType("text/html;charset=utf-8");
@@ -65,15 +65,13 @@ public class AlipayControllor {
     @GetMapping("/callback")
     public void aplipayCallback(HttpServletRequest request){
         //获取参数
-        Map map = RequestUtils.getRequestParamMap(request);
+        Map<String, String> map = RequestUtils.getRequestParamMap(request);
         try {
             //验证签证
             boolean b = AlipaySignature.rsaCheckV2(map, alipayConfig.public_key, "utf-8", alipayConfig.getSigntype());
             if (b){
                alipayService.validate(map);
-            }else{
-                throw new RuntimeException("无效的回调！");
-            }
+            }else throw new RuntimeException("无效的回调！");
         } catch (AlipayApiException e) {
             e.printStackTrace();
         }

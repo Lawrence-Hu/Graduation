@@ -33,9 +33,6 @@ public class CartController {
      */
     @PostMapping("/add")
     public JsonData addProductToCart(@RequestBody Cart cart, Errors errors) {
-        System.out.println(SecurityUtils.getSubject().isAuthenticated());
-        System.out.println(SecurityUtils.getSubject().isRemembered());
-        System.out.println(SecurityUtils.getSubject().isPermitted("user"));
         return cartService.addProduct(cart);
     }
 

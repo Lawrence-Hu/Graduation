@@ -37,7 +37,7 @@ public class Role extends Model<Role> {
     @JsonProperty("created_time")
     private String createdTime;
     @TableField(exist = false)
-    private List<JSONObject> permissions;
+    private List<Permission> permissions;
     @Override
     protected Serializable pkVal() {
         return this.id;

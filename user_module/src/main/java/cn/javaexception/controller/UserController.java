@@ -1,6 +1,7 @@
 package cn.javaexception.controller;
 
 
+import cn.javaexception.annotation.AvoidDuplicate;
 import cn.javaexception.entity.User;
 import cn.javaexception.mapper.UserMapper;
 import cn.javaexception.service.UserService;
@@ -11,15 +12,25 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.session.mgt.SessionKey;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -37,7 +48,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private UserMapper userMapper;
-
+    @Autowired
+    private RedisTemplate<String,String> redisTemplate;
     /**
      * @param data
      * @return JsonData
@@ -45,6 +57,7 @@ public class UserController {
      * @description 修改默认用户地址
      */
     @PostMapping("/setDefaultDeliverAddress")
+    //@AvoidDuplicate
     public JsonData setDefaultDeliverAddress(@RequestBody JSONObject data) throws HttpMessageNotReadableException {
         Object id = data.get("id");
         if(id==null){
@@ -101,7 +114,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public JsonData login(@RequestBody @Valid JSONObject data, Errors errors) {
+    public JsonData login(@RequestBody @Valid JSONObject data, HttpServletRequest request, HttpServletResponse response) {
         //数据校验
         if(data.get("account")==null||data.get("password")==null){
             return JsonData.buildError("用户账号或密码不能为null");
@@ -113,6 +126,11 @@ public class UserController {
             subject.login(token);
             User principal = (User)subject.getPrincipal();
             userMapper.updateById(new User().setId(principal.getId()).setLastLoginTime(new Date()));
+            String websoket_token = UUID.randomUUID().toString();
+            String form_token = UUID.randomUUID().toString();
+            response.setHeader("FORM-TOKEN",form_token);
+            response.setHeader("WEBSOKET-TOKEN",websoket_token);
+            redisTemplate.opsForValue().set(form_token,"handled");
             return JsonData.buildSuccess("登录成功");
         } catch (UnknownAccountException e) {
             return JsonData.buildError("用户名不存在");

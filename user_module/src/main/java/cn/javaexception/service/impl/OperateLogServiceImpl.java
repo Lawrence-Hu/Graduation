@@ -2,7 +2,7 @@ package cn.javaexception.service.impl;
 
 import cn.javaexception.entity.OperateLog;
 import cn.javaexception.mapper.OperateLogMapper;
-import cn.javaexception.service.OperateLogService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-05-02
  */
 @Service
-public class OperateLogServiceImpl extends ServiceImpl<OperateLogMapper, OperateLog> implements OperateLogService {
+public class OperateLogServiceImpl extends ServiceImpl<OperateLogMapper, OperateLog> implements IService<OperateLog> {
 
 }

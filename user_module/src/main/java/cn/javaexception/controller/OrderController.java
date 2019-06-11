@@ -23,12 +23,6 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-//    @PostMapping("/add")
-//    public JsonData addToOrder(@RequestBody @Valid List<Order.OrderItem> order, Errors error){
-//        System.out.println(order);
-//        JsonData jsonData = orderService.addToOrder(order);
-//        return jsonData;
-//    }
 
     /**
      * orderDetail by page
