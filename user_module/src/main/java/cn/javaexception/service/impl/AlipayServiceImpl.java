@@ -1,6 +1,6 @@
 package cn.javaexception.service.impl;
 
-import cn.javaexception.pay.AlipayConfig;
+import cn.javaexception.config.AlipayConfig;
 import cn.javaexception.service.AlipayService;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;

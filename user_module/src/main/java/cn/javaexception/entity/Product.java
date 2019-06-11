@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -72,7 +73,9 @@ public class Product extends Model<Product> {
     /**
      * 品牌Id
      */
+    @JsonIgnore
     private String brandId;
+
 
     /**
      * 商品描述
@@ -108,6 +111,8 @@ public class Product extends Model<Product> {
 
     private Boolean isCarosel;
 
+    @TableField(exist = false)//图片属性
+    private ProductBrand productBrand;
     @TableField(exist = false)//图片属性
     private List<Img> img;
     @Override

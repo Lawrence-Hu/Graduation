@@ -15,8 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UserService extends IService<User> {
 
-    User getUserInfoById(String id);
-
     JsonData setDefaultDeliverAddress(User user);
 
     boolean setPhoneNumber(User user);

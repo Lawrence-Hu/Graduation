@@ -28,7 +28,6 @@ class LogAop{
     @Pointcut(value = "execution(public * cn.javaexception.controller.*.*(..))")
     void pointCut(){}
 
-
     @Before("pointCut()")
     void doBefore(JoinPoint joinPoint) throws IllegalAccessException, InstantiationException {
         MethodSignature methodSignature = (MethodSignature)joinPoint.getSignature()

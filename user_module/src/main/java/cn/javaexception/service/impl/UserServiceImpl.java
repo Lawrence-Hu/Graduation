@@ -104,12 +104,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
 
-    @Override
-    public User getUserInfoById(String id) {
-
-        return userMapper.selectById(id);
-    }
-
     /**
      * @param user
      * @return boolean

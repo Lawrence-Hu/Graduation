@@ -2,7 +2,7 @@ package cn.javaexception.service.impl;
 
 import cn.javaexception.entity.OperateCategory;
 import cn.javaexception.mapper.OperateCategoryMapper;
-import cn.javaexception.service.OperateCategoryService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-05-02
  */
 @Service
-public class OperateCategoryServiceImpl extends ServiceImpl<OperateCategoryMapper, OperateCategory> implements OperateCategoryService {
+public class OperateCategoryServiceImpl extends ServiceImpl<OperateCategoryMapper, OperateCategory> implements IService<OperateCategory> {
 
 }

@@ -3,15 +3,21 @@ package cn.javaexception.controller;
 
 import cn.javaexception.entity.Product;
 import cn.javaexception.service.ProductService;
+import cn.javaexception.util.FileUploadUtils;
 import cn.javaexception.util.JsonData;
 import cn.javaexception.util.PageUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import org.csource.common.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Objects;
 
@@ -68,18 +74,11 @@ public class ProductController {
         return productService.updateById(product)?JsonData.buildSuccess("更新商品成功！"):JsonData.buildError("未做任何修改！请重试！");
     }
     @GetMapping("/audit")
-    public JsonData productAudit(@Valid PageUtil pageUtil, Errors errors){
+    public JsonData productAudit(@Valid PageUtil pageUtil,Boolean isHandled, Errors errors){
        if(errors.hasErrors()){
          return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage())  ;
        }
-       return  productService.getAuditProductsByPages(pageUtil,false);
-    }
-    @GetMapping("/audit/handled")
-    public JsonData productHandledAudit(@Valid PageUtil pageUtil, Errors errors){
-        if(errors.hasErrors()){
-            return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage())  ;
-        }
-        return  productService.getAuditProductsByPages(pageUtil,true);
+       return  productService.getAuditProductsByPages(pageUtil,isHandled);
     }
     @GetMapping("/audit/confirm")
     public JsonData auditComfirm(@RequestBody JSONObject object){
@@ -87,6 +86,10 @@ public class ProductController {
            return JsonData.buildError("参数输入错误！");
        }
         return productService.updateAuditStatus(object);
+    }
+    @GetMapping("/upload")
+    public JsonData uploadImg(MultipartFile[] files) {
+        return FileUploadUtils.upload(files);
     }
 }
 

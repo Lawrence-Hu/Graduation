@@ -5,12 +5,13 @@ import cn.javaexception.entity.OperateCategory
 import cn.javaexception.entity.User
 import cn.javaexception.entity.UserStatus
 import cn.javaexception.service.AdminService
-import cn.javaexception.service.OperateLogService
 import cn.javaexception.service.UserRoleService
 import cn.javaexception.service.UserService
 import cn.javaexception.util.JsonData
 import cn.javaexception.util.PageUtil
 import com.alibaba.fastjson.JSONObject
+import com.baidu.aip.speech.AipSpeech
+import com.hankcs.hanlp.HanLP
 import org.apache.shiro.SecurityUtils
 import org.apache.shiro.authz.annotation.Logical
 import org.apache.shiro.authz.annotation.RequiresPermissions
@@ -18,12 +19,14 @@ import org.apache.shiro.authz.annotation.RequiresRoles
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.validation.Errors
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.multipart.MultipartFile
 
 import javax.validation.Valid
 
-import static org.springframework.util.StringUtils.*
+import static org.springframework.util.StringUtils.isEmpty
 
 @RestController
+@RequiresRoles(value = ["admin"])
 @RequestMapping("/api/admin")
 class AdminController {
     @Autowired
@@ -31,18 +34,18 @@ class AdminController {
     @Autowired
     UserService userService
     @Autowired
-    OperateLogService operateLogService
-    @Autowired
     UserRoleService userRoleService
+    @Autowired
+    AipSpeech client
 
-    @GetMapping("/info/allUsers")
+    @GetMapping("/user/allUsers")
     @RequiresRoles(value=["admin"],logical = Logical.OR)
     @RequiresPermissions(value = ["admin:allUsers"])
     def getAllUsers(@Valid PageUtil pageUtil,Errors errors){
         if(errors.hasErrors()){
             return JsonData.buildError(errors.getFieldError().getDefaultMessage())
         }
-        return adminService.getAllUsersByPages(pageUtil,null)
+        adminService.getAllUsersByPages(pageUtil,null)
     }
 
     @GetMapping("/info")
@@ -54,7 +57,7 @@ class AdminController {
 
     @PostMapping("/user/update")
     @RequiresRoles(value ="admin")
-    @RequiresPermissions(value = ["admin:updateUserInfo"])
+    @RequiresPermissions(value = ["admin:updateUser"])
     @OperateAnnotation(service=UserService.class,params = JSONObject.class,category = OperateCategory.user_info)
     def updateUserInfo(@RequestBody JSONObject param){
         def user = JSONObject.toJavaObject(param, User.class)
@@ -62,7 +65,7 @@ class AdminController {
         return data
     }
 
-    @PostMapping(value = "/user/changeStatus")
+    @PostMapping(value = "/user/active")
     @RequiresRoles(value ="admin")
     //@RequiresPermissions(value = ["admin:changeStatus"])
     @OperateAnnotation(service=UserService.class,params = JSONObject.class,category = OperateCategory.user_info)
@@ -75,11 +78,10 @@ class AdminController {
         return adminService.changeUserStatusById(id as String, UserStatus.STATUS_OK)
     }
 
-    @GetMapping(value = "/user/frozenUsers")
+    @GetMapping(value = "/user/frozen")
     @RequiresRoles(value ="admin")
     //@RequiresPermissions(value = ["admin:frozenUsers"])
     def getFrozenUsers(@Valid PageUtil pageUtil,Errors errors){
-
         if(errors.hasErrors()){
             return JsonData.buildError(errors.getFieldError().getDefaultMessage())
         }
@@ -90,19 +92,19 @@ class AdminController {
     def addNewRole(){
 
     }
-    @GetMapping("/user/getRoles")
+    @GetMapping("/user/roles")
     def findUserRoleById(String id){
         if (id==null){
             return JsonData.buildError("用户id不能为null")
         }
         userRoleService.findUserRoleById(id)
     }
-    @GetMapping("/user/getAllRoles")
+    @GetMapping("/user/allRoles")
     def findUserRoles(){
         userRoleService.findAllRoles()
     }
 
-    @PostMapping("/user/deleteUserRole")
+    @PostMapping("/user/deleteRole")
     def deleteUserRole(@RequestBody JSONObject params){
         if(isEmpty(params.get("user_id"))){
             return JsonData.buildError("用户ID不正确！")
@@ -110,7 +112,7 @@ class AdminController {
         userRoleService.deleteUserRole(params)
     }
 
-    @PostMapping("/user/asignUserRole")
+    @PostMapping("/user/assignRole")
     def asignUserRole(@RequestBody JSONObject params){
         if(isEmpty(params.get("user_id"))){
             return JsonData.buildError("用户ID不正确！")
@@ -125,11 +127,21 @@ class AdminController {
         adminService.findUserAuthByPages(pageUtil,isHandled)
     }
 
-    @PostMapping("/user/auth/confirm")
+    @PostMapping("/user/audit/confirm")
     def authAudit(@RequestBody JSONObject params){
         if(params.get("id")==null||params.get("user_id")==null||params.get("isPassed")==null){
             return JsonData.buildError("参数不能为空！")
         }
         adminService.updateUserAuthStatus(params)
+    }
+
+    @PostMapping("/upload/media")
+    def uploadMedia(MultipartFile blob){
+        def asr = client.asr(blob.getBytes(),"wav",16000,null)
+        JSONObject data = new JSONObject()
+        data.put("result",asr.optString("result"))
+        def list = HanLP.segment(asr.optString("result"))
+        println list
+        return JsonData.buildSuccess(data)
     }
 }

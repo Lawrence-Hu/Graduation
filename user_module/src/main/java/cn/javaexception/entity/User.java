@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import groovy.transform.Canonical;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -31,15 +32,16 @@ import javax.validation.constraints.NotNull;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@Canonical
 public class User extends Model<User> {
 
     private static final long serialVersionUID = 1L;
     /**
      * '主键id'
      */
-    @TableId(value = "id")
-    //@NotNull(message = "用户id不能为空")
+
     @NotNull(message = "用户id不能为null")
+    @TableId
     private String id;
 
     /**
@@ -82,7 +84,6 @@ public class User extends Model<User> {
     /**
      * '创建时间'
      */
-    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     private Date createdTime;
 
     /**
@@ -139,7 +140,7 @@ public class User extends Model<User> {
     private UserStatus userStatus;
 
     @TableField(exist = false)
-    private List<JSONObject> roles;
+    private List<Role> roles;
     @Override
     protected Serializable pkVal() {
         return this.id;

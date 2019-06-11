@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -28,5 +29,6 @@ public interface RoleMapper extends BaseMapper<Role> {
             "</script>"})
     List<JSONObject> getUserRolesByUserId(List id);
 
-
+    @Select(value = "select role.identity from role,user_role,user where user.id = user_role.user_id and user_role.role_id = role.id and user.id= #{id}")
+    List<Role> selectRoleById(String id);
 }

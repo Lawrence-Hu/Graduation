@@ -1,6 +1,6 @@
 package cn.javaexception.mapper;
 
-import cn.javaexception.entity.UserStatus;
+import cn.javaexception.entity.ProductBrand;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,10 +12,10 @@ import java.io.Serializable;
  * </p>
  *
  * @author huchao
- * @since 2019-05-01
+ * @since 2019-06-11
  */
 @Mapper
-public interface UserStatusMapper extends BaseMapper<UserStatus> {
+public interface ProductBrandMapper extends BaseMapper<ProductBrand> {
     @Override
-    UserStatus selectById(Serializable id);
+    ProductBrand selectById(Serializable id);
 }

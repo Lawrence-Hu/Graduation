@@ -2,6 +2,7 @@ package cn.javaexception.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -19,7 +20,11 @@ public class ProductAudit extends Model<ProductAudit> {
     private Date createdTime;
     private Boolean isHandled;
     private Boolean status;
+    @TableField(exist = false)
+    private Product product;
+    @JsonIgnore
     private String productId;
+    private String auditUserId;
     @TableField(exist = false)
     private List<AuditImg> imgs;
     @Override
