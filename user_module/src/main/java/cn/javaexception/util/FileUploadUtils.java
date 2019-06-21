@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class FileUploadUtils {
-    private static  StorageClient1 client1 = null;
+    private static StorageClient1 client1 = null;
 
     static {
         try {

@@ -117,17 +117,19 @@ class AdminServiceImpl implements AdminService{
     @Override
     def findUserAuthByPages(PageUtil params,Boolean isHandled) {
         Page<UserAudit> page = new Page<>(params.getCurrentPage(),params.getPageSize())
-        def records = userAuditMapper.selectPage(page, new QueryWrapper<UserAudit>().eq("is_handled",isHandled).orderByDesc("created_time"))
-        def data = records.getRecords()
-
-        if (records.records.isEmpty()){
-            return  JsonData.buildError("最近没有要处理的认证信息")
-        }
-        def imgs = auditImgMapper.selectList(new QueryWrapper<AuditImg>().in("audit_id", data.stream().map({record->record.getId()}).collect(Collectors.toList())))
-        def userImg = imgs.groupBy { img -> img.getAuditId() }
-        for(userAudit in data){
-            userAudit.setImgs(userImg.get(userAudit.getId()))
-        }
+//        def records = userAuditMapper.selectPage(page, new QueryWrapper<UserAudit>().eq("is_handled",isHandled).orderByDesc("created_time"))
+//        def data = records.getRecords()
+//
+//        if (records.records.isEmpty()){
+//            return  JsonData.buildError("最近没有要处理的认证信息")
+//        }
+//        def imgs = auditImgMapper.selectList(new QueryWrapper<AuditImg>().in("audit_id", data.stream().map({record->record.getId()}).collect(Collectors.toList())))
+//        def userImg = imgs.groupBy { img -> img.getAuditId() }
+//        for(userAudit in data){
+//            userAudit.setImgs(userImg.get(userAudit.getId()))
+//        }
+        def users = userAuditMapper.getUserAuditByPage(page, isHandled)
+        page.setRecords(users)
         return JsonData.buildSuccess(page)
     }
 
@@ -136,11 +138,13 @@ class AdminServiceImpl implements AdminService{
         def user = SecurityUtils.getSubject().getPrincipal() as User
         def user_id = params.get("user_id") as String
         def auth_id = params.get("id") as String
+        def comments = params.get("comments") as String
         def isPassed = params.get("isPassed") as Boolean
         userMapper.updateById(new User().setId(user_id).setCertification(isPassed))
         userAuditMapper.updateById(new UserAudit()
                                     .setId(auth_id)
                                     .setStatus(isPassed)
+                                    .setComments(comments)
                                     .setIsHandled(true)
                                     .setAuditUserId(user.getId()))
         return JsonData.buildSuccess("处理认证信息成功！")

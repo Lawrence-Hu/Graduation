@@ -17,12 +17,7 @@ import java.util.List;
  * @since 2019-05-05
  */
 public interface ProductService extends IService<Product> {
-    Product getProductInfoById(String id);
-    JsonData addProduct(Product product);
-    JsonData delProductById(String[] id);
-    JsonData updateIsNewById(String id, Boolean type);//修改是否新品
     JsonData getProductsByPages(PageUtil page);
     JsonData getAuditProductsByPages(PageUtil pageUtil,Boolean isHandled);
-
     JsonData updateAuditStatus(JSONObject params);
 }

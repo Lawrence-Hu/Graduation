@@ -39,7 +39,6 @@ public class User extends Model<User> {
     /**
      * '主键id'
      */
-
     @NotNull(message = "用户id不能为null")
     @TableId
     private String id;

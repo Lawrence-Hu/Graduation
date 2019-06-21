@@ -25,9 +25,6 @@ public class ProductBrand extends Model<ProductBrand> {
 
     private String name;
 
-    private String productId;
-
-
     @Override
     protected Serializable pkVal() {
         return this.id;

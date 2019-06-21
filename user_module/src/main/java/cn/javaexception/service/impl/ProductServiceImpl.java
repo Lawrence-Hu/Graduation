@@ -47,27 +47,6 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     ProductBrandMapper brandMapper;
 
     @Override
-    public Product getProductInfoById(String id) {
-        return null;
-    }
-
-    @Override
-    public JsonData addProduct(Product product) {
-        return null;
-    }
-
-
-    @Override
-    public JsonData delProductById(String[] id) {
-        return null;
-    }
-
-    @Override
-    public JsonData updateIsNewById(String id, Boolean type) {
-        return null;
-    }
-
-    @Override
     public JsonData getProductsByPages(PageUtil page) {
         Page<Product> params = new Page<>(page.getCurrentPage(),page.getPageSize());
         IPage<Product> pages = productMapper.selectPage(params, null);

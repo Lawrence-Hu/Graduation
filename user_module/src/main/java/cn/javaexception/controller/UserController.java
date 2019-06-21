@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
@@ -114,7 +115,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public JsonData login(@RequestBody @Valid JSONObject data, HttpServletRequest request, HttpServletResponse response) {
+    public JsonData login(@RequestBody @Valid JSONObject data, HttpServletResponse response) throws IOException {
         //数据校验
         if(data.get("account")==null||data.get("password")==null){
             return JsonData.buildError("用户账号或密码不能为null");
@@ -130,6 +131,7 @@ public class UserController {
             String form_token = UUID.randomUUID().toString();
             response.setHeader("FORM-TOKEN",form_token);
             response.setHeader("WEBSOKET-TOKEN",websoket_token);
+
             redisTemplate.opsForValue().set(form_token,"handled");
             return JsonData.buildSuccess("登录成功");
         } catch (UnknownAccountException e) {
