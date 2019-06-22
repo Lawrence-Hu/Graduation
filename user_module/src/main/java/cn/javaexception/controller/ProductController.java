@@ -49,14 +49,14 @@ public class ProductController {
        }
        return  productService.getAuditProductsByPages(pageUtil,isHandled);
     }
-//    @PostMapping("/audit/confirm")
-//    public JsonData auditComfirm(@RequestBody JSONObject object){
-//        System.out.println(object.toJSONString());
-//       if(object.getString("product_id").isBlank()|| object.getString("audit_id").isBlank()|| object.getBoolean("is_passed") == null) {
-//           return JsonData.buildError("参数输入错误！");
-//       }
-//        return productService.updateAuditStatus(object);
-//    }
+    @PostMapping("/audit/confirm")
+    public JsonData auditComfirm(@RequestBody JSONObject object){
+        System.out.println(object.toJSONString());
+       if(object.getString("product_id").isBlank()|| object.getString("audit_id").isBlank()|| object.getBoolean("is_passed") == null) {
+           return JsonData.buildError("参数输入错误！");
+       }
+        return productService.updateAuditStatus(object);
+     }
     @GetMapping("/upload")
     public JsonData uploadImg(MultipartFile[] files) {
         return FileUploadUtils.upload(files);

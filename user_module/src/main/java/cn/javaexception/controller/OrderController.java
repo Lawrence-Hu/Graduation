@@ -72,7 +72,6 @@ public class OrderController {
 
     @PostMapping("/addorder")
     public JsonData addOrder(@RequestBody JSONObject object){
-
         Order order= JSON.toJavaObject(object,Order.class);
         return orderService.addToOrder(order);
     }

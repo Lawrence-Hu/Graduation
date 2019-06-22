@@ -18,6 +18,10 @@ import org.apache.shiro.session.mgt.SessionKey;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +34,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -161,7 +166,7 @@ public class UserController {
     }
 
     @GetMapping("/loginout")
-    public JsonData loginOut(HttpSession session){
+    public JsonData loginOut(){
         Subject subject = SecurityUtils.getSubject();
         if(subject.getPrincipal()!=null){
             subject.logout();
@@ -170,8 +175,9 @@ public class UserController {
         return JsonData.buildError("用户未登录");
     }
     @GetMapping("/test")
-    public JsonData test(){
-        return JsonData.buildSuccess("OK");
+    public ResponseEntity<byte[]> test(){
+
+        return null;
     }
 }
 
