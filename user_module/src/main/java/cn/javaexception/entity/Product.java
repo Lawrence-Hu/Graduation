@@ -38,12 +38,12 @@ public class Product extends Model<Product> {
     /**
      * 市场价格
      */
-    private Float marketPrice;
+    private Double marketPrice;
 
     /**
      * 现价
      */
-    private Float shopPrice;
+    private Double shopPrice;
 
     /**
      * 存库

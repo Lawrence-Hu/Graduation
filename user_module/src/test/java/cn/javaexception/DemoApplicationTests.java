@@ -13,13 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
+import java.math.BigDecimal;;
 import java.util.List;
 
 //
@@ -85,4 +79,6 @@ public class DemoApplicationTests {
         assert result.body() != null;
         System.out.println(result.body().string());
     }
+
+
 }
