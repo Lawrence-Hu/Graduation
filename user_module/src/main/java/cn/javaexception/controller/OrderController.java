@@ -8,10 +8,14 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 /**
  * @author hcuhao
@@ -71,9 +75,11 @@ public class OrderController {
     }
 
     @PostMapping("/addorder")
-    public JsonData addOrder(@RequestBody JSONObject object){
-
-        Order order= JSON.toJavaObject(object,Order.class);
+    public JsonData addOrder(@RequestBody @Valid Order order,Errors errors){
+        if(errors.hasErrors()){
+            return JsonData.buildError(errors.getFieldError().getDefaultMessage());
+        }
+        System.out.println(order);
         return orderService.addToOrder(order);
     }
 }
