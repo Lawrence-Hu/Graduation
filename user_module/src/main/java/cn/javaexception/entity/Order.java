@@ -1,6 +1,7 @@
 package cn.javaexception.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,11 +21,17 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName(value = "order")
+@TableName(value = "orders")
 public class Order {
-
-    private String id;//订单号
-    private String userId;//用户id
+    /**
+     * 订单Id
+     */
+    @TableId
+    private String id;
+    /**
+     * 用户Id
+     */
+    private String userId;
     private Integer statusId;//订单状态id
     private Date time;//创建时间
     private Double price;//总价格
@@ -37,6 +44,8 @@ public class Order {
     @Accessors(chain = true)
     @TableName(value = "order_item")
     public static class OrderItem {
+        @TableId
+        private String id;
         @NotEmpty(message = "商品id不能为空！")
         private String productId;//物品id
         @NotNull(message = "商品数量不能为空！")

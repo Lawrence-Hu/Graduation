@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.Objects;
 
 /**
  * @author hcuhao
@@ -32,14 +33,12 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-
     /**
      * orderDetail by page
      * @return
      */
     @PostMapping("/all")
     public JsonData orderDetail(String currentPage,String pageSize){
-
         return null;
     }
 
@@ -77,7 +76,7 @@ public class OrderController {
     @PostMapping("/addorder")
     public JsonData addOrder(@RequestBody @Valid Order order,Errors errors){
         if(errors.hasErrors()){
-            return JsonData.buildError(errors.getFieldError().getDefaultMessage());
+            return JsonData.buildError(Objects.requireNonNull(errors.getFieldError()).getDefaultMessage());
         }
         System.out.println(order);
         return orderService.addToOrder(order);

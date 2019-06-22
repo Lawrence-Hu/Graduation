@@ -7,6 +7,7 @@ import cn.javaexception.mapper.OrderMapper;
 import cn.javaexception.mapper.OrderItemMapper;
 import cn.javaexception.mapper.ProductMapper;
 import cn.javaexception.service.OrderService;
+import cn.javaexception.service.ProductService;
 import cn.javaexception.util.JsonData;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -14,21 +15,33 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
-
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author huchao
+ * @since 2019-05-05
+ */
 @Service
 public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements OrderService {
     @Autowired
     private OrderMapper orderMapper;
     @Autowired
+    private ProductService productService;
+    @Autowired
     private ProductMapper productMapper;
     @Autowired
     private OrderItemMapper orderItemMapper;
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public JsonData addToOrder(Order order) {
         Double num = 0.00;
         //首先判断订单详情是否为空
@@ -50,60 +63,24 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
         for (Product product : products) {
             for (Order.OrderItem item : orderItemList) {
                 if(product.getId().equals(item.getProductId())){
-
-                if(product.getStock()<item.getProductNum()){
-                            return JsonData.buildError("库存不足，请重试");
-                }else{
-                   product.setStock(product.getStock()-item.getProductNum());
-                    BigDecimal a1=new BigDecimal(Double.toString((product.getShopPrice())));
-                    BigDecimal b1=new BigDecimal(Double.toString((item.getProductNum())));
-                    num+=a1.multiply(b1).intValue();
-                }
-
+                    if(product.getStock()<item.getProductNum()){
+                                return JsonData.buildError("库存不足，请重试");
+                    }else{
+                       product.setStock(product.getStock()-item.getProductNum());
+                        BigDecimal a1=new BigDecimal(Double.toString((product.getShopPrice())));
+                        BigDecimal b1=new BigDecimal(Double.toString((item.getProductNum())));
+                        num+=a1.multiply(b1).intValue();
                     }
+                }
             }
         }
         order.setUserId(principal.getId());
         order.setTime(new Date());
-        System.out.println(order);
+        order.setPrice(num);
+
         orderMapper.insert(order);
+        productService.updateBatchById(products);
         orderItemMapper.addItems(order.getId(),orderItemList);
-        return null;
-//        for(Order.OrderItem orderItem:orderItemList){
-//            //查询详情中每个商品是否过审
-//            Product product = productMapper.selectById(orderItem.getProductId());
-//            if (!product.getIsAudit()){
-//                return JsonData.buildError("存在商品未过审，请检查");
-//            }
-//            //库存是否足够
-//            if(product.getStock()<orderItem.getProductNum())
-//            {
-//                return  JsonData.buildError("库存不足，请重试");
-//            }
-//
-//            //库存足够,库存减去购买量
-//            productMapper.updateById(product.setStock(temp));
-//           //计算总价格并写入订单
-//            BigDecimal a1=new BigDecimal(Double.toString((product.getShopPrice())));
-//            BigDecimal b1=new BigDecimal(Double.toString((orderItem.getProductNum())));
-//            num+=a1.multiply(b1).intValue();
-//        }
-//        order.setPrice(num);
-//        order.setUserId(principal.getId());
-//        order.setTime(new Date());
-//        int i =orderMapper.insert(order);
-//        int add=0;
-//        for(Order.OrderItem orderItem:orderItemList)
-//        {
-//                int insert=orderItemMapper.insert(orderItem.setOrderId(order.getId()));
-//                if(insert==1){
-//                    add++;
-//                }
-//            //判断是否全部插入
-//            if (i == 1 && add == orderItemList.size()) {
-//                return JsonData.buildSuccess("下单成功");
-//            }
-//        }
-//        return JsonData.buildError("未知错误，请稍后重试");
+        return JsonData.buildSuccess("下单成功！");
     }
 }
