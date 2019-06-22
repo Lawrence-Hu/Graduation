@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -22,11 +23,6 @@ import java.util.Map;
  */
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
-    @Select("select id from user")
-    List<String> getAllUserIds();
-
-    @Select("select * from user")
-    List<JSONObject> getUsers(Page page);
 
     @SelectProvider(type = UserMapperSQL.class,method = "selectAllUsers")
     @Results({
@@ -36,6 +32,9 @@ public interface UserMapper extends BaseMapper<User> {
             @Result(column = "status",property = "userStatus",one = @One(select = "cn.javaexception.mapper.UserStatusMapper.selectById"))
     })
     List<User> selectAllUsers(Page<User> page, @Param("type") String type);
+
+    @Select(value = "select id,name,phone from user where id = #{id}")
+    User selectUserById(String id);
 
     class UserMapperSQL{
         public String selectAllUsers(@Param("type") String type){

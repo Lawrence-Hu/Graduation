@@ -1,6 +1,8 @@
-package cn.javaexception.util;
+package cn.javaexception.filter;
 
 import cn.javaexception.annotation.AvoidDuplicate;
+import cn.javaexception.util.JsonData;
+import cn.javaexception.util.RequestUtils;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

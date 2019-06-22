@@ -1,6 +1,7 @@
 package cn.javaexception.mapper;
 
 import cn.javaexception.entity.Product;
+import cn.javaexception.entity.User;
 import cn.javaexception.util.PageUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -22,5 +23,4 @@ public interface ProductMapper extends BaseMapper<Product> {
         @Result(column = "brand_id",property = "productBrand",one = @One(select = "cn.javaexception.mapper.ProductBrandMapper.selectById"))
     })
     Product getProduct();
-
 }

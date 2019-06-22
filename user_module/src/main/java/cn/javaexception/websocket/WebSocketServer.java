@@ -2,6 +2,7 @@ package cn.javaexception.websocket;
 
 import cn.javaexception.entity.Message;
 import com.alibaba.fastjson.JSON;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
@@ -27,13 +28,15 @@ import java.util.stream.Collectors;
 
 @Component
 public class WebSocketServer {
+    @Autowired
     private RedisTemplate<String,String> redisTemplate;
 
-    private static ApplicationContext applicationContext;
+//    public static void setApplicationContext(ApplicationContext applicationContext) {
+//        WebSocketServer.applicationContext = applicationContext;
+//    }
+//    private static ApplicationContext applicationContext;
 
-    public static void setApplicationContext(ApplicationContext applicationContext) {
-        WebSocketServer.applicationContext = applicationContext;
-    }
+
     //concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。
     private static CopyOnWriteArraySet<WebSocketServer> webSocketSet = new CopyOnWriteArraySet<>();
     //与某个客户端的连接会话，需要通过它来给客户端发送数据
@@ -47,7 +50,7 @@ public class WebSocketServer {
     public void onOpen(@PathParam("userId") String userId, Session session) throws IOException {
         this.session=session;
         this.userId=userId;
-        redisTemplate = (RedisTemplate<String,String>) applicationContext.getBean("redisTemplate");
+//        redisTemplate = (RedisTemplate<String,String>) applicationContext.getBean("redisTemplate");
         RedisSerializer stringSerializer = new StringRedisSerializer();
         redisTemplate.setKeySerializer(stringSerializer);
         redisTemplate.setValueSerializer(stringSerializer);

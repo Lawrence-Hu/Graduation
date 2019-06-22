@@ -71,7 +71,7 @@ public class FavouriteServiceImpl extends ServiceImpl<FavouriteMapper, Favourite
             return JsonData.buildError("用户未登录！非法操作！");
         }
         //删除
-        int delete = favouriteMapper.delete(new QueryWrapper<Favourite>().eq("user_id", principal.getId()).in("id", ids));
+        int delete = favouriteMapper.delete(new QueryWrapper<Favourite>().eq("user_id", principal.getId()).in("id", (Object) ids));
 
         if (delete < ids.length && delete > 0) {
             return JsonData.buildSuccess("只删除了部分数据！请确保数据完全正确！");

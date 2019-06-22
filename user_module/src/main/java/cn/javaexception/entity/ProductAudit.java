@@ -15,8 +15,6 @@ import java.util.List;
 public class ProductAudit extends Model<ProductAudit> {
     private static final long serialVersionUID = 1L;
     private  String id;
-    private String name;
-    private String description;
     private Date createdTime;
     private Boolean isHandled;
     private Boolean status;
@@ -25,6 +23,7 @@ public class ProductAudit extends Model<ProductAudit> {
     @JsonIgnore
     private String productId;
     private String auditUserId;
+    private String comments;
     @TableField(exist = false)
     private List<AuditImg> imgs;
     @Override

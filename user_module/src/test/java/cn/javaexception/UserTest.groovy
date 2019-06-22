@@ -1,9 +1,7 @@
 package cn.javaexception
 
-import java.util.stream.Collectors
+import cn.javaexception.entity.User
 
-def a = { a, b -> int d =3; a + b }
-println a(1,2)
+println new User().setName("aaaa")
 
-def b = {->a(2,6) }
-b()
+

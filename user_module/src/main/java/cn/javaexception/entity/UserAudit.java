@@ -40,9 +40,10 @@ public class UserAudit extends Model<UserAudit> {
     private Boolean isHandled;
 
     private String auditUserId;
-    private String name;
     @TableField(exist = false)
     private List<AuditImg> imgs;
+    @TableField(exist = false)
+    private User user;
     private Date createdTime;
     @Override
     protected Serializable pkVal() {

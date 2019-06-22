@@ -3,9 +3,8 @@ package cn.javaexception;
 
 import cn.javaexception.config.AlipayConfig;
 import cn.javaexception.config.BaiduConfig;
-import cn.javaexception.util.AvoidDuplicateIntercepter;
+import cn.javaexception.filter.AvoidDuplicateIntercepter;
 import cn.javaexception.websocket.MyWebSocketHandler;
-import cn.javaexception.websocket.WebSocketServer;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.baidu.aip.speech.AipSpeech;
@@ -15,9 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
@@ -36,6 +33,7 @@ import java.util.Map;
 @EnableRedisRepositories
 @EnableWebSocket
 public class DemoApplication implements WebMvcConfigurer, WebSocketConfigurer {
+
     @Autowired
     AvoidDuplicateIntercepter avoidDuplicateIntercepter;
     @Autowired
@@ -46,10 +44,7 @@ public class DemoApplication implements WebMvcConfigurer, WebSocketConfigurer {
     }
 
     public static void main(String[] args) {
-        SpringApplication springApplication = new SpringApplication(DemoApplication.class);
-        ConfigurableApplicationContext configurableApplicationContext = springApplication.run(args);
-        //解决WebSocket不能注入的问题
-        WebSocketServer.setApplicationContext(configurableApplicationContext);
+        SpringApplication.run(DemoApplication.class);
     }
 
     @Bean
@@ -70,7 +65,6 @@ public class DemoApplication implements WebMvcConfigurer, WebSocketConfigurer {
                 System.out.println(SecurityUtils.getSubject().getPrincipal());
                 return true;
             }
-
             @Override
             public void afterHandshake(ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse, WebSocketHandler webSocketHandler, Exception e) {
                 System.out.println("after");

@@ -2,6 +2,7 @@ package cn.javaexception.websocket;
 
 import cn.javaexception.entity.Message;
 import com.alibaba.fastjson.JSON;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -15,10 +16,11 @@ public class MyWebSocketHandler implements WebSocketHandler {
 
     @Autowired
     private RedisTemplate<String,String> redisTemplate;
+
     private static Hashtable<String, WebSocketSession> hashTable = new Hashtable<>();
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        String userId = session.getUri().getPath().substring(session.getUri().getPath().lastIndexOf("/") + 1);
+        String userId = Objects.requireNonNull(session.getUri()).getPath().substring(session.getUri().getPath().lastIndexOf("/") + 1);
         System.out.println(userId);
         List<Message> messages = new ArrayList<>();
         //获取所有消息
@@ -32,6 +34,7 @@ public class MyWebSocketHandler implements WebSocketHandler {
         }
         //根据不同用户进行分组
         Map<String, List<Message>> collect = messages.stream().collect(Collectors.groupingBy(Message::getFromUserId));
+
         Set<Map.Entry<String, List<Message>>> entries = collect.entrySet();
         //分组后按时间排序消息
         for (Map.Entry<String, List<Message>> entry : entries) {
@@ -63,16 +66,16 @@ public class MyWebSocketHandler implements WebSocketHandler {
     }
 
     @Override
-    public void handleTransportError(WebSocketSession webSocketSession, Throwable throwable) throws Exception {
+    public void handleTransportError(WebSocketSession webSocketSession, Throwable throwable) {
 
     }
 
     @Override
-    public void afterConnectionClosed(WebSocketSession webSocketSession, CloseStatus closeStatus) throws Exception {
+    public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) {
         System.out.println("离开了");
-        hashTable.remove(this);
+        System.out.println(Objects.requireNonNull(session.getUri()).getPath().substring(session.getUri().getPath().lastIndexOf("/") + 1));
+        hashTable.remove(Objects.requireNonNull(session.getUri()).getPath().substring(session.getUri().getPath().lastIndexOf("/") + 1));
     }
-
     @Override
     public boolean supportsPartialMessages() {
         return false;

@@ -8,17 +8,12 @@ import cn.javaexception.util.JsonData;
 import cn.javaexception.util.PageUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import org.csource.common.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -32,34 +27,8 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/api/product")
 public class ProductController {
-
     @Autowired
     ProductService productService;
-
-/**
- * @param
- * @return JsonData
- * @author JDR
- * @description 添加商品
- */
-   @PostMapping("/addproduct")
-    public JsonData addproduct(@RequestBody Product product){
-
-       if(product==null)
-       {
-           return  JsonData.buildError("商品信息不能为Null");
-       }
-        return  productService.addProduct(product);
-   }
-
-   @PostMapping("/delproduct")
-   public  JsonData delproduct(@RequestBody String[] productId){
-        if(productId.length==0)
-        {
-            return  JsonData.buildError("商品id不能为空");
-        }
-        return productService.delProductById(productId);
-   }
 
     @GetMapping("/all")
     public JsonData getProductsByPages(@Valid PageUtil pageUtil, Errors errors){
@@ -80,9 +49,10 @@ public class ProductController {
        }
        return  productService.getAuditProductsByPages(pageUtil,isHandled);
     }
-    @GetMapping("/audit/confirm")
+    @PostMapping("/audit/confirm")
     public JsonData auditComfirm(@RequestBody JSONObject object){
-       if(object.get("product_id").toString().isBlank()|| object.get("audit_id").toString().isBlank()||object.get("is_passed").toString().isBlank()) {
+        System.out.println(object.toJSONString());
+       if(object.getString("product_id").isBlank()|| object.getString("audit_id").isBlank()|| object.getBoolean("is_passed") == null) {
            return JsonData.buildError("参数输入错误！");
        }
         return productService.updateAuditStatus(object);
